@@ -1,0 +1,34 @@
+#!/bin/bash
+writeblog=$PWD
+publicblog=../kevinwjj.github.io
+
+echo ===== hexo general =====
+hexo g
+
+echo 
+echo ===== git pull in $publicblog =====
+cd $publicblog
+git pull
+
+if [ $? -ne 0 ]; then
+exit 1
+fi
+
+echo 
+echo ===== copy public from writeblog to publicblog =====
+cp -R $writeblog/public/. ./
+
+git status
+echo 
+echo ==========
+echo "Do you want to git add-commit-push?...(y or n)"
+read reply leftover
+case $reply in
+    y* | Y*)
+        git add .
+        git commit -m "Deploy by kevinWJJ from hexo"
+        git push origin master:master;;
+    *)
+        echo "Happy to you!";;
+esac
+cd -

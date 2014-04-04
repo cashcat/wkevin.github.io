@@ -1,0 +1,31 @@
+menu:
+  Home: /
+  Archives: /archives/
+  About: /about/
+  Subscribe: /atom.xml
+
+widgets: 
+- menu
+- weibo
+- category
+- tagcloud
+
+excerpt_link: Read More
+
+fancybox: true
+
+# 友言评论
+UYUserId:
+
+# cnzz统计
+cnzzId:
+
+# JiaThis分享
+jiathisUUID:
+
+weibo:
+	name: wkevin27
+	uid: wkevin27
+	link: http://weibo.com/wkevin27
+
+rss: http://xxx.xx/atom.xml
