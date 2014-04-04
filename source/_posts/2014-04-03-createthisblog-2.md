@@ -6,7 +6,7 @@ tags: hexo
 昨晚弄到凌晨1点多，高兴的碎觉去了。今早到了公司，另选一台电脑，git clone 出来本博客
 `git clone htts://github.com/kevinwjj/kevinwjj.github.io.git`
 
-当想在 writeblog 分支开写的时候，发现不行了。
+当想在 write 分支开写的时候，发现不行了。
 
 layout错误
 ---

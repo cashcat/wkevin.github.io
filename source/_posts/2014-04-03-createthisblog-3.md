@@ -37,12 +37,12 @@ init和update不指定的话，会初始化和clone所有submodule：iOS7、land
 	git rm -rf .deploy
 	echo .deploy >> .gitignore
 	git commit
-	git push origin writeblog:writeblog
+	git push origin write:write
 
 然后是在另一台电脑上即可进行clone及其使用
 
 	git clone https://github.com/kevinwjj/kevinwjj.github.io.git
-	git checkout -b writeblog origin/writeblog
+	git checkout -b write origin/write
 				//此时 .deploy 是空的
 	hexo g 		//生成了public/
 	hexo d 		//生成了.deploy/
@@ -56,7 +56,7 @@ init和update不指定的话，会初始化和clone所有submodule：iOS7、land
 
 以前提交的master分支都完蛋了，这是个很严重的问题啊。这可咋整？曲线救国吧。写个脚本自己来deploy：
 
-	wangkevintekiMacBook-Pro:writeblog wangkevin$ cat deployByMyself 
+	wangkevintekiMacBook-Pro:write wangkevin$ cat deployByMyself 
 	#!/bin/bash
 	hexo g
 	cp -R public/. ../kevinwjj.github.io/

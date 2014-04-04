@@ -80,14 +80,14 @@ github + hexo => blog
 	*	`hexo deploy` //推入github的库中
 *	将markdown文件也放入github
 	*	kevinwjj.github.io.git 的 master 分支存放 html + hexo输出文件
-	*	kevinwjj.github.io.git 的 writeblog 分支存放 markdown + hexo 编译文件
+	*	kevinwjj.github.io.git 的 write 分支存放 markdown + hexo 编译文件
 	
 				cd kevinwjj.github.io
-				git checkout --orphan writeblog
+				git checkout --orphan write
 				cp -aR ../myBlog/. ./
 				git add .
 				git commit
-				git push origin writeblog:writeblog
+				git push origin write:write
 			
 
 
