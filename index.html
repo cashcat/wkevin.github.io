@@ -130,19 +130,19 @@ git submodule update
 git rm -rf <span class="preprocessor">.deploy</span>
 echo <span class="preprocessor">.deploy</span> &gt;&gt; <span class="preprocessor">.gitignore</span>
 git commit
-git <span class="keyword">push</span> origin writeblog:writeblog
+git <span class="keyword">push</span> origin write:write
 </code></pre><p>然后是在另一台电脑上即可进行clone及其使用</p>
-<pre><code>git clone https://github<span class="preprocessor">.com</span>/kevinwjj/kevinwjj<span class="preprocessor">.github</span><span class="preprocessor">.io</span><span class="preprocessor">.git</span>
-git checkout -b writeblog origin/writeblog
-            //此时 <span class="preprocessor">.deploy</span> 是空的
-hexo g         //生成了public/
-hexo d         //生成了<span class="preprocessor">.deploy</span>/
+<pre><code>git clone <span class="keyword">https</span>://github.com/kevinwjj/kevinwjj.github.io.git
+git checkout -b <span class="built_in">write</span> origin/<span class="built_in">write</span>
+           <span class="comment"> //此时 .deploy 是空的</span>
+hexo g        <span class="comment"> //生成了public/</span>
+hexo d        <span class="comment"> //生成了.deploy/</span>
 </code></pre><p><strong>问题是</strong>，<code>hexo d</code>之后，html确实是退到github的master分支了，但<strong>master分支会被重置</strong></p>
 <pre><code><span class="variable">$ </span>git logk origin/master
   <span class="number">5</span>c14c33 <span class="number">2014</span>-<span class="number">04</span>-<span class="number">03</span> <span class="number">16</span><span class="symbol">:</span><span class="number">19</span><span class="symbol">:</span><span class="number">02</span> +080<span class="number">0</span>  kevinWJJ  <span class="constant">Site</span> <span class="symbol">updated:</span> <span class="number">2014</span>-<span class="number">04</span>-<span class="number">03</span> <span class="number">16</span><span class="symbol">:</span><span class="number">19</span><span class="symbol">:</span><span class="number">02</span>
   edf0f22 <span class="number">2014</span>-<span class="number">04</span>-<span class="number">03</span> <span class="number">16</span><span class="symbol">:</span><span class="number">19</span><span class="symbol">:</span><span class="number">01</span> +080<span class="number">0</span>  kevinWJJ  <span class="constant">First</span> commit
 </code></pre><p>以前提交的master分支都完蛋了，这是个很严重的问题啊。这可咋整？曲线救国吧。写个脚本自己来deploy：</p>
-<pre><code>wangkevintekiMacBook-Pro:writeblog wangkevin$ cat deployByMyself 
+<pre><code>wangkevintekiMacBook-Pro:write wangkevin$ cat deployByMyself 
 <span class="shebang">#!/bin/bash</span>
 hexo g
 cp -R public/. ../kevinwjj.github.io/
@@ -219,7 +219,7 @@ public             //每次可以自动生成，属于过程文件
     <div class="entry">
       
         <p>昨晚弄到凌晨1点多，高兴的碎觉去了。今早到了公司，另选一台电脑，git clone 出来本博客<br><code>git clone htts://github.com/kevinwjj/kevinwjj.github.io.git</code></p>
-<p>当想在 writeblog 分支开写的时候，发现不行了。</p>
+<p>当想在 write 分支开写的时候，发现不行了。</p>
 <h2 id="layout错误">layout错误</h2>
 <pre><code>$ hexo g
 [info] Files loaded <span class="keyword">in</span> <span class="number">0.298</span>s
@@ -394,12 +394,12 @@ No submodule mapping found <span class="keyword">in</span> .gitmodules <span cla
 </li>
 <li>将markdown文件也放入github<ul>
 <li>kevinwjj.github.io.git 的 master 分支存放 html + hexo输出文件</li>
-<li>kevinwjj.github.io.git 的 writeblog 分支存放 markdown + hexo 编译文件<pre><code>  cd kevinwjj<span class="preprocessor">.github</span><span class="preprocessor">.io</span>
-  git checkout --orphan writeblog
+<li>kevinwjj.github.io.git 的 write 分支存放 markdown + hexo 编译文件<pre><code>  cd kevinwjj<span class="preprocessor">.github</span><span class="preprocessor">.io</span>
+  git checkout --orphan write
   <span class="keyword">cp</span> -aR ../myBlog/. ./
   git <span class="keyword">add</span> .
   git commit
-  git <span class="keyword">push</span> origin writeblog:writeblog
+  git <span class="keyword">push</span> origin write:write
 </code></pre></li>
 </ul>
 </li>

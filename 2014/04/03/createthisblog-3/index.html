@@ -137,19 +137,19 @@ git submodule update
 git rm -rf <span class="preprocessor">.deploy</span>
 echo <span class="preprocessor">.deploy</span> &gt;&gt; <span class="preprocessor">.gitignore</span>
 git commit
-git <span class="keyword">push</span> origin writeblog:writeblog
+git <span class="keyword">push</span> origin write:write
 </code></pre><p>然后是在另一台电脑上即可进行clone及其使用</p>
-<pre><code>git clone https://github<span class="preprocessor">.com</span>/kevinwjj/kevinwjj<span class="preprocessor">.github</span><span class="preprocessor">.io</span><span class="preprocessor">.git</span>
-git checkout -b writeblog origin/writeblog
-            //此时 <span class="preprocessor">.deploy</span> 是空的
-hexo g         //生成了public/
-hexo d         //生成了<span class="preprocessor">.deploy</span>/
+<pre><code>git clone <span class="keyword">https</span>://github.com/kevinwjj/kevinwjj.github.io.git
+git checkout -b <span class="built_in">write</span> origin/<span class="built_in">write</span>
+           <span class="comment"> //此时 .deploy 是空的</span>
+hexo g        <span class="comment"> //生成了public/</span>
+hexo d        <span class="comment"> //生成了.deploy/</span>
 </code></pre><p><strong>问题是</strong>，<code>hexo d</code>之后，html确实是退到github的master分支了，但<strong>master分支会被重置</strong></p>
 <pre><code><span class="variable">$ </span>git logk origin/master
   <span class="number">5</span>c14c33 <span class="number">2014</span>-<span class="number">04</span>-<span class="number">03</span> <span class="number">16</span><span class="symbol">:</span><span class="number">19</span><span class="symbol">:</span><span class="number">02</span> +080<span class="number">0</span>  kevinWJJ  <span class="constant">Site</span> <span class="symbol">updated:</span> <span class="number">2014</span>-<span class="number">04</span>-<span class="number">03</span> <span class="number">16</span><span class="symbol">:</span><span class="number">19</span><span class="symbol">:</span><span class="number">02</span>
   edf0f22 <span class="number">2014</span>-<span class="number">04</span>-<span class="number">03</span> <span class="number">16</span><span class="symbol">:</span><span class="number">19</span><span class="symbol">:</span><span class="number">01</span> +080<span class="number">0</span>  kevinWJJ  <span class="constant">First</span> commit
 </code></pre><p>以前提交的master分支都完蛋了，这是个很严重的问题啊。这可咋整？曲线救国吧。写个脚本自己来deploy：</p>
-<pre><code>wangkevintekiMacBook-Pro:writeblog wangkevin$ cat deployByMyself 
+<pre><code>wangkevintekiMacBook-Pro:write wangkevin$ cat deployByMyself 
 <span class="shebang">#!/bin/bash</span>
 hexo g
 cp -R public/. ../kevinwjj.github.io/

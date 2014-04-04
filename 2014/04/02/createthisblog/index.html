@@ -187,12 +187,12 @@ npm(node package manager，node包管理器）可用
 </li>
 <li>将markdown文件也放入github<ul>
 <li>kevinwjj.github.io.git 的 master 分支存放 html + hexo输出文件</li>
-<li>kevinwjj.github.io.git 的 writeblog 分支存放 markdown + hexo 编译文件<pre><code>  cd kevinwjj<span class="preprocessor">.github</span><span class="preprocessor">.io</span>
-  git checkout --orphan writeblog
+<li>kevinwjj.github.io.git 的 write 分支存放 markdown + hexo 编译文件<pre><code>  cd kevinwjj<span class="preprocessor">.github</span><span class="preprocessor">.io</span>
+  git checkout --orphan write
   <span class="keyword">cp</span> -aR ../myBlog/. ./
   git <span class="keyword">add</span> .
   git commit
-  git <span class="keyword">push</span> origin writeblog:writeblog
+  git <span class="keyword">push</span> origin write:write
 </code></pre></li>
 </ul>
 </li>
