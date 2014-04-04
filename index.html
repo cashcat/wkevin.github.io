@@ -1,0 +1,452 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Kevin&#39;s Blog</title>
+  <meta name="author" content="kevinWjj">
+  
+  
+  
+  <meta property="og:site_name" content="Kevin&#39;s Blog"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+   <link rel="apple-touch-icon" href="/icon.png" />
+   <link rel="shortcut icon" href="/favicon.png" >
+   <link rel="alternate" href="http://xxx.xx/atom.xml" title="Kevin&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <div id="content" class="inner">
+    <aside id="sidebar" class="alignleft">
+      <div class="navigationBar">
+        <a href="/">Kevin&#39;s Blog</a>
+      </div>
+    	
+  <nav class="widget" id="menu">
+	<ul>
+    
+      <li class="cell"><a class="next" href="/">Home</a><li>
+    
+      <li class="cell"><a class="next" href="/archives/">Archives</a><li>
+    
+      <li class="cell"><a class="next" href="/about/">About</a><li>
+    
+      <li class="cell"><a class="next" href="/atom.xml">Subscribe</a><li>
+    
+    </ul>
+</nav>
+
+  <div class="widget weibo">
+<iframe width="100%" height="100" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=110&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=0&isWeibo=0&isFans=0&uid=wkevin27&verifier=78e1ee4d&colors=ffffff,ffffff,999,000,ecfbfd&dpc=1"></iframe>
+</div>
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/hexo/" style="font-size: NaNpx;">hexo</a>
+  </div>
+</div>
+
+
+    	<footer id="footer" class="inner"><div class="copyright">
+  
+  &copy; 2014 kevinWjj
+  
+</div>
+
+
+
+</footer>
+    </aside>
+    
+    
+    <div id="hidden-navigationBar" class="navigationBar">
+      <a href="/">Kevin&#39;s Blog</a>
+    </div>
+    <div id="main-col" class="alignright">
+    <div id="wrapper">
+      
+  
+<article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+  <header>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/03/createthisblog-3/">本博客的搭建（续2）</a></h1>
+  
+
+      <time datetime="2014-04-03T07:47:57.000Z"><a href="/2014/04/03/createthisblog-3/">4月 3 2014</a></time>
+      
+  </header>
+    <div class="entry">
+      
+        <h2 id="关于_-deploy">关于 .deploy</h2>
+<p>.deploy/ 在 <code>hexo init</code> 的时候是没有的，只是在 <code>hexo deploy</code>才创建，基本流程我猜测是：</p>
+<ul>
+<li>根据 _config.yml 中指定的 repo和branch，创建 .deploy/</li>
+<li>git clone</li>
+<li>将 public/ 合入 .deploy/ </li>
+<li>git push .deploy/</li>
+</ul>
+<p><strong>有两种不同的处理方式</strong></p>
+<h3 id="（一）submodule_管理_-deploy/">（一）submodule 管理 .deploy/</h3>
+<pre><code>git submodule <span class="keyword">add</span> https://github<span class="preprocessor">.com</span>/kevinwjj/kevinwjj<span class="preprocessor">.github</span><span class="preprocessor">.io</span><span class="preprocessor">.git</span> <span class="preprocessor">.deploy</span>/
+</code></pre><p>使用时</p>
+<pre><code>git clone https://github<span class="preprocessor">.com</span>/kevinwjj/kevinwjj<span class="preprocessor">.github</span><span class="preprocessor">.io</span><span class="preprocessor">.git</span>
+cd kevinwjj<span class="preprocessor">.github</span><span class="preprocessor">.io</span>
+git submodule init  
+git submodule update 
+</code></pre><p>init和update不指定的话，会初始化和clone所有submodule：iOS7、landscape、light、.deploy</p>
+<p><strong>这样的话，.deploy其实又指向了自己，变成递归了，My god！—— 这个坑好像不小啊</strong> </p>
+<p>坑实在太深，<code>hexo d</code>的时候常常异常，需要对submodule的使用理解深入，不得已想下面的办法。</p>
+<h3 id="（二）-gitignore_管理_-deploy/">（二）.gitignore 管理 .deploy/</h3>
+<p>首先是加入到 .gitignore 中：</p>
+<pre><code>rm -rf <span class="preprocessor">.deploy</span>/
+git rm -rf <span class="preprocessor">.deploy</span>
+echo <span class="preprocessor">.deploy</span> &gt;&gt; <span class="preprocessor">.gitignore</span>
+git commit
+git <span class="keyword">push</span> origin writeblog:writeblog
+</code></pre><p>然后是在另一台电脑上即可进行clone及其使用</p>
+<pre><code>git clone https://github<span class="preprocessor">.com</span>/kevinwjj/kevinwjj<span class="preprocessor">.github</span><span class="preprocessor">.io</span><span class="preprocessor">.git</span>
+git checkout -b writeblog origin/writeblog
+            //此时 <span class="preprocessor">.deploy</span> 是空的
+hexo g         //生成了public/
+hexo d         //生成了<span class="preprocessor">.deploy</span>/
+</code></pre><p><strong>问题是</strong>，<code>hexo d</code>之后，html确实是退到github的master分支了，但<strong>master分支会被重置</strong></p>
+<pre><code><span class="variable">$ </span>git logk origin/master
+  <span class="number">5</span>c14c33 <span class="number">2014</span>-<span class="number">04</span>-<span class="number">03</span> <span class="number">16</span><span class="symbol">:</span><span class="number">19</span><span class="symbol">:</span><span class="number">02</span> +080<span class="number">0</span>  kevinWJJ  <span class="constant">Site</span> <span class="symbol">updated:</span> <span class="number">2014</span>-<span class="number">04</span>-<span class="number">03</span> <span class="number">16</span><span class="symbol">:</span><span class="number">19</span><span class="symbol">:</span><span class="number">02</span>
+  edf0f22 <span class="number">2014</span>-<span class="number">04</span>-<span class="number">03</span> <span class="number">16</span><span class="symbol">:</span><span class="number">19</span><span class="symbol">:</span><span class="number">01</span> +080<span class="number">0</span>  kevinWJJ  <span class="constant">First</span> commit
+</code></pre><p>以前提交的master分支都完蛋了，这是个很严重的问题啊。这可咋整？曲线救国吧。写个脚本自己来deploy：</p>
+<pre><code>wangkevintekiMacBook-Pro:writeblog wangkevin$ cat deployByMyself 
+<span class="shebang">#!/bin/bash</span>
+hexo g
+cp -R public/. ../kevinwjj.github.io/
+<span class="built_in">cd</span> ../kevinwjj.github.io/
+git add .
+git commit -m <span class="string">"Deploy by kevinWJJ from hexo"</span>
+git push origin master:master
+<span class="built_in">cd</span> -
+</code></pre><p>思路就是：public中生成html后，手工拷贝到另外一个master分支的repo中，提交之，然后回来fetch一下，再把writeblog也提交了。<br><strong>手工提交，心里舒服多了。</strong></p>
+<h2 id="关于_-gitignore">关于 .gitignore</h2>
+<p>使用<code>hexo init</code>新建一个 hexo “工厂”（暂时成为工厂吧，我感觉类似与生产 html格式blog的工厂）后，自动生成的 .gitignore 包含</p>
+<pre><code>$ cat .gitignore
+.DS_Store        <span class="comment">//是OS X系统使用的管理文件</span>
+node_modules    <span class="comment">//存放plugin的</span>
+db.json            <span class="comment">//虽然不太明确，看样子是保存数据，做数据库用的</span>
+</code></pre><p>根据上面<strong>hexo默认忽略的文件</strong>修改出<strong>我的 .gitignore</strong>：</p>
+<pre><code><span class="preprocessor">.DS</span>_Store
+db<span class="preprocessor">.json</span>
+public             //每次可以自动生成，属于过程文件
+<span class="preprocessor">.deploy</span> 
+</code></pre><h2 id="其他">其他</h2>
+<ul>
+<li><code>hexo new &quot;***&quot;</code> ***不需要加 .md，因为 _config.yml 中配置了自动加 .md 后缀<br><code>new_post_name: :title.md # File name of new posts</code><br>可以修改为 <code>new_post_name: :year-:month-:day-:title.md</code>，使其自动添加年月日，blog写多了，排排序总是好的，想的有点远，呵呵，说不定写不了几篇就罢笔了呢。</li>
+<li>有3种blog：post（默认）、page、draft</li>
+</ul>
+
+	 
+	     <p style="margin:20px 0; color:#9f9f9f; font-size:12px;">
+<span>Posted by <a style="color:#9f9f9f;" href="http://weibo.com/wkevin27"><strong>wkevin27</strong></a> - 4月 3 2014</span><br />
+<span style="line-height:13px;">如需转载，请注明： 本文来自 <a style="color:#9f9f9f;" href="http://yoursite.com"><strong>Kevin&#39;s Blog</strong></a></span>
+</p>
+       	 
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  
+<article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+  <header>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/03/createthisblog-2/">本博客的搭建（续）</a></h1>
+  
+
+      <time datetime="2014-04-03T03:37:24.000Z"><a href="/2014/04/03/createthisblog-2/">4月 3 2014</a></time>
+      
+  </header>
+    <div class="entry">
+      
+        <p>昨晚弄到凌晨1点多，高兴的碎觉去了。今早到了公司，另选一台电脑，git clone 出来本博客<br><code>git clone htts://github.com/kevinwjj/kevinwjj.github.io.git</code></p>
+<p>当想在 writeblog 分支开写的时候，发现不行了。</p>
+<h2 id="layout错误">layout错误</h2>
+<pre><code>$ hexo g
+[info] Files loaded <span class="keyword">in</span> <span class="number">0.298</span>s
+[warn] No <span class="keyword">layout</span>: archives/
+[warn] No <span class="keyword">layout</span>: archives/<span class="number">2014</span>/
+[warn] No <span class="keyword">layout</span>: archives/<span class="number">2014</span>/<span class="number">04</span>/
+[warn] No <span class="keyword">layout</span>:
+[warn] No <span class="keyword">layout</span>: <span class="number">2014</span>/<span class="number">04</span>/<span class="number">02</span>/本博客的搭建/
+[warn] No <span class="keyword">layout</span>: tags/hexo/
+[create] Public: atom.xml
+[info] <span class="number">1</span> files generated <span class="keyword">in</span> <span class="number">0.209</span>s
+</code></pre><h2 id="分析">分析</h2>
+<p>版本回滚 <code>git reset --hard HEAD~1</code> —— 不行。</p>
+<p>仔细检查，发现 themes/ 目录下的 landscape、iOS7、light 都是空的。</p>
+<p>一番百度，原来是 git submodule 的问题。</p>
+<p>速速学习几篇 <a href="http://my.oschina.net/shede333/blog/186626" target="_blank">git submodule 相关操作解析</a> ，马上开始修改</p>
+<h2 id="working_tree上操作submodule">working tree上操作submodule</h2>
+<pre><code>$ git rm -rf light iOS7 landscape
+$ git submodule <span class="keyword">add</span> https://github<span class="preprocessor">.com</span>/hexojs/hexo-theme-light<span class="preprocessor">.git</span> light
+$ git submodule <span class="keyword">add</span> https://github<span class="preprocessor">.com</span>/tracy-e/hexo-theme-iOS7<span class="preprocessor">.git</span> iOS7
+$ git submodule <span class="keyword">add</span> https://github<span class="preprocessor">.com</span>/hexojs/hexo-theme-landscape<span class="preprocessor">.git</span> landscape
+$ cat <span class="preprocessor">.gitmodules</span>
+[submodule <span class="string">"themes/light"</span>]
+    path = themes/light
+    url = https://github<span class="preprocessor">.com</span>/hexojs/hexo-theme-light<span class="preprocessor">.git</span>
+[submodule <span class="string">"themes/landscape"</span>]
+    path = themes/landscape
+    url = https://github<span class="preprocessor">.com</span>/hexojs/hexo-theme-landscape<span class="preprocessor">.git</span>
+[submodule <span class="string">"themes/iOS7"</span>]
+    path = themes/iOS7
+    url = https://github<span class="preprocessor">.com</span>/tracy-e/hexo-theme-iOS7<span class="preprocessor">.git</span>
+</code></pre><h2 id="提交_submodule">提交 submodule</h2>
+<p>OK，本地已经没问题了，submodule的信息也要传到github上啊</p>
+<pre><code><span class="variable">$ </span>git add .
+<span class="variable">$ </span>git commit
+<span class="variable">$ </span>git push
+</code></pre><p>其实只commit了 .gitmodules 文件，3个theme的文件都没有上传。</p>
+<h2 id="再次clone验证submodule">再次clone验证submodule</h2>
+<pre><code><span class="char">$ </span>git clone <span class="method">https:</span>//github.com/kevinwjj/kevinwjj.github.io.git temp
+<span class="char">$ </span>cd temp/themes/
+<span class="char">$ </span>git submodule init iOS7
+<span class="char">$ </span>git submodule update iOS7
+</code></pre><p>我理解，每次<code>git fetch</code> 或 <code>git pull</code>整个repo的时候，submodule不更新，需要单独执行<code>git submodule update</code>。</p>
+<pre><code>为什么要指定 iOS7？
+因为不指定的话我会得到这个<span class="built_in">error</span>
+No submodule mapping found <span class="keyword">in</span> .gitmodules <span class="keyword">for</span> path <span class="string">'.deploy'</span>
+好像 .deploy 也是一个submodule似得，不太明确，先放一下吧。
+</code></pre>
+	 
+	     <p style="margin:20px 0; color:#9f9f9f; font-size:12px;">
+<span>Posted by <a style="color:#9f9f9f;" href="http://weibo.com/wkevin27"><strong>wkevin27</strong></a> - 4月 3 2014</span><br />
+<span style="line-height:13px;">如需转载，请注明： 本文来自 <a style="color:#9f9f9f;" href="http://yoursite.com"><strong>Kevin&#39;s Blog</strong></a></span>
+</p>
+       	 
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  
+<article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+  <header>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/02/createthisblog/">本博客的搭建</a></h1>
+  
+
+      <time datetime="2014-04-02T15:42:18.000Z"><a href="/2014/04/02/createthisblog/">4月 2 2014</a></time>
+      
+  </header>
+    <div class="entry">
+      
+        <h1 id="github_+_hexo_=&gt;_blog">github + hexo =&gt; blog</h1>
+<ul>
+<li><a href="http://nodejs.org" target="_blank">nodejs.org</a> 下载、安装node.js</li>
+<li><a href="http://npmjs.org" target="_blank">npm</a>(node package manager，node包管理器）可用<ul>
+<li>设置npm代理——在公司需要通过代理连外网<br><code>npm config set proxy http://proxy.example.com:8080</code><br><code>npm set proxy http://proxy.example.com:8080</code></li>
+<li>或者设置windows cmd的代理<br><code>set HTTP_proxy=http://proxy.example.com:8080</code><br><code>set HTTPS_proxy=https://proxy.example.com:8080</code></li>
+<li>设置npm镜像<a href="http://cnpmjs.org" target="_blank">cnpm</a>（默认的库服务器会撞墙，比较慢，甚至更新不了）<br><code>npm config set registry http://registry.cnpmjs.org</code><br><code>npm info underscore</code> //查看是否配置正确</li>
+</ul>
+</li>
+<li><p>安装hexo </p>
+<ul>
+<li><code>sudo npm install -g hexo</code> //前面代理和镜像设置好了，这里才会快速和顺利</li>
+<li><code>mkdir myBlog</code></li>
+<li><code>cd myBlog</code></li>
+<li><code>hexo init</code></li>
+<li><code>hexo generate</code></li>
+<li><code>hexo server</code> //浏览器中可以 <a href="http://localhost:4000" target="_blank">http://localhost:4000</a> 查看到了<pre><code>hexo 的命令简写
+  hexo g == hexo generate
+  hexo d == hexo deploy
+  hexo s == hexo <span class="keyword">server</span>
+  hexo n == hexo <span class="keyword">new</span>            
+</code></pre></li>
+</ul>
+</li>
+<li>配置 hexo<ul>
+<li>theme<ul>
+<li>安装theme <a href="https://github.com/tommy351/hexo/wiki/Themes" target="_blank">List</a><br><code>git clone https://github.com/hexojs/hexo-theme-landscape.git themes/landscape</code><br><code>git clone https://github.com/hexojs/hexo-theme-light.git themes/light</code><br>必要的话，也要配置git的代理</li>
+<li>配置theme： htemes/xxx/_config.yml —— 根据个人喜好修改</li>
+</ul>
+</li>
+<li>plugin<ul>
+<li>RSS 插件<br><code>sudo npm install hexo-generator-feed</code></li>
+<li>sitemap 插件<br><code>npm install hexo-generator-sitemap</code>    </li>
+</ul>
+</li>
+<li>配置myBlog/_config.yml<ul>
+<li>指定 theme：<br>  theme: iOS7 //感觉iOS7这个不错，其实是其他的都没试</li>
+<li>指定 plugins：<br> plugins:<ul>
+<li>hexo-generator-feed</li>
+<li>hexo-generator-sitemap</li>
+</ul>
+</li>
+<li>其他：根据个人喜好修改</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>写文章<ul>
+<li><code>hexo new &quot;my new post&quot;</code></li>
+<li>进入 source/_posts/ 使用 Markdown 写 md 文件<ul>
+<li>OS X 上用 Mou</li>
+<li>Windows 上用 MarkdownPad</li>
+<li>Linux 上用 SublimeText + Markdown Preview</li>
+</ul>
+</li>
+<li><code>hexo s</code> //localhost预览，如果server一直开着的话，能够自动探测到新的md文件</li>
+</ul>
+</li>
+<li><p>部署到github</p>
+<ul>
+<li>github 上创建pages<ul>
+<li>user pages：<a href="http://kevinwjj.github.io" target="_blank">http://kevinwjj.github.io</a>对应的库 <a href="http://github.com/kevinwjj/kevinwjj.github.io.git" target="_blank">http://github.com/kevinwjj/kevinwjj.github.io.git</a><br>使用master分支</li>
+<li>project pages:使用某个project的gh-pages分支</li>
+</ul>
+</li>
+<li><p>修改 myBlog/_config.yml</p>
+<pre><code>  deploy:
+    type: github
+    repository: https://github<span class="preprocessor">.com</span>/kevinwjj/kevinwjj<span class="preprocessor">.github</span><span class="preprocessor">.io</span><span class="preprocessor">.git</span>
+    branch: master
+</code></pre></li>
+<li><code>hexo generate</code></li>
+<li><code>hexo deploy</code> //推入github的库中</li>
+</ul>
+</li>
+<li>将markdown文件也放入github<ul>
+<li>kevinwjj.github.io.git 的 master 分支存放 html + hexo输出文件</li>
+<li>kevinwjj.github.io.git 的 writeblog 分支存放 markdown + hexo 编译文件<pre><code>  cd kevinwjj<span class="preprocessor">.github</span><span class="preprocessor">.io</span>
+  git checkout --orphan writeblog
+  <span class="keyword">cp</span> -aR ../myBlog/. ./
+  git <span class="keyword">add</span> .
+  git commit
+  git <span class="keyword">push</span> origin writeblog:writeblog
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h2 id="参考文章">参考文章</h2>
+<p><a href="http://zipperary.com/categories/hexo/" target="_blank">Zipperablog</a> ：非常感谢！</p>
+
+	 
+	     <p style="margin:20px 0; color:#9f9f9f; font-size:12px;">
+<span>Posted by <a style="color:#9f9f9f;" href="http://weibo.com/wkevin27"><strong>wkevin27</strong></a> - 4月 2 2014</span><br />
+<span style="line-height:13px;">如需转载，请注明： 本文来自 <a style="color:#9f9f9f;" href="http://yoursite.com"><strong>Kevin&#39;s Blog</strong></a></span>
+</p>
+       	 
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+<nav id="pagination">
+  
+  
+</nav></div>
+    </div>
+    <div class="tabbar" onload="divideTabBar()">
+	
+      <div class="tabbaritem"><a class="next" href="/">Home</a></div>
+    
+      <div class="tabbaritem"><a class="next" href="/archives/">Archives</a></div>
+    
+      <div class="tabbaritem"><a class="next" href="/about/">About</a></div>
+    
+      <div class="tabbaritem"><a class="next" href="/atom.xml">Subscribe</a></div>
+    
+</div>
+
+
+  </div>
+</body>
+</html>
