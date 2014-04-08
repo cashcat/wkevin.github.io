@@ -4,7 +4,7 @@
   <subtitle><![CDATA[你好]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2014-04-04T02:41:08.929Z</updated>
+  <updated>2014-04-08T09:31:07.419Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,28 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[BaaS 收藏]]></title>
+    <link href="http://yoursite.com/2014/04/08/baas/"/>
+    <id>http://yoursite.com/2014/04/08/baas/</id>
+    <published>2014-04-08T09:25:55.000Z</published>
+    <updated>2014-04-08T09:30:45.000Z</updated>
+    <content type="html"><![CDATA[<ol>
+<li><a href="https://www.stackmob.com/product/" target="_blank">StackMob</a></li>
+<li><a href="https://www.parse.com/products" target="_blank">Parse</a></li>
+<li><a href="http://www.kinvey.com/" target="_blank">Kinvey</a>   </li>
+<li><a href="http://aws.amazon.com/cn/ec2/" target="_blank">Amazon EC2</a>   </li>
+<li><a href="http://www.amtbaas.com/index.jsp" target="_blank">AMTBaaS</a>   </li>
+<li><a href="http://www.bmob.cn/" target="_blank">Bmob</a>   </li>
+<li><a href="http://www.dbowner.com/" target="_blank">DBOwner</a></li>
+<li><a href="http://www.juhe.cn/" target="_blank">聚合</a>   </li>
+<li><a href="https://cn.avoscloud.com/" target="_blank">AVOSCloud</a></li>
+</ol>
+]]></content>
+    
+    
+  </entry>
   
   <entry>
     <title><![CDATA[本博客的搭建（续2）]]></title>
