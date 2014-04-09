@@ -54,7 +54,7 @@
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/hexo/" style="font-size: NaNpx;">hexo</a>
+    <a href="/tags/CocoaPods/" style="font-size: 10.00px;">CocoaPods</a><a href="/tags/hexo/" style="font-size: 20.00px;">hexo</a>
   </div>
 </div>
 
@@ -97,29 +97,63 @@
       
       
   
-    <h1 class="title"><a href="/2014/04/08/baas/">BaaS 收藏</a></h1>
+    <h1 class="title"><a href="/2014/04/10/cocoapods-simplestep/">CocoaPods 简要步骤</a></h1>
   
 
-      <time datetime="2014-04-08T09:25:55.000Z"><a href="/2014/04/08/baas/">4月 8 2014</a></time>
+      <time datetime="2014-04-09T17:28:54.000Z"><a href="/2014/04/10/cocoapods-simplestep/">4月 10 2014</a></time>
       
   </header>
     <div class="entry">
       
-        <ol>
-<li><a href="https://www.stackmob.com/product/" target="_blank">StackMob</a></li>
-<li><a href="https://www.parse.com/products" target="_blank">Parse</a></li>
-<li><a href="http://www.kinvey.com/" target="_blank">Kinvey</a>   </li>
-<li><a href="http://aws.amazon.com/cn/ec2/" target="_blank">Amazon EC2</a>   </li>
-<li><a href="http://www.amtbaas.com/index.jsp" target="_blank">AMTBaaS</a>   </li>
-<li><a href="http://www.bmob.cn/" target="_blank">Bmob</a>   </li>
-<li><a href="http://www.dbowner.com/" target="_blank">DBOwner</a></li>
-<li><a href="http://www.juhe.cn/" target="_blank">聚合</a>   </li>
-<li><a href="https://cn.avoscloud.com/" target="_blank">AVOSCloud</a></li>
-</ol>
+        <h2 id="CocoaPods">CocoaPods</h2>
+<hr>
+<h3 id="资源">资源</h3>
+<h4 id="网站">网站</h4>
+<ul>
+<li><a href="http://cocoapods.org" target="_blank">cocoapods.org</a></li>
+<li><a href="https://github.com/CocoaPods/CocoaPods" target="_blank">github src</a></li>
+</ul>
+<h4 id="文章">文章</h4>
+<ul>
+<li><a href="http://code4app.com/article/cocoapods-install-usage" target="_blank">CocoaPods安装和使用教程—Code4App</a></li>
+<li><a href="http://blog.jobbole.com/53365/" target="_blank">深入理解 CocoaPods—伯乐在线</a></li>
+</ul>
+<hr>
+<h3 id="安装">安装</h3>
+<ul>
+<li><code>$ sudo gem update --system</code> ：更新gem版本  </li>
+<li><code>$ gem sources -a http://ruby.taobao.org/</code> ：增加gem库，然后可 *    <code>gem source -l</code> 查看一下   </li>
+<li><code>$ sudo gem install cocoapods</code> ：安装cocoapods</li>
+</ul>
+<hr>
+<h3 id="查看cocoapods是否支持某个第三方库（如：ASValueTrackingSlider）">查看cocoapods是否支持某个第三方库（如：ASValueTrackingSlider）</h3>
+<ul>
+<li><code>$ pod search ASValueTrackingSlider</code> ： 搜索pod库中ABC的信息，支持模糊查找、正则查找</li>
+<li><code>$ pod try ASValueTrackingSlider</code> ：会创建临时文件夹，并下载ABC，并用XCode打开</li>
+<li><code>$ pod list |grep ASValueTrackingSlider</code> </li>
+</ul>
+<hr>
+<h3 id="在自己的XCode项目中引入ABC">在自己的XCode项目中引入ABC</h3>
+<ul>
+<li><code>$ cd myProjcet</code></li>
+<li><p><code>$ vi Podfile</code>  : <a href="http://guides.cocoapods.org/using/the-podfile.html" target="_blank">Podfile官方说明</a></p>
+<p>   platform :ios, ‘7.0’<br>   pod ‘ASValueTrackingSlider’,       ‘~&gt; 0.6’<br>ABC 的版本号可由 <code>pod search ASValueTrackingSlider</code>查出，并直接拷贝过来</p>
+</li>
+<li><code>$ pod install</code>  ：会生成 myProject.xcworkspace、Podfile.lock、Pods/</li>
+<li><code>$ open myProject.xcworkspace</code> ：以后每次都要从这里打开XCode</li>
+<li><code>$ pod update</code> ：已经有 xcworkspace等的项目可以用此命令更新</li>
+</ul>
+<hr>
+<h3 id="创建Pod">创建Pod</h3>
+<ul>
+<li><code>$ pod spec create Peanut</code></li>
+<li><code>$ edit Peanut.podspec</code></li>
+<li><code>$ pod spec lint Peanut.podspec</code></li>
+</ul>
 
 	 
 	     <p style="margin:20px 0; color:#9f9f9f; font-size:12px;">
-<span>Posted by <a style="color:#9f9f9f;" href="http://weibo.com/wkevin27"><strong>wkevin27</strong></a> - 4月 8 2014</span><br />
+<span>Posted by <a style="color:#9f9f9f;" href="http://weibo.com/wkevin27"><strong>wkevin27</strong></a> - 4月 10 2014</span><br />
 <span style="line-height:13px;">如需转载，请注明： 本文来自 <a style="color:#9f9f9f;" href="http://yoursite.com"><strong>Kevin&#39;s Blog</strong></a></span>
 </p>
        	 
