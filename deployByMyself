@@ -1,6 +1,6 @@
 #!/bin/bash
 writeblog=$PWD
-publicblog=../kevinwjj.github.io
+publicblog=../wkevin.github.io
 
 echo ===== hexo general =====
 hexo g
@@ -26,7 +26,7 @@ read reply leftover
 case $reply in
     y* | Y*)
         git add .
-        git commit -m "Deploy by kevinWJJ from hexo"
+        git commit -m "Deploy by wkevin manu from hexo"
         git push origin master:master;;
     *)
         echo "Happy to you!";;
