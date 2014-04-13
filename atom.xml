@@ -4,7 +4,7 @@
   <subtitle><![CDATA[你好]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2014-04-11T01:29:49.884Z</updated>
+  <updated>2014-04-13T07:28:44.578Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,13 +15,33 @@
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[XCode 中的 XVim]]></title>
+    <link href="http://yoursite.com/2014/04/13/build-xvim-in-xcode5/"/>
+    <id>http://yoursite.com/2014/04/13/build-xvim-in-xcode5/</id>
+    <published>2014-04-13T02:01:04.000Z</published>
+    <updated>2014-04-13T04:10:25.000Z</updated>
+    <content type="html"><![CDATA[<ul>
+<li><code>$ git clone https://github.com/JugglerShu/XVim.git</code>  // Get XVim  </li>
+<li><code>$ cd XVim</code>  </li>
+<li><code>$ open XVim.xcodeproj</code>  </li>
+<li>Product -&gt; Scheme -&gt; XVim for XCode?  </li>
+<li>Product -&gt; Scheme -&gt; Edit Sheme -&gt; Run Xcode.app -&gt; Build Configuration -&gt; Release  </li>
+</ul>
+<p>如果master分支编译失败，checkout 其他分支试试。</p>
+]]></content>
+    
+    
+      <category term="XVim" scheme="http://yoursite.com/tags/XVim/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[CocoaPods 简要步骤]]></title>
     <link href="http://yoursite.com/2014/04/10/cocoapods-simplestep/"/>
     <id>http://yoursite.com/2014/04/10/cocoapods-simplestep/</id>
     <published>2014-04-09T17:28:54.000Z</published>
-    <updated>2014-04-11T01:08:57.000Z</updated>
-    <content type="html"><![CDATA[<h2 id="CocoaPods">CocoaPods</h2>
-<hr>
+    <updated>2014-04-13T07:28:00.000Z</updated>
+    <content type="html"><![CDATA[<hr>
 <h3 id="资源">资源</h3>
 <h4 id="网站">网站</h4>
 <ul>
@@ -77,7 +97,7 @@
     <link href="http://yoursite.com/2014/04/08/baas/"/>
     <id>http://yoursite.com/2014/04/08/baas/</id>
     <published>2014-04-08T09:25:55.000Z</published>
-    <updated>2014-04-08T09:30:45.000Z</updated>
+    <updated>2014-04-13T04:09:22.000Z</updated>
     <content type="html"><![CDATA[<ol>
 <li><a href="https://www.stackmob.com/product/" target="_blank">StackMob</a></li>
 <li><a href="https://www.parse.com/products" target="_blank">Parse</a></li>
@@ -99,7 +119,7 @@
     <link href="http://yoursite.com/2014/04/03/createthisblog-3/"/>
     <id>http://yoursite.com/2014/04/03/createthisblog-3/</id>
     <published>2014-04-03T07:47:57.000Z</published>
-    <updated>2014-04-04T02:40:37.000Z</updated>
+    <updated>2014-04-13T04:09:22.000Z</updated>
     <content type="html"><![CDATA[<h2 id="关于_-deploy">关于 .deploy</h2>
 <p>.deploy/ 在 <code>hexo init</code> 的时候是没有的，只是在 <code>hexo deploy</code>才创建，基本流程我猜测是：</p>
 <ul>
@@ -175,7 +195,7 @@ public             //每次可以自动生成，属于过程文件
     <link href="http://yoursite.com/2014/04/03/createthisblog-2/"/>
     <id>http://yoursite.com/2014/04/03/createthisblog-2/</id>
     <published>2014-04-03T03:37:24.000Z</published>
-    <updated>2014-04-04T02:40:36.000Z</updated>
+    <updated>2014-04-13T04:09:22.000Z</updated>
     <content type="html"><![CDATA[<p>昨晚弄到凌晨1点多，高兴的碎觉去了。今早到了公司，另选一台电脑，git clone 出来本博客<br><code>git clone htts://github.com/kevinwjj/kevinwjj.github.io.git</code></p>
 <p>当想在 write 分支开写的时候，发现不行了。</p>
 <h2 id="layout错误">layout错误</h2>
@@ -237,7 +257,7 @@ No submodule mapping found <span class="keyword">in</span> .gitmodules <span cla
     <link href="http://yoursite.com/2014/04/02/createthisblog/"/>
     <id>http://yoursite.com/2014/04/02/createthisblog/</id>
     <published>2014-04-02T15:42:18.000Z</published>
-    <updated>2014-04-04T02:40:37.000Z</updated>
+    <updated>2014-04-13T04:09:22.000Z</updated>
     <content type="html"><![CDATA[<h1 id="github_+_hexo_=&gt;_blog">github + hexo =&gt; blog</h1>
 <ul>
 <li><a href="http://nodejs.org" target="_blank">nodejs.org</a> 下载、安装node.js</li>
