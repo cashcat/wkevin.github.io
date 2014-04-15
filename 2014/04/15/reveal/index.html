@@ -3,28 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>CocoaPods 简要步骤 | Kevin&#39;s Blog</title>
+  <title>如此迷人的 Reveal | Kevin&#39;s Blog</title>
   <meta name="author" content="kevinWjj">
   
-  <meta name="description" content="资源
-网站
+  <meta name="description" content="Reveal ，强大的UI分析工具，真是一个令人着迷的App，简单的安装，神奇的功效，XCode开发的最佳伴侣。
+特性
 
-cocoapods.org
-github src
-
-文章
-
-CocoaPods安装和使用教程—Code4App
-深入理解 CocoaPods—伯乐在线
-
-
-安装
-
-$ sudo gem update --system ：更新gem版本  
-$ gem sources -a http:/">
+通过视图层级帮你理解复杂的app
+可以修改控件，并实时看到修改后效果
+3D导航，可流畅旋转，缩放，选中以及高亮
+Reveal可让你清楚哪个视图执行了哪个类
+Reveal可在设备或">
   
   
-  <meta property="og:title" content="CocoaPods 简要步骤"/>
+  <meta property="og:title" content="如此迷人的 Reveal"/>
   <meta property="og:site_name" content="Kevin&#39;s Blog"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -113,62 +105,60 @@ $ gem sources -a http:/">
       
       
   
-    <h1 class="title">CocoaPods 简要步骤</h1>
+    <h1 class="title">如此迷人的 Reveal</h1>
   
 
-      <time datetime="2014-04-09T17:28:54.000Z"><a href="/2014/04/10/cocoapods-simplestep/">4月 10 2014</a></time>
+      <time datetime="2014-04-15T14:46:02.000Z"><a href="/2014/04/15/reveal/">4月 15 2014</a></time>
       
   </header>
     <div class="entry">
       
-        <hr>
-<h3 id="资源">资源</h3>
-<h4 id="网站">网站</h4>
+        <p><a href="http://revealapp.com/" target="_blank">Reveal</a> ，强大的UI分析工具，真是一个令人着迷的App，简单的安装，神奇的功效，XCode开发的最佳伴侣。</p>
+<h1 id="特性">特性</h1>
 <ul>
-<li><a href="http://cocoapods.org" target="_blank">cocoapods.org</a></li>
-<li><a href="https://github.com/CocoaPods/CocoaPods" target="_blank">github src</a></li>
+<li>通过视图层级帮你理解复杂的app</li>
+<li>可以修改控件，并实时看到修改后效果</li>
+<li>3D导航，可流畅旋转，缩放，选中以及高亮</li>
+<li>Reveal可让你清楚哪个视图执行了哪个类</li>
+<li>Reveal可在设备或者模拟器上运行，可以简单地发现，连接至iOS app。</li>
 </ul>
-<h4 id="文章">文章</h4>
+<h1 id="将Reveal与XCode_App_连接">将Reveal与XCode App 连接</h1>
 <ul>
-<li><a href="http://code4app.com/article/cocoapods-install-usage" target="_blank">CocoaPods安装和使用教程—Code4App</a></li>
-<li><a href="http://blog.jobbole.com/53365/" target="_blank">深入理解 CocoaPods—伯乐在线</a></li>
+<li>Reveal.framework - Reveal static library framework bundle<ul>
+<li>把framework拽到XCode中的project中</li>
+<li>文档中还提到两步，我执行前后都是能够Connect的<ul>
+<li>Select the Build Phases tab and remove Reveal.framework from the Link Binaries With Libraries section.</li>
+<li>Select the Build Settings tab and add the following arguments to the Debug configuration of the Other Linker Flags setting. <code>-ObjC -framework Reveal</code></li>
 </ul>
-<hr>
-<h3 id="安装">安装</h3>
-<ul>
-<li><code>$ sudo gem update --system</code> ：更新gem版本  </li>
-<li><code>$ gem sources -a http://ruby.taobao.org/</code> ：增加gem库，然后可 *    <code>gem source -l</code> 查看一下   </li>
-<li><code>$ sudo gem install cocoapods</code> ：安装cocoapods</li>
-</ul>
-<hr>
-<h3 id="查看cocoapods是否支持某个第三方库（如：ASValueTrackingSlider）">查看cocoapods是否支持某个第三方库（如：ASValueTrackingSlider）</h3>
-<ul>
-<li><code>$ pod search ASValueTrackingSlider</code> ： 搜索pod库中ABC的信息，支持模糊查找、正则查找</li>
-<li><code>$ pod try ASValueTrackingSlider</code> ：会创建临时文件夹，并下载ABC，并用XCode打开</li>
-<li><code>$ pod list |grep ASValueTrackingSlider</code> </li>
-</ul>
-<hr>
-<h3 id="在自己的XCode项目中引入ABC">在自己的XCode项目中引入ABC</h3>
-<ul>
-<li><code>$ cd myProjcet</code></li>
-<li><p><code>$ vi Podfile</code>  : <a href="http://guides.cocoapods.org/using/the-podfile.html" target="_blank">Podfile官方说明</a></p>
-<p>   platform :ios, ‘7.0’<br>   pod ‘ASValueTrackingSlider’,       ‘~&gt; 0.6’<br>ABC 的版本号可由 <code>pod search ASValueTrackingSlider</code>查出，并直接拷贝过来</p>
 </li>
-<li><code>$ pod install</code>  ：会生成 myProject.xcworkspace、Podfile.lock、Pods/</li>
-<li><code>$ open myProject.xcworkspace</code> ：以后每次都要从这里打开XCode</li>
-<li><code>$ pod update</code> ：已经有 xcworkspace等的项目可以用此命令更新</li>
+<li>发布版本前记得把此framework去掉</li>
 </ul>
-<hr>
-<h3 id="创建Pod">创建Pod</h3>
+</li>
+<li>libReveal.dylib - Reveal dynamic library<ul>
+<li>比较复杂一点了，仔细看手册吧</li>
+<li>还有一篇文章，提到用动态库连接真机，进行<a href="http://c.blog.sina.com.cn/profile.php?blogid=cb8a22ea89000gtw" target="_blank">逆向工程</a></li>
+</ul>
+</li>
+<li>还有个项目 <a href="https://github.com/shjborage/Reveal-Plugin-for-XCode.git" target="_blank">Reveal-Plugin-for-XCode</a>，能够不进行上述操作，自动启动并连接Reveal</li>
+</ul>
+<h1 id="Reveal_操作">Reveal 操作</h1>
+<p>操作easy，部分操作还支持Trackpad：</p>
 <ul>
-<li><code>$ pod spec create Peanut</code></li>
-<li><code>$ edit Peanut.podspec</code></li>
-<li><code>$ pod spec lint Peanut.podspec</code></li>
+<li>折叠/展开：鼠标在树形列表中的操作三角形即可，记快捷键不划算</li>
+<li>Focus部分UI：鼠标在Tree上选中双击，或 ⌘⏎</li>
+<li>返回Focus之前：^⌘←</li>
+<li>⌘1：只显边框，超酷，可以看到一些没有内容的view</li>
+<li>⌘2：显示内容</li>
+<li>⌘3：显示边框和内容</li>
+<li>⌘4：2D View</li>
+<li>⌘5：3D View</li>
+<li>⌘⌥ Scroll Wheel Up/Down：调整view之间的间距<br>~/Library/Preferences/com.ittybittyapps.Reveal.plist</li>
 </ul>
+<p>把IBAApplicationPersistenceData这一项删除就是了。</p>
 
 	 
 	     <p style="margin:20px 0; color:#9f9f9f; font-size:12px;">
-<span>Posted by <a style="color:#9f9f9f;" href="http://weibo.com/wkevin27"><strong>wkevin27</strong></a> - 4月 10 2014</span><br />
+<span>Posted by <a style="color:#9f9f9f;" href="http://weibo.com/wkevin27"><strong>wkevin27</strong></a> - 4月 15 2014</span><br />
 <span style="line-height:13px;">如需转载，请注明： 本文来自 <a style="color:#9f9f9f;" href="http://wkevin.github.io"><strong>Kevin&#39;s Blog</strong></a></span>
 </p>
        	 
@@ -181,7 +171,7 @@ $ gem sources -a http:/">
        		
   
   <div class="tags">
-    <a href="/tags/CocoaPods/">CocoaPods</a>
+    <a href="/tags/Reveal/">Reveal</a>
   </div>
 
      		  

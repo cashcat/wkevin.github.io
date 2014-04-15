@@ -4,7 +4,7 @@
   <subtitle><![CDATA[你好]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wkevin.github.io/"/>
-  <updated>2014-04-13T07:30:27.036Z</updated>
+  <updated>2014-04-15T16:51:44.125Z</updated>
   <id>http://wkevin.github.io/</id>
   
   <author>
@@ -13,6 +13,61 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[如此迷人的 Reveal]]></title>
+    <link href="http://wkevin.github.io/2014/04/15/reveal/"/>
+    <id>http://wkevin.github.io/2014/04/15/reveal/</id>
+    <published>2014-04-15T14:46:02.000Z</published>
+    <updated>2014-04-15T16:50:49.000Z</updated>
+    <content type="html"><![CDATA[<p><a href="http://revealapp.com/" target="_blank">Reveal</a> ，强大的UI分析工具，真是一个令人着迷的App，简单的安装，神奇的功效，XCode开发的最佳伴侣。</p>
+<h1 id="特性">特性</h1>
+<ul>
+<li>通过视图层级帮你理解复杂的app</li>
+<li>可以修改控件，并实时看到修改后效果</li>
+<li>3D导航，可流畅旋转，缩放，选中以及高亮</li>
+<li>Reveal可让你清楚哪个视图执行了哪个类</li>
+<li>Reveal可在设备或者模拟器上运行，可以简单地发现，连接至iOS app。</li>
+</ul>
+<h1 id="将Reveal与XCode_App_连接">将Reveal与XCode App 连接</h1>
+<ul>
+<li>Reveal.framework - Reveal static library framework bundle<ul>
+<li>把framework拽到XCode中的project中</li>
+<li>文档中还提到两步，我执行前后都是能够Connect的<ul>
+<li>Select the Build Phases tab and remove Reveal.framework from the Link Binaries With Libraries section.</li>
+<li>Select the Build Settings tab and add the following arguments to the Debug configuration of the Other Linker Flags setting. <code>-ObjC -framework Reveal</code></li>
+</ul>
+</li>
+<li>发布版本前记得把此framework去掉</li>
+</ul>
+</li>
+<li>libReveal.dylib - Reveal dynamic library<ul>
+<li>比较复杂一点了，仔细看手册吧</li>
+<li>还有一篇文章，提到用动态库连接真机，进行<a href="http://c.blog.sina.com.cn/profile.php?blogid=cb8a22ea89000gtw" target="_blank">逆向工程</a></li>
+</ul>
+</li>
+<li>还有个项目 <a href="https://github.com/shjborage/Reveal-Plugin-for-XCode.git" target="_blank">Reveal-Plugin-for-XCode</a>，能够不进行上述操作，自动启动并连接Reveal</li>
+</ul>
+<h1 id="Reveal_操作">Reveal 操作</h1>
+<p>操作easy，部分操作还支持Trackpad：</p>
+<ul>
+<li>折叠/展开：鼠标在树形列表中的操作三角形即可，记快捷键不划算</li>
+<li>Focus部分UI：鼠标在Tree上选中双击，或 ⌘⏎</li>
+<li>返回Focus之前：^⌘←</li>
+<li>⌘1：只显边框，超酷，可以看到一些没有内容的view</li>
+<li>⌘2：显示内容</li>
+<li>⌘3：显示边框和内容</li>
+<li>⌘4：2D View</li>
+<li>⌘5：3D View</li>
+<li>⌘⌥ Scroll Wheel Up/Down：调整view之间的间距<br>~/Library/Preferences/com.ittybittyapps.Reveal.plist</li>
+</ul>
+<p>把IBAApplicationPersistenceData这一项删除就是了。</p>
+]]></content>
+    
+    
+      <category term="Reveal" scheme="http://wkevin.github.io/tags/Reveal/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[XCode 中的 XVim]]></title>

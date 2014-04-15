@@ -44,13 +44,17 @@
     </ul>
 </nav>
 
+  <div class="widget weibo">
+<iframe width="100%" height="100" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=110&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=0&isWeibo=0&isFans=0&uid=wkevin27&verifier=78e1ee4d&colors=ffffff,ffffff,999,000,ecfbfd&dpc=1"></iframe>
+</div>
+
   
 
   
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/CocoaPods/" style="font-size: 10.00px;">CocoaPods</a><a href="/tags/XVim/" style="font-size: 10.00px;">XVim</a><a href="/tags/hexo/" style="font-size: 20.00px;">hexo</a>
+    <a href="/tags/CocoaPods/" style="font-size: 10.00px;">CocoaPods</a><a href="/tags/Reveal/" style="font-size: 10.00px;">Reveal</a><a href="/tags/XVim/" style="font-size: 10.00px;">XVim</a><a href="/tags/hexo/" style="font-size: 20.00px;">hexo</a>
   </div>
 </div>
 
@@ -73,6 +77,98 @@
     <div id="main-col" class="alignright">
     <div id="wrapper">
       
+  
+<article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+  <header>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/15/reveal/">如此迷人的 Reveal</a></h1>
+  
+
+      <time datetime="2014-04-15T14:46:02.000Z"><a href="/2014/04/15/reveal/">4月 15 2014</a></time>
+      
+  </header>
+    <div class="entry">
+      
+        <p><a href="http://revealapp.com/" target="_blank">Reveal</a> ，强大的UI分析工具，真是一个令人着迷的App，简单的安装，神奇的功效，XCode开发的最佳伴侣。</p>
+<h1 id="特性">特性</h1>
+<ul>
+<li>通过视图层级帮你理解复杂的app</li>
+<li>可以修改控件，并实时看到修改后效果</li>
+<li>3D导航，可流畅旋转，缩放，选中以及高亮</li>
+<li>Reveal可让你清楚哪个视图执行了哪个类</li>
+<li>Reveal可在设备或者模拟器上运行，可以简单地发现，连接至iOS app。</li>
+</ul>
+<h1 id="将Reveal与XCode_App_连接">将Reveal与XCode App 连接</h1>
+<ul>
+<li>Reveal.framework - Reveal static library framework bundle<ul>
+<li>把framework拽到XCode中的project中</li>
+<li>文档中还提到两步，我执行前后都是能够Connect的<ul>
+<li>Select the Build Phases tab and remove Reveal.framework from the Link Binaries With Libraries section.</li>
+<li>Select the Build Settings tab and add the following arguments to the Debug configuration of the Other Linker Flags setting. <code>-ObjC -framework Reveal</code></li>
+</ul>
+</li>
+<li>发布版本前记得把此framework去掉</li>
+</ul>
+</li>
+<li>libReveal.dylib - Reveal dynamic library<ul>
+<li>比较复杂一点了，仔细看手册吧</li>
+<li>还有一篇文章，提到用动态库连接真机，进行<a href="http://c.blog.sina.com.cn/profile.php?blogid=cb8a22ea89000gtw" target="_blank">逆向工程</a></li>
+</ul>
+</li>
+<li>还有个项目 <a href="https://github.com/shjborage/Reveal-Plugin-for-XCode.git" target="_blank">Reveal-Plugin-for-XCode</a>，能够不进行上述操作，自动启动并连接Reveal</li>
+</ul>
+<h1 id="Reveal_操作">Reveal 操作</h1>
+<p>操作easy，部分操作还支持Trackpad：</p>
+<ul>
+<li>折叠/展开：鼠标在树形列表中的操作三角形即可，记快捷键不划算</li>
+<li>Focus部分UI：鼠标在Tree上选中双击，或 ⌘⏎</li>
+<li>返回Focus之前：^⌘←</li>
+<li>⌘1：只显边框，超酷，可以看到一些没有内容的view</li>
+<li>⌘2：显示内容</li>
+<li>⌘3：显示边框和内容</li>
+<li>⌘4：2D View</li>
+<li>⌘5：3D View</li>
+<li>⌘⌥ Scroll Wheel Up/Down：调整view之间的间距<br>~/Library/Preferences/com.ittybittyapps.Reveal.plist</li>
+</ul>
+<p>把IBAApplicationPersistenceData这一项删除就是了。</p>
+
+	 
+	     <p style="margin:20px 0; color:#9f9f9f; font-size:12px;">
+<span>Posted by <a style="color:#9f9f9f;" href="http://weibo.com/wkevin27"><strong>wkevin27</strong></a> - 4月 15 2014</span><br />
+<span style="line-height:13px;">如需转载，请注明： 本文来自 <a style="color:#9f9f9f;" href="http://wkevin.github.io"><strong>Kevin&#39;s Blog</strong></a></span>
+</p>
+       	 
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
   
 <article class="post">
   
