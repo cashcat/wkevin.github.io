@@ -1,6 +1,9 @@
 title: XCode 中的 XVim
 date: 2014-04-13 10:01:04
-tags: XVim
+categories: iOS
+tags: 
+- XCode
+- XVim
 --- 
 
 *  `$ git clone https://github.com/JugglerShu/XVim.git`  // Get XVim  

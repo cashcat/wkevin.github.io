@@ -1,14 +1,16 @@
 menu:
-  Home: /
-  Archives: /archives/
-  About: /about/
-  Subscribe: /atom.xml
+  首页: /
+  存档: /archives/
+  关于: /about/
+  订阅: /atom.xml
+  书法: /penmanship/
+  链接: /freqlink/
 
 widgets: 
 - menu
-- weibo
 - category
 - tagcloud
+- freqlink
 
 excerpt_link: Read More
 

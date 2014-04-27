@@ -1,6 +1,9 @@
 title: 本博客的搭建（续2）
 date: 2014-04-03 15:47:57
-tags: hexo
+tags: 
+- hexo
+- github
+- blog
 ---
 
 ## 关于 .deploy

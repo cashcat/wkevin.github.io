@@ -1,6 +1,9 @@
 title: 本博客的搭建（续）
 date: 2014-04-03 11:37:24
-tags: hexo
+tags: 
+- hexo
+- github
+- blog
 ---
 
 昨晚弄到凌晨1点多，高兴的碎觉去了。今早到了公司，另选一台电脑，git clone 出来本博客

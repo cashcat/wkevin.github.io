@@ -1,6 +1,9 @@
 title: 本博客的搭建
 date: 2014-04-02 23:42:18
-tags: hexo
+tags: 
+- hexo
+- github
+- blog
 ---
 
 github + hexo => blog

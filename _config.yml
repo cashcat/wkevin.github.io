@@ -6,7 +6,7 @@
 title: Kevin's Blog
 subtitle: 你好
 description:
-author: kevinWjj
+author: wkevin
 email:
 language: zh-CN
 
@@ -104,5 +104,5 @@ stylus:
 ## Docs: http://zespia.tw/hexo/docs/deployment.html
 deploy:
   type: github
-  repository: https://github.com/kevinwjj/kevinwjj.github.io.git
+  repository: https://github.com/wkevin/wkevin.github.io.git
   branch: master
