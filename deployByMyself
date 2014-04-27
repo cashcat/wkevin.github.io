@@ -2,6 +2,11 @@
 writeblog=$PWD
 publicblog=../wkevin.github.io
 
+git pull
+if [ $? -ne 0 ]; then
+exit 1
+fi
+
 echo ===== hexo general =====
 hexo g
 
@@ -31,4 +36,18 @@ case $reply in
     *)
         echo "Happy to you!";;
 esac
+
+echo 
+echo ==========
 cd -
+echo ==========
+
+git status
+echo
+echo
+echo ============================================
+echo Dont forget git commit and push write branch 
+echo ============================================
+echo
+echo
+
