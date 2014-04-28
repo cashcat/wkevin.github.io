@@ -4,7 +4,7 @@
   <subtitle><![CDATA[你好]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wkevin.github.io/"/>
-  <updated>2014-04-27T13:54:14.520Z</updated>
+  <updated>2014-04-28T03:44:18.749Z</updated>
   <id>http://wkevin.github.io/</id>
   
   <author>
@@ -15,11 +15,157 @@
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[Maven]]></title>
+    <link href="http://wkevin.github.io/2014/04/17/maven/"/>
+    <id>http://wkevin.github.io/2014/04/17/maven/</id>
+    <published>2014-04-17T07:06:36.000Z</published>
+    <updated>2014-04-17T08:03:08.000Z</updated>
+    <content type="html"><![CDATA[<p><a href="http://maven.apache.org" target="_blank">Maven</a></p>
+<p>Make使用makefile、rules，在命令行下直接管理依赖、生成过程文件、编译目标、拷贝安装等。<br>Maven类似，使用pom.xml文件，在命令行下直接管理依赖、编译目标、打包安装等。</p>
+<p>可以在命令行下使用make， 也可以在各种IDE中使用其封装的项目管理工具。<br>可以在命令行下使用maven，也可以在各种IDE中使用其封装的项目管理工具。</p>
+<p>maven和make长着么像，是不是兄弟啊。</p>
+<p>不同的是：maven严重依赖网络上的库，不像make安装好后独立可用，maven库中众多的<strong>artifacts</strong>才是其威力大显的地方。</p>
+<h2 id="了解">了解</h2>
+<p>Maven能干啥</p>
+<ul>
+<li>Builds</li>
+<li>Documentation</li>
+<li>Reporting</li>
+<li>Dependencies</li>
+<li>SCMs</li>
+<li>Releases</li>
+<li>Distribution</li>
+</ul>
+<h2 id="安装与配置">安装与配置</h2>
+<ul>
+<li><a href="http://maven.apache.org/download.cgi" target="_blank">下载</a>、解压缩</li>
+<li>Windows下的环境变量配置<ul>
+<li>M2_HOME： 解压目录，如<code>C:\Program Files\Apache Software Foundation\apache-maven-3.2.1</code> <strong>注意最后不要有<code>\</code></strong></li>
+<li>M2： %M2_HOME%\bin</li>
+<li>JAVA_HOME：</li>
+<li>PATH：加入　%M2%</li>
+</ul>
+</li>
+<li>查看：<code>mvc --version</code></li>
+<li>配置：配置文件：settings.xml<ul>
+<li>proxy：配置文件中搜索 <code>proxy</code></li>
+<li>本地库目录：配置文件中搜索 <code>localRepository</code>，默认为<code>C:\Users\Administrator\.m2\repository</code></li>
+<li>官方文档：<a href="http://maven.apache.org/settings.html" target="_blank">Settings Reference</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="POM_文件">POM 文件</h2>
+<p>Maven 的管理使用基于XML语言的 .pom 文件</p>
+<p>官方文档：<a href="http://maven.apache.org/pom.html" target="_blank">POM Reference</a></p>
+<h2 id="Maven库">Maven库</h2>
+<ul>
+<li>网络库<ul>
+<li><a href="http://search.maven.org/#browse" target="_blank">The Central Repository</a>：浏览器打开，搜素、查询用</li>
+</ul>
+</li>
+<li>本地库：前文</li>
+</ul>
+<h2 id="Maven命令：mvn">Maven命令：mvn</h2>
+<p>Maven的build过程分为3个（内建的）lifecycle </p>
+<ul>
+<li><strong>clean</strong>: cleans up artifacts created by prior builds</li>
+<li><strong>default</strong>：handles your project deployment    </li>
+<li><strong>site</strong>: generates site documentation for this project</li>
+</ul>
+<p>每个lifecycle又包含了很多phase，<a href="http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference" target="_blank">lifecycle—phase参照表</a>。</p>
+<p><code>usage: mvn [options] [&lt;goal(s)&gt;] [&lt;phase(s)&gt;]</code></p>
+<ul>
+<li>options： <code>mvn -h</code> 可查看</li>
+<li>goal：</li>
+<li>phase：<ul>
+<li><strong>validate</strong>: validate the project is correct and all necessary information is available</li>
+<li><strong>compile</strong>: compile the source code of the project，包含的子步骤有<ul>
+<li>validate</li>
+<li>generate-sources</li>
+<li>process-sources</li>
+<li>generate-resources</li>
+<li>process-resources</li>
+<li>compile</li>
+</ul>
+</li>
+<li><strong>test</strong>: test the compiled source code using a suitable unit testing framework. These tests should not require the code be packaged or deployed</li>
+<li><strong>package</strong>: take the compiled code and package it in its distributable format, such as a JAR.编译并打包为发布格式</li>
+<li><strong>integration-test</strong>: process and deploy the package if necessary into an environment where integration tests can be run</li>
+<li><strong>verify</strong>: run any checks to verify the package is valid and meets quality criteria</li>
+<li><strong>install</strong>: install the package into the local repository, for use as a dependency in other projects locally</li>
+<li><strong>deploy</strong>: done in an integration or release environment, copies the final package to the remote repository for sharing with other developers and projects.</li>
+</ul>
+</li>
+</ul>
+<h2 id="与IDE整合">与IDE整合</h2>
+<p>官网目前给出了4种IDE的整合方式</p>
+<ul>
+<li>Eclipse：<a href="http://maven.apache.org/guides/mini/guide-ide-eclipse.html" target="_blank">需要折腾一下</a></li>
+<li>IntelliJ IDEA（Android Studio）<ul>
+<li>只需一句命令： <code>mvn idea:idea</code></li>
+</ul>
+</li>
+<li>NetBeans 4.0 (4.1 and 5.0)</li>
+<li>Maven 2.x Auto-Completion Using BASH</li>
+</ul>
+<h2 id="Best_practise">Best practise</h2>
+<h3 id="从一个空文件夹开始">从一个空文件夹开始</h3>
+<ul>
+<li><p>创建project： <code>mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false</code></p>
+<ul>
+<li>在一个空文件夹中都能测试此命令</li>
+<li>第一次执行会从库中下载很多工件（artifacts： plugin jars and other files ），并且可能下载失败，多试几次</li>
+<li>成功后生成的目录结构<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="code"><pre><span class="keyword">my</span>-app
+|<span class="comment">-- pom.xml</span>
+`<span class="comment">-- src</span>
+    |<span class="comment">-- main</span>
+    |   `<span class="comment">-- java</span>
+    |       `<span class="comment">-- com</span>
+    |           `<span class="comment">-- mycompany</span>
+    |               `<span class="comment">-- app</span>
+    |                   `<span class="comment">-- App.java //还附带了一个Hello world</span>
+    `<span class="comment">-- test</span>
+        `<span class="comment">-- java</span>
+            `<span class="comment">-- com</span>
+                `<span class="comment">-- mycompany</span>
+                    `<span class="comment">-- app</span>
+                        `<span class="comment">-- AppTest.java</span>
+</pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>编译Build<br><code>cd my-app</code><br><code>mvn package</code></p>
+</li>
+<li>安装到本地maven库： <code>mvn install</code></li>
+</ul>
+]]></content>
+    
+    
+      <category term="maven" scheme="http://wkevin.github.io/tags/maven/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[如此迷人的 Reveal]]></title>
     <link href="http://wkevin.github.io/2014/04/15/reveal/"/>
     <id>http://wkevin.github.io/2014/04/15/reveal/</id>
     <published>2014-04-15T14:46:02.000Z</published>
-    <updated>2014-04-27T07:23:07.000Z</updated>
+    <updated>2014-04-28T03:39:16.000Z</updated>
     <content type="html"><![CDATA[<p><a href="http://revealapp.com/" target="_blank">Reveal</a> ，强大的UI分析工具，真是一个令人着迷的App，简单的安装，神奇的功效，XCode开发的最佳伴侣。</p>
 <h1 id="特性">特性</h1>
 <ul>
@@ -75,7 +221,7 @@
     <link href="http://wkevin.github.io/2014/04/13/build-xvim-in-xcode5/"/>
     <id>http://wkevin.github.io/2014/04/13/build-xvim-in-xcode5/</id>
     <published>2014-04-13T02:01:04.000Z</published>
-    <updated>2014-04-27T07:23:32.000Z</updated>
+    <updated>2014-04-28T03:39:16.000Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><code>$ git clone https://github.com/JugglerShu/XVim.git</code>  // Get XVim  </li>
 <li><code>$ cd XVim</code>  </li>
@@ -100,7 +246,7 @@
     <link href="http://wkevin.github.io/2014/04/10/cocoapods-simplestep/"/>
     <id>http://wkevin.github.io/2014/04/10/cocoapods-simplestep/</id>
     <published>2014-04-09T17:28:54.000Z</published>
-    <updated>2014-04-27T07:23:46.000Z</updated>
+    <updated>2014-04-28T03:39:16.000Z</updated>
     <content type="html"><![CDATA[<hr>
 <h3 id="资源">资源</h3>
 <h4 id="网站">网站</h4>
@@ -159,7 +305,7 @@
     <link href="http://wkevin.github.io/2014/04/08/baas/"/>
     <id>http://wkevin.github.io/2014/04/08/baas/</id>
     <published>2014-04-08T09:25:55.000Z</published>
-    <updated>2014-04-27T07:24:19.000Z</updated>
+    <updated>2014-04-28T03:39:16.000Z</updated>
     <content type="html"><![CDATA[<ol>
 <li><a href="https://www.stackmob.com/product/" target="_blank">StackMob</a></li>
 <li><a href="https://www.parse.com/products" target="_blank">Parse</a></li>
@@ -183,7 +329,7 @@
     <link href="http://wkevin.github.io/2014/04/03/createthisblog-3/"/>
     <id>http://wkevin.github.io/2014/04/03/createthisblog-3/</id>
     <published>2014-04-03T07:47:57.000Z</published>
-    <updated>2014-04-27T07:20:52.000Z</updated>
+    <updated>2014-04-28T03:39:16.000Z</updated>
     <content type="html"><![CDATA[<h2 id="关于_-deploy">关于 .deploy</h2>
 <p>.deploy/ 在 <code>hexo init</code> 的时候是没有的，只是在 <code>hexo deploy</code>才创建，基本流程我猜测是：</p>
 <ul>
@@ -263,7 +409,7 @@ public             //每次可以自动生成，属于过程文件
     <link href="http://wkevin.github.io/2014/04/03/createthisblog-2/"/>
     <id>http://wkevin.github.io/2014/04/03/createthisblog-2/</id>
     <published>2014-04-03T03:37:24.000Z</published>
-    <updated>2014-04-27T07:20:39.000Z</updated>
+    <updated>2014-04-28T03:39:16.000Z</updated>
     <content type="html"><![CDATA[<p>昨晚弄到凌晨1点多，高兴的碎觉去了。今早到了公司，另选一台电脑，git clone 出来本博客<br><code>git clone htts://github.com/kevinwjj/kevinwjj.github.io.git</code></p>
 <p>当想在 write 分支开写的时候，发现不行了。</p>
 <h2 id="layout错误">layout错误</h2>
@@ -329,7 +475,7 @@ No submodule mapping found <span class="keyword">in</span> .gitmodules <span cla
     <link href="http://wkevin.github.io/2014/04/02/createthisblog/"/>
     <id>http://wkevin.github.io/2014/04/02/createthisblog/</id>
     <published>2014-04-02T15:42:18.000Z</published>
-    <updated>2014-04-27T07:20:22.000Z</updated>
+    <updated>2014-04-28T03:39:16.000Z</updated>
     <content type="html"><![CDATA[<h1 id="github_+_hexo_=&gt;_blog">github + hexo =&gt; blog</h1>
 <ul>
 <li><a href="http://nodejs.org" target="_blank">nodejs.org</a> 下载、安装node.js</li>
