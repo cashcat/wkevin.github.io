@@ -17,3 +17,8 @@ iOS
 
 StackOverflow
 *   [stack**overflow**](http://stackoverflow.com/questions/tagged/ios)
+
+Config
+---
+DNS
+*   [V2EX DNS](http://dns.v2ex.com) : 帮助你更快，更安全地上网,App Store 加速
