@@ -1,0 +1,276 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>calayer_uiview | Kevin&#39;s Blog</title>
+  <meta name="author" content="wkevin">
+  
+  <meta name="description" content="对于一个CALayer，bounds、position、anchorPoint、frame之间的关系；对于UIView，frame、bounds、center之间的关系；是长久以来网上热议的话题，各种图解、详解一搜大把，但每个人有每个人的理解思路和学习方法，比如我，看来好多篇也不能在脑子中形成完整的">
+  
+  
+  <meta property="og:title" content="calayer_uiview"/>
+  <meta property="og:site_name" content="Kevin&#39;s Blog"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+   <link rel="apple-touch-icon" href="/icon.png" />
+   <link rel="shortcut icon" href="/favicon.png" >
+   <link rel="alternate" href="http://xxx.xx/atom.xml" title="Kevin&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <div id="content" class="inner">
+    <aside id="sidebar" class="alignleft">
+      <div class="navigationBar">
+        <a href="/">Kevin&#39;s Blog</a>
+      </div>
+    	
+  <nav class="widget" id="menu">
+	<ul>
+    
+      <li class="cell"><a class="next" href="/">首页</a><li>
+    
+      <li class="cell"><a class="next" href="/archives/">存档</a><li>
+    
+      <li class="cell"><a class="next" href="/about/">关于</a><li>
+    
+      <li class="cell"><a class="next" href="/atom.xml">订阅</a><li>
+    
+      <li class="cell"><a class="next" href="/penmanship/">书法</a><li>
+    
+      <li class="cell"><a class="next" href="/freqlink/">链接</a><li>
+    
+    </ul>
+</nav>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/iOS/">iOS</a><small>4</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/BaaS/" style="font-size: 10.00px;">BaaS</a><a href="/tags/CALayer/" style="font-size: 10.00px;">CALayer</a><a href="/tags/CocoaPods/" style="font-size: 10.00px;">CocoaPods</a><a href="/tags/Reveal/" style="font-size: 10.00px;">Reveal</a><a href="/tags/UIView/" style="font-size: 10.00px;">UIView</a><a href="/tags/XCode/" style="font-size: 10.00px;">XCode</a><a href="/tags/XVim/" style="font-size: 10.00px;">XVim</a><a href="/tags/blog/" style="font-size: 20.00px;">blog</a><a href="/tags/github/" style="font-size: 20.00px;">github</a><a href="/tags/hexo/" style="font-size: 20.00px;">hexo</a><a href="/tags/maven/" style="font-size: 10.00px;">maven</a>
+  </div>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li>
+    <a href="http://weibo.com/wkevin27" title="Kevin's Blog">Kevin's Blog</a>
+</li>
+<li>
+    <a href="http://heavycoin.zhpool.com" title="frank's coin">Frank's coin</a>
+</li>
+</ul>
+</div>
+
+
+    	<footer id="footer" class="inner"><div class="copyright">
+  
+  &copy; 2014 wkevin
+  
+</div>
+
+
+
+</footer>
+    </aside>
+    
+    
+    <div id="hidden-navigationBar" class="navigationBar">
+      <a href="/">Kevin&#39;s Blog</a>
+    </div>
+    <div id="main-col" class="alignright">
+    <div id="wrapper">
+      
+<article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+  <header>
+      
+      
+  
+    <h1 class="title">calayer_uiview</h1>
+  
+
+      <time datetime="2014-04-29T13:19:22.000Z"><a href="/2014/04/29/calayer_uiview/">4月 29 2014</a></time>
+      
+  </header>
+    <div class="entry">
+      
+        <p>对于一个CALayer，bounds、position、anchorPoint、frame之间的关系；对于UIView，frame、bounds、center之间的关系；是长久以来网上热议的话题，各种图解、详解一搜大把，但每个人有每个人的理解思路和学习方法，比如我，看来好多篇也不能在脑子中形成完整的理性和感性认识，这可能就是所谓的“智商不够”吧，没办法。</p>
+<h2 id="CALayer">CALayer</h2>
+<p><img src="http://genekc07.stowers.org/Users/mec/Library/Developer/Shared/Documentation/DocSets/com.apple.adc.documentation.AppleiOS5_1.iOSLibrary.docset/Contents/Resources/Documents/documentation/Cocoa/Conceptual/CoreAnimation_guide/art/layer_bounds.jpg" alt=""></p>
+<p>下面只能摘录部分，再加上个人理解，拼凑一下了。</p>
+<p>首先记住一点：<strong>position 和 bounds 是基础，frame是派生属性。</strong></p>
+<ul>
+<li><strong>bounds</strong> = 左上角相对于自身坐标系的CGPoint（bounds.origin) + 没有坐标系概念的CGSize(bounds.size)<ul>
+<li>bounds 可以理解为一个遮盖罩</li>
+<li>bounds.origin <ul>
+<li>默认是(0,0)</li>
+<li>不影响层本身的布局，会影响它内部的子层的布局</li>
+</ul>
+</li>
+<li>设置 bounds 可以理解为两步：<ul>
+<li>用 bounds.origin 设置左上角在本地坐标系的坐标，<strong>左上角不变，反推本地坐标系原点（有点费解啊）</strong>，原点变了会影响subView进行重新布局</li>
+<li>用 bounds.size 设置本view/layer的size，以“锚点不动”为前提</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>poisition</strong> 和 <strong>anchorPoint</strong> 是锚点的“点值表示”和“比例表示”<ul>
+<li><strong>position</strong> 是锚点在<strong>父Layer坐标系</strong>的 CGPoint 表示<ul>
+<li>父Layer坐标系的原点不一定是父Layer的左上角</li>
+<li>是锚点的坐标，不是中心点的坐标哦：锚点可以修改的</li>
+</ul>
+</li>
+<li><strong>anchorPoint = （position - frame.origin）/ frame.size</strong><ul>
+<li>anchorPoint 改变，position 随之改变<ul>
+<li>如： anchorPoint = (0,0),则 position 就移动到左上角</li>
+</ul>
+</li>
+<li>anchorPoint 同时也是变换支点，其实可以理解为 position 是变换支点</li>
+<li>操作 position 或 transform 时，anchorPoint 的作用很明显<ul>
+<li>如：</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>frame</strong> 的计算参考4个:bounds，anchorPoint，transform，和position<ul>
+<li>frame 是由 position 和 bounds 计算而得，建议少用<ul>
+<li>设置frame会反向计算 position 和 bounds，并存储他们两个。<ul>
+<li>bounds.size = frame.size //bounds原点不变，size变</li>
+<li>position 是如何受影响的？<ul>
+<li>如果是用frame新建layer，position为中心点</li>
+<li>如果是修改已有layer的frame，如果 position 不在 center 呢？</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>设置position：<ul>
+<li>bounds 根据 anchorPoint 做相应改变？</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="UIView">UIView</h2>
+<p><img src="http://i.stack.imgur.com/wUOYV.jpg" alt="" title="frame 和 bounds 并非总是相同，一旦旋转，则不相同"></p>
+<p>CALayer是UIView的底层实现，view.frame简单的返回了view.layer.frame</p>
+<p>UIView 中没有 position 属性，有 center 属性<br>frame 和 bounds 并非总是相同，一旦旋转，则不相同 </p>
+<p>center和bounds属性是相互独立的. 也就是他们中间某一个发生了变化, 不会影响另一个</p>
+<ul>
+<li>center 决定自己的位置</li>
+<li>bounds 决定自己的大小，和 subview 的位置</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>frame<span class="preprocessor">.origin</span> = center - (bounds<span class="preprocessor">.size</span> / <span class="number">2.0</span>)
+center = frame<span class="preprocessor">.origin</span> + (bounds<span class="preprocessor">.size</span> / <span class="number">2.0</span>)
+frame<span class="preprocessor">.size</span> = bounds<span class="preprocessor">.size</span>
+</pre></td></tr></table></figure>
+
+<ul>
+<li>when you change the frame, you’re really changing the bounds and center</li>
+<li>you change the center, you’re updating both the center and the frame.</li>
+</ul>
+<p>一个view的显示位置（布局）取决于两点：它在父view的位置，和它相对于center的size</p>
+<ul>
+<li>定义 frame 可以同时定义这两点，所以可以直接影响view的显示</li>
+<li>修改 bounds.size 会围绕 center 改变 size，同时，frame 的origin和size也随之而变</li>
+<li>修改 bounds.origin 不会影响这两点，所以view的显示不变<ul>
+<li>修改 bounds.origin 会<strong>间接</strong>影响本地坐标系原点，从而影响其subview的位置</li>
+</ul>
+</li>
+</ul>
+<p>更改了bounds.x或者bounds.y,UIView的位置和大小完全不为所动, 但是UIView的所有subView都会平移一段距离(-bounds.x,-bounds.y)。</p>
+
+	 
+	     <p style="margin:20px 0; color:#9f9f9f; font-size:12px;">
+<span>Posted by <a style="color:#9f9f9f;" href="http://weibo.com/wkevin27"><strong>wkevin27</strong></a> - 4月 29 2014</span><br />
+<span style="line-height:13px;">如需转载，请注明： 本文来自 <a style="color:#9f9f9f;" href="http://wkevin.github.io"><strong>Kevin&#39;s Blog</strong></a></span>
+</p>
+       	 
+      
+    </div>
+    <footer>
+      
+	 
+     		  
+  
+  <div class="categories">
+    <a href="/categories/iOS/">iOS</a>
+  </div>
+
+       		
+  
+  <div class="tags">
+    <a href="/tags/CALayer/">CALayer</a>, <a href="/tags/UIView/">UIView</a>
+  </div>
+
+     		  
+       	 
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+</div>
+    </div>
+    <div class="tabbar" onload="divideTabBar()">
+	
+      <div class="tabbaritem"><a class="next" href="/">首页</a></div>
+    
+      <div class="tabbaritem"><a class="next" href="/archives/">存档</a></div>
+    
+      <div class="tabbaritem"><a class="next" href="/about/">关于</a></div>
+    
+      <div class="tabbaritem"><a class="next" href="/atom.xml">订阅</a></div>
+    
+      <div class="tabbaritem"><a class="next" href="/penmanship/">书法</a></div>
+    
+      <div class="tabbaritem"><a class="next" href="/freqlink/">链接</a></div>
+    
+</div>
+
+
+  </div>
+</body>
+</html>
