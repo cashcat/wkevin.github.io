@@ -4,7 +4,7 @@
   <subtitle><![CDATA[你好]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wkevin.github.io/"/>
-  <updated>2014-05-02T08:48:01.619Z</updated>
+  <updated>2014-05-04T12:58:03.751Z</updated>
   <id>http://wkevin.github.io/</id>
   
   <author>
@@ -13,6 +13,22 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Free software licenses]]></title>
+    <link href="http://wkevin.github.io/2014/05/04/free-software-licenses/"/>
+    <id>http://wkevin.github.io/2014/05/04/free-software-licenses/</id>
+    <published>2014-05-04T12:55:09.000Z</published>
+    <updated>2014-05-04T12:57:50.000Z</updated>
+    <content type="html"><![CDATA[<p>转载：</p>
+<p><a href="http://paulmillr.com/posts/simple-description-of-popular-software-licenses/" title="Simple description of popular software licenses" target="_blank"><img src="http://paulmillr.com/media/posts/simple-description-of-popular-software-licenses/open-source-licenses-en.png" alt=""></a></p>
+<p><a href="http://www.ruanyifeng.com/blog/2011/05/how_to_choose_free_software_licenses.html" title="如何选择开源许可证？" target="_blank"><img src="http://image.beekka.com/blog/201105/free_software_licenses.png" alt=""></a></p>
+]]></content>
+    
+    
+      <category term="license" scheme="http://wkevin.github.io/tags/license/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[CALayer 和 UIView]]></title>
