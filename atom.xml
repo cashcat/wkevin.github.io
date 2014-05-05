@@ -4,7 +4,7 @@
   <subtitle><![CDATA[你好]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wkevin.github.io/"/>
-  <updated>2014-05-05T06:01:06.235Z</updated>
+  <updated>2014-05-05T06:11:59.696Z</updated>
   <id>http://wkevin.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://wkevin.github.io/2014/05/05/git-submodule/"/>
     <id>http://wkevin.github.io/2014/05/05/git-submodule/</id>
     <published>2014-05-05T05:59:46.000Z</published>
-    <updated>2014-05-05T06:00:49.000Z</updated>
+    <updated>2014-05-05T06:11:58.000Z</updated>
     <content type="html"><![CDATA[<h2 id="常规操作">常规操作</h2>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
@@ -39,24 +39,9 @@
 
 <h2 id="存在的问题">存在的问题</h2>
 <ol>
-<li>update 后 submodule 代码不是最新的<br><strong>原因：</strong><br>git submodule的要实现“父项目依赖于子项目”，可以有两种<strong>依赖</strong>方式：<br>（1）依赖于某个指定commit，不一定是最新<br>（2）依赖于某个子项目的branch<br>默认是第（1），所以 <code>git submodule update</code> 会按照指定的 commit id 来checkout，而不是 master 的最新。<br><strong>措施：</strong><br>方式（1）的时候，可递归更新所有 submodule  <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>$ git submodule <span class="keyword">foreach</span> --recursive git fetch origin
-</pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>方式（2）的使用</p>
+<li>update 后 submodule 代码不是最新的<br><strong>原因：</strong><br>git submodule的要实现“父项目依赖于子项目”，可以有两种<strong>依赖</strong>方式：<br>（1）依赖于某个指定commit，不一定是最新<br>（2）依赖于某个子项目的branch<br>默认是第（1），所以 <code>git submodule update</code> 会按照指定的 commit id 来checkout，而不是 master 的最新。<br><strong>措施：</strong><br>方式（1）的时候，可递归更新所有 submodule<br><code>$ git submodule foreach --recursive git fetch origin</code><br>方式（2）的使用<br><code>$ git submodule add -b branch-xxx https://......</code><br><code>$ git submodule update --remote</code><br>这样clone出来的 submodule 将会是 branch-xxx 分支的最新 commit</li>
+<li><p>update 后 submodule 的HEAD处于 detached 游离状态<br>无论是上面的方式（1）or（2），都会存在此问题</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>$ git submodule add <span class="attribute">-b</span> branch<span class="attribute">-xxx</span> https:<span class="comment">//......</span>
-</pre></td></tr></table></figure>
-
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="comment">$</span> <span class="comment">git</span> <span class="comment">submodule</span> <span class="comment">update</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">remote</span>
-</pre></td></tr></table></figure>
-
-<p>这样clone出来的 submodule 将会是 branch-xxx 分支的最新 commit</p>
-<ol>
-<li>update 后 submodule 的HEAD处于 detached 游离状态<br>无论是上面的方式（1）or（2），都会存在此问题<figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -70,8 +55,6 @@ $ git branch -avv
   remotes/origin/master   <span class="number">0163586</span> <span class="keyword">Update</span> README.md</span>
 </pre></td></tr></table></figure>
 
-</li>
-</ol>
 <p><strong>措施：</strong></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
@@ -79,6 +62,8 @@ $ git branch -avv
 <span class="variable">$ </span>git checkout branch-xxx
 </pre></td></tr></table></figure>
 
+</li>
+</ol>
 <h2 id="推荐操作">推荐操作</h2>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
