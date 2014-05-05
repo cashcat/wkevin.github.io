@@ -1,0 +1,280 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>git submodule 操作 | Kevin&#39;s Blog</title>
+  <meta name="author" content="wkevin">
+  
+  <meta name="description" content="常规操作
+1
+2
+$ git submodule add https://......
+$ git commit
+
+
+1
+2
+3
+4
+$ git clone https://github.com/wkevin/iOS.grocery.git
+$ cd iOS.grocery
+$ git submod">
+  
+  
+  <meta property="og:title" content="git submodule 操作"/>
+  <meta property="og:site_name" content="Kevin&#39;s Blog"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+   <link rel="apple-touch-icon" href="/icon.png" />
+   <link rel="shortcut icon" href="/favicon.png" >
+   <link rel="alternate" href="http://xxx.xx/atom.xml" title="Kevin&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <div id="content" class="inner">
+    <aside id="sidebar" class="alignleft">
+      <div class="navigationBar">
+        <a href="/">Kevin&#39;s Blog</a>
+      </div>
+    	
+  <nav class="widget" id="menu">
+	<ul>
+    
+      <li class="cell"><a class="next" href="/">首页</a><li>
+    
+      <li class="cell"><a class="next" href="/archives/">存档</a><li>
+    
+      <li class="cell"><a class="next" href="/about/">关于</a><li>
+    
+      <li class="cell"><a class="next" href="/atom.xml">订阅</a><li>
+    
+      <li class="cell"><a class="next" href="/penmanship/">书法</a><li>
+    
+      <li class="cell"><a class="next" href="/freqlink/">链接</a><li>
+    
+    </ul>
+</nav>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/iOS/">iOS</a><small>4</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/CALayer/" style="font-size: 10.00px;">CALayer</a><a href="/tags/CocoaPods/" style="font-size: 10.00px;">CocoaPods</a><a href="/tags/Reveal/" style="font-size: 10.00px;">Reveal</a><a href="/tags/UIView/" style="font-size: 10.00px;">UIView</a><a href="/tags/XCode/" style="font-size: 10.00px;">XCode</a><a href="/tags/XVim/" style="font-size: 10.00px;">XVim</a><a href="/tags/blog/" style="font-size: 20.00px;">blog</a><a href="/tags/git/" style="font-size: 10.00px;">git</a><a href="/tags/github/" style="font-size: 20.00px;">github</a><a href="/tags/hexo/" style="font-size: 20.00px;">hexo</a><a href="/tags/maven/" style="font-size: 10.00px;">maven</a><a href="/tags/submodule/" style="font-size: 10.00px;">submodule</a>
+  </div>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li>
+    <a href="http://weibo.com/wkevin27" title="Kevin's Blog">Kevin's Blog</a>
+</li>
+<li>
+    <a href="http://twitter.com/wkevin27" title="Kevin's Twitter">Kevin's Twitter</a>
+</li>
+<li>
+    <a href="http://heavycoin.zhpool.com" title="frank's coin">Frank's coin</a>
+</li>
+</ul>
+</div>
+
+
+    	<footer id="footer" class="inner"><div class="copyright">
+  
+  &copy; 2014 wkevin
+  
+</div>
+
+
+
+</footer>
+    </aside>
+    
+    
+    <div id="hidden-navigationBar" class="navigationBar">
+      <a href="/">Kevin&#39;s Blog</a>
+    </div>
+    <div id="main-col" class="alignright">
+    <div id="wrapper">
+      
+<article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+  <header>
+      
+      
+  
+    <h1 class="title">git submodule 操作</h1>
+  
+
+      <time datetime="2014-05-05T05:59:46.000Z"><a href="/2014/05/05/git-submodule/">5月 5 2014</a></time>
+      
+  </header>
+    <div class="entry">
+      
+        <h2 id="常规操作">常规操作</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="char">$ </span>git submodule add <span class="method">https:</span>//......
+<span class="char">$ </span>git commit
+</pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="char">$ </span>git clone <span class="method">https:</span>//github.com/wkevin/iOS.grocery.git
+<span class="char">$ </span>cd iOS.grocery
+<span class="char">$ </span>git submodule init
+<span class="char">$ </span>git submodule update
+</pre></td></tr></table></figure>
+
+<h2 id="存在的问题">存在的问题</h2>
+<ol>
+<li>update 后 submodule 代码不是最新的<br><strong>原因：</strong><br>git submodule的要实现“父项目依赖于子项目”，可以有两种<strong>依赖</strong>方式：<br>（1）依赖于某个指定commit，不一定是最新<br>（2）依赖于某个子项目的branch<br>默认是第（1），所以 <code>git submodule update</code> 会按照指定的 commit id 来checkout，而不是 master 的最新。<br><strong>措施：</strong><br>方式（1）的时候，可递归更新所有 submodule  <figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>$ git submodule <span class="keyword">foreach</span> --recursive git fetch origin
+</pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>方式（2）的使用</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>$ git submodule add <span class="attribute">-b</span> branch<span class="attribute">-xxx</span> https:<span class="comment">//......</span>
+</pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">$</span> <span class="comment">git</span> <span class="comment">submodule</span> <span class="comment">update</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">remote</span>
+</pre></td></tr></table></figure>
+
+<p>这样clone出来的 submodule 将会是 branch-xxx 分支的最新 commit</p>
+<ol>
+<li>update 后 submodule 的HEAD处于 detached 游离状态<br>无论是上面的方式（1）or（2），都会存在此问题<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre>$ cd submodule-xxx
+$ git branch -avv
+*(detached from 53d8811) 53d8811 <span class="operator"><span class="keyword">Create</span> README.md
+  master                  <span class="number">0163586</span> [origin/master] <span class="keyword">Update</span> README.md
+  remotes/origin/HEAD     -&gt; origin/master
+  remotes/origin/master   <span class="number">0163586</span> <span class="keyword">Update</span> README.md</span>
+</pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><strong>措施：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="variable">$ </span>cd submodule-xxx
+<span class="variable">$ </span>git checkout branch-xxx
+</pre></td></tr></table></figure>
+
+<h2 id="推荐操作">推荐操作</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="char">$ </span>git submodule add -b master <span class="method">https:</span>//......
+<span class="char">$ </span>git commit
+</pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="char">$ </span>git clone <span class="method">https:</span>//github.com/wkevin/iOS.grocery.git
+<span class="char">$ </span>cd iOS.grocery
+<span class="char">$ </span>git submodule init
+<span class="char">$ </span>git submodule update --remote
+<span class="char">$ </span>git submodule foreach --recursive git fetch origin
+</pre></td></tr></table></figure>
+
+<p>不要试图把最后一句换成</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>$ git submodule <span class="keyword">foreach</span> --recursive git pull origin master
+</pre></td></tr></table></figure>
+
+<p>git 的branch很活跃，到底哪个才是你想要的，最好确认好了再merge。</p>
+
+	 
+	     <p style="margin:20px 0; color:#9f9f9f; font-size:12px;">
+<span>Posted by <a style="color:#9f9f9f;" href="http://weibo.com/wkevin27"><strong>wkevin27</strong></a> - 5月 5 2014</span><br />
+<span style="line-height:13px;">如需转载，请注明： 本文来自 <a style="color:#9f9f9f;" href="http://wkevin.github.io"><strong>Kevin&#39;s Blog</strong></a></span>
+</p>
+       	 
+      
+    </div>
+    <footer>
+      
+	 
+     		  
+       		
+  
+  <div class="tags">
+    <a href="/tags/git/">git</a>, <a href="/tags/submodule/">submodule</a>
+  </div>
+
+     		  
+       	 
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+</div>
+    </div>
+    <div class="tabbar" onload="divideTabBar()">
+	
+      <div class="tabbaritem"><a class="next" href="/">首页</a></div>
+    
+      <div class="tabbaritem"><a class="next" href="/archives/">存档</a></div>
+    
+      <div class="tabbaritem"><a class="next" href="/about/">关于</a></div>
+    
+      <div class="tabbaritem"><a class="next" href="/atom.xml">订阅</a></div>
+    
+      <div class="tabbaritem"><a class="next" href="/penmanship/">书法</a></div>
+    
+      <div class="tabbaritem"><a class="next" href="/freqlink/">链接</a></div>
+    
+</div>
+
+
+  </div>
+</body>
+</html>
