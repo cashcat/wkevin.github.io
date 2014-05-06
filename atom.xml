@@ -4,7 +4,7 @@
   <subtitle><![CDATA[你好]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wkevin.github.io/"/>
-  <updated>2014-05-05T15:05:10.684Z</updated>
+  <updated>2014-05-06T01:04:45.840Z</updated>
   <id>http://wkevin.github.io/</id>
   
   <author>
@@ -15,11 +15,95 @@
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[git submodule 操作]]></title>
+    <link href="http://wkevin.github.io/2014/05/05/git-submodule/"/>
+    <id>http://wkevin.github.io/2014/05/05/git-submodule/</id>
+    <published>2014-05-05T05:59:46.000Z</published>
+    <updated>2014-05-05T06:11:58.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="常规操作">常规操作</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="char">$ </span>git submodule add <span class="method">https:</span>//......
+<span class="char">$ </span>git commit
+</pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="char">$ </span>git clone <span class="method">https:</span>//github.com/wkevin/iOS.grocery.git
+<span class="char">$ </span>cd iOS.grocery
+<span class="char">$ </span>git submodule init
+<span class="char">$ </span>git submodule update
+</pre></td></tr></table></figure>
+
+<h2 id="存在的问题">存在的问题</h2>
+<ol>
+<li>update 后 submodule 代码不是最新的<br><strong>原因：</strong><br>git submodule的要实现“父项目依赖于子项目”，可以有两种<strong>依赖</strong>方式：<br>（1）依赖于某个指定commit，不一定是最新<br>（2）依赖于某个子项目的branch<br>默认是第（1），所以 <code>git submodule update</code> 会按照指定的 commit id 来checkout，而不是 master 的最新。<br><strong>措施：</strong><br>方式（1）的时候，可递归更新所有 submodule<br><code>$ git submodule foreach --recursive git fetch origin</code><br>方式（2）的使用<br><code>$ git submodule add -b branch-xxx https://......</code><br><code>$ git submodule update --remote</code><br>这样clone出来的 submodule 将会是 branch-xxx 分支的最新 commit</li>
+<li><p>update 后 submodule 的HEAD处于 detached 游离状态<br>无论是上面的方式（1）or（2），都会存在此问题</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre>$ cd submodule-xxx
+$ git branch -avv
+*(detached from 53d8811) 53d8811 <span class="operator"><span class="keyword">Create</span> README.md
+  master                  <span class="number">0163586</span> [origin/master] <span class="keyword">Update</span> README.md
+  remotes/origin/HEAD     -&gt; origin/master
+  remotes/origin/master   <span class="number">0163586</span> <span class="keyword">Update</span> README.md</span>
+</pre></td></tr></table></figure>
+
+<p><strong>措施：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="variable">$ </span>cd submodule-xxx
+<span class="variable">$ </span>git checkout branch-xxx
+</pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="推荐操作">推荐操作</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="char">$ </span>git submodule add -b master <span class="method">https:</span>//......
+<span class="char">$ </span>git commit
+</pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="char">$ </span>git clone <span class="method">https:</span>//github.com/wkevin/iOS.grocery.git
+<span class="char">$ </span>cd iOS.grocery
+<span class="char">$ </span>git submodule init
+<span class="char">$ </span>git submodule update --remote
+<span class="char">$ </span>git submodule foreach --recursive git fetch origin
+</pre></td></tr></table></figure>
+
+<p>不要试图把最后一句换成</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>$ git submodule <span class="keyword">foreach</span> --recursive git pull origin master
+</pre></td></tr></table></figure>
+
+<p>git 的branch很活跃，到底哪个才是你想要的，最好确认好了再merge。</p>
+]]></content>
+    
+    
+      <category term="git" scheme="http://wkevin.github.io/tags/git/"/>
+    
+      <category term="submodule" scheme="http://wkevin.github.io/tags/submodule/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Free software licenses]]></title>
     <link href="http://wkevin.github.io/2014/05/04/free-software-licenses/"/>
     <id>http://wkevin.github.io/2014/05/04/free-software-licenses/</id>
     <published>2014-05-04T12:55:09.000Z</published>
-    <updated>2014-05-04T12:57:50.000Z</updated>
+    <updated>2014-05-06T01:04:12.000Z</updated>
     <content type="html"><![CDATA[<p>转载：</p>
 <p><a href="http://paulmillr.com/posts/simple-description-of-popular-software-licenses/" title="Simple description of popular software licenses" target="_blank"><img src="http://paulmillr.com/media/posts/simple-description-of-popular-software-licenses/open-source-licenses-en.png" alt=""></a></p>
 <p><a href="http://www.ruanyifeng.com/blog/2011/05/how_to_choose_free_software_licenses.html" title="如何选择开源许可证？" target="_blank"><img src="http://image.beekka.com/blog/201105/free_software_licenses.png" alt=""></a></p>
@@ -35,7 +119,7 @@
     <link href="http://wkevin.github.io/2014/04/29/calayer_uiview/"/>
     <id>http://wkevin.github.io/2014/04/29/calayer_uiview/</id>
     <published>2014-04-29T13:19:22.000Z</published>
-    <updated>2014-04-29T13:26:38.000Z</updated>
+    <updated>2014-05-05T05:54:45.000Z</updated>
     <content type="html"><![CDATA[<p>对于一个CALayer，bounds、position、anchorPoint、frame之间的关系；对于UIView，frame、bounds、center之间的关系；是长久以来网上热议的话题，各种图解、详解一搜大把，但每个人有每个人的理解思路和学习方法，比如我，看来好多篇也不能在脑子中形成完整的理性和感性认识，这可能就是所谓的“智商不够”吧，没办法。</p>
 <h2 id="CALayer">CALayer</h2>
 <p><img src="http://genekc07.stowers.org/Users/mec/Library/Developer/Shared/Documentation/DocSets/com.apple.adc.documentation.AppleiOS5_1.iOSLibrary.docset/Contents/Resources/Documents/documentation/Cocoa/Conceptual/CoreAnimation_guide/art/layer_bounds.jpg" alt=""></p>
@@ -143,7 +227,7 @@ frame<span class="preprocessor">.size</span> = bounds<span class="preprocessor">
     <link href="http://wkevin.github.io/2014/04/17/maven/"/>
     <id>http://wkevin.github.io/2014/04/17/maven/</id>
     <published>2014-04-17T07:06:36.000Z</published>
-    <updated>2014-04-28T13:26:32.000Z</updated>
+    <updated>2014-04-17T08:03:08.000Z</updated>
     <content type="html"><![CDATA[<p><a href="http://maven.apache.org" target="_blank">Maven</a></p>
 <p>Make使用makefile、rules，在命令行下直接管理依赖、生成过程文件、编译目标、拷贝安装等。<br>Maven类似，使用pom.xml文件，在命令行下直接管理依赖、编译目标、打包安装等。</p>
 <p>可以在命令行下使用make， 也可以在各种IDE中使用其封装的项目管理工具。<br>可以在命令行下使用maven，也可以在各种IDE中使用其封装的项目管理工具。</p>
@@ -289,7 +373,7 @@ frame<span class="preprocessor">.size</span> = bounds<span class="preprocessor">
     <link href="http://wkevin.github.io/2014/04/15/reveal/"/>
     <id>http://wkevin.github.io/2014/04/15/reveal/</id>
     <published>2014-04-15T14:46:02.000Z</published>
-    <updated>2014-04-27T07:23:07.000Z</updated>
+    <updated>2014-04-28T03:39:16.000Z</updated>
     <content type="html"><![CDATA[<p><a href="http://revealapp.com/" target="_blank">Reveal</a> ，强大的UI分析工具，真是一个令人着迷的App，简单的安装，神奇的功效，XCode开发的最佳伴侣。</p>
 <h1 id="特性">特性</h1>
 <ul>
@@ -345,7 +429,7 @@ frame<span class="preprocessor">.size</span> = bounds<span class="preprocessor">
     <link href="http://wkevin.github.io/2014/04/13/build-xvim-in-xcode5/"/>
     <id>http://wkevin.github.io/2014/04/13/build-xvim-in-xcode5/</id>
     <published>2014-04-13T02:01:04.000Z</published>
-    <updated>2014-04-27T07:23:32.000Z</updated>
+    <updated>2014-04-28T03:39:16.000Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><code>$ git clone https://github.com/JugglerShu/XVim.git</code>  // Get XVim  </li>
 <li><code>$ cd XVim</code>  </li>
@@ -370,7 +454,7 @@ frame<span class="preprocessor">.size</span> = bounds<span class="preprocessor">
     <link href="http://wkevin.github.io/2014/04/10/cocoapods-simplestep/"/>
     <id>http://wkevin.github.io/2014/04/10/cocoapods-simplestep/</id>
     <published>2014-04-09T17:28:54.000Z</published>
-    <updated>2014-04-27T07:23:46.000Z</updated>
+    <updated>2014-04-28T03:39:16.000Z</updated>
     <content type="html"><![CDATA[<hr>
 <h3 id="资源">资源</h3>
 <h4 id="网站">网站</h4>
@@ -429,7 +513,7 @@ frame<span class="preprocessor">.size</span> = bounds<span class="preprocessor">
     <link href="http://wkevin.github.io/2014/04/03/createthisblog-3/"/>
     <id>http://wkevin.github.io/2014/04/03/createthisblog-3/</id>
     <published>2014-04-03T07:47:57.000Z</published>
-    <updated>2014-04-27T07:20:52.000Z</updated>
+    <updated>2014-04-28T03:39:16.000Z</updated>
     <content type="html"><![CDATA[<h2 id="关于_-deploy">关于 .deploy</h2>
 <p>.deploy/ 在 <code>hexo init</code> 的时候是没有的，只是在 <code>hexo deploy</code>才创建，基本流程我猜测是：</p>
 <ul>
@@ -509,7 +593,7 @@ public             //每次可以自动生成，属于过程文件
     <link href="http://wkevin.github.io/2014/04/03/createthisblog-2/"/>
     <id>http://wkevin.github.io/2014/04/03/createthisblog-2/</id>
     <published>2014-04-03T03:37:24.000Z</published>
-    <updated>2014-04-27T07:20:39.000Z</updated>
+    <updated>2014-04-28T03:39:16.000Z</updated>
     <content type="html"><![CDATA[<p>昨晚弄到凌晨1点多，高兴的碎觉去了。今早到了公司，另选一台电脑，git clone 出来本博客<br><code>git clone htts://github.com/kevinwjj/kevinwjj.github.io.git</code></p>
 <p>当想在 write 分支开写的时候，发现不行了。</p>
 <h2 id="layout错误">layout错误</h2>
@@ -575,7 +659,7 @@ No submodule mapping found <span class="keyword">in</span> .gitmodules <span cla
     <link href="http://wkevin.github.io/2014/04/02/createthisblog/"/>
     <id>http://wkevin.github.io/2014/04/02/createthisblog/</id>
     <published>2014-04-02T15:42:18.000Z</published>
-    <updated>2014-04-27T07:20:22.000Z</updated>
+    <updated>2014-04-28T03:39:16.000Z</updated>
     <content type="html"><![CDATA[<h1 id="github_+_hexo_=&gt;_blog">github + hexo =&gt; blog</h1>
 <ul>
 <li><a href="http://nodejs.org" target="_blank">nodejs.org</a> 下载、安装node.js</li>
