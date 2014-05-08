@@ -122,57 +122,6 @@
       
       
   
-    <h1 class="title"><a href="/2014/05/08/today/">今天是个好天气</a></h1>
-  
-
-      <time datetime="2014-05-08T09:04:10.000Z"><a href="/2014/05/08/today/">5月 8 2014</a></time>
-      
-  </header>
-    <div class="entry">
-      
-        <p>预报有雨但很小。</p>
-
-	 
-	     <p style="margin:20px 0; color:#9f9f9f; font-size:12px;">
-<span>Posted by <a style="color:#9f9f9f;" href="http://weibo.com/wkevin27"><strong>wkevin27</strong></a> - 5月 8 2014</span><br />
-<span style="line-height:13px;">如需转载，请注明： 本文来自 <a style="color:#9f9f9f;" href="http://wkevin.github.io"><strong>Kevin&#39;s Blog</strong></a></span>
-</p>
-       	 
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  
-<article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-  <header>
-      
-      
-  
     <h1 class="title"><a href="/2014/05/05/git-submodule/">git submodule 操作</a></h1>
   
 
@@ -1127,11 +1076,148 @@ No submodule mapping found <span class="keyword">in</span> .gitmodules <span cla
 
 
 
+  
+<article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+  <header>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/02/createthisblog/">本博客的搭建</a></h1>
+  
+
+      <time datetime="2014-04-02T15:42:18.000Z"><a href="/2014/04/02/createthisblog/">4月 2 2014</a></time>
+      
+  </header>
+    <div class="entry">
+      
+        <h1 id="github_+_hexo_=&gt;_blog">github + hexo =&gt; blog</h1>
+<ul>
+<li><a href="http://nodejs.org" target="_blank">nodejs.org</a> 下载、安装node.js</li>
+<li><a href="http://npmjs.org" target="_blank">npm</a>(node package manager，node包管理器）可用<ul>
+<li>设置npm代理——在公司需要通过代理连外网<br><code>npm config set proxy http://proxy.example.com:8080</code><br><code>npm set proxy http://proxy.example.com:8080</code></li>
+<li>或者设置windows cmd的代理<br><code>set HTTP_proxy=http://proxy.example.com:8080</code><br><code>set HTTPS_proxy=https://proxy.example.com:8080</code></li>
+<li>设置npm镜像<a href="http://cnpmjs.org" target="_blank">cnpm</a>（默认的库服务器会撞墙，比较慢，甚至更新不了）<br><code>npm config set registry http://registry.cnpmjs.org</code><br><code>npm info underscore</code> //查看是否配置正确</li>
+</ul>
+</li>
+<li><p>安装hexo </p>
+<ul>
+<li><code>sudo npm install -g hexo</code> //前面代理和镜像设置好了，这里才会快速和顺利</li>
+<li><code>mkdir myBlog</code></li>
+<li><code>cd myBlog</code></li>
+<li><code>hexo init</code></li>
+<li><code>hexo generate</code></li>
+<li><code>hexo server</code> //浏览器中可以 <a href="http://localhost:4000" target="_blank">http://localhost:4000</a> 查看到了<pre><code>hexo 的命令简写
+  hexo g == hexo generate
+  hexo d == hexo deploy
+  hexo s == hexo <span class="keyword">server</span>
+  hexo n == hexo <span class="keyword">new</span>            
+</code></pre></li>
+</ul>
+</li>
+<li>配置 hexo<ul>
+<li>theme<ul>
+<li>安装theme <a href="https://github.com/tommy351/hexo/wiki/Themes" target="_blank">List</a><br><code>git clone https://github.com/hexojs/hexo-theme-landscape.git themes/landscape</code><br><code>git clone https://github.com/hexojs/hexo-theme-light.git themes/light</code><br>必要的话，也要配置git的代理</li>
+<li>配置theme： htemes/xxx/_config.yml —— 根据个人喜好修改</li>
+</ul>
+</li>
+<li>plugin<ul>
+<li>RSS 插件<br><code>sudo npm install hexo-generator-feed</code></li>
+<li>sitemap 插件<br><code>npm install hexo-generator-sitemap</code>    </li>
+</ul>
+</li>
+<li>配置myBlog/_config.yml<ul>
+<li>指定 theme：<br>  theme: iOS7 //感觉iOS7这个不错，其实是其他的都没试</li>
+<li>指定 plugins：<br> plugins:<ul>
+<li>hexo-generator-feed</li>
+<li>hexo-generator-sitemap</li>
+</ul>
+</li>
+<li>其他：根据个人喜好修改</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>写文章<ul>
+<li><code>hexo new &quot;my new post&quot;</code></li>
+<li>进入 source/_posts/ 使用 Markdown 写 md 文件<ul>
+<li>OS X 上用 Mou</li>
+<li>Windows 上用 MarkdownPad</li>
+<li>Linux 上用 SublimeText + Markdown Preview</li>
+</ul>
+</li>
+<li><code>hexo s</code> //localhost预览，如果server一直开着的话，能够自动探测到新的md文件</li>
+</ul>
+</li>
+<li><p>部署到github</p>
+<ul>
+<li>github 上创建pages<ul>
+<li>user pages：<a href="http://kevinwjj.github.io" target="_blank">http://kevinwjj.github.io</a>对应的库 <a href="http://github.com/kevinwjj/kevinwjj.github.io.git" target="_blank">http://github.com/kevinwjj/kevinwjj.github.io.git</a><br>使用master分支</li>
+<li>project pages:使用某个project的gh-pages分支</li>
+</ul>
+</li>
+<li><p>修改 myBlog/_config.yml</p>
+<pre><code>  deploy:
+    type: github
+    repository: https://github<span class="preprocessor">.com</span>/kevinwjj/kevinwjj<span class="preprocessor">.github</span><span class="preprocessor">.io</span><span class="preprocessor">.git</span>
+    branch: master
+</code></pre></li>
+<li><code>hexo generate</code></li>
+<li><code>hexo deploy</code> //推入github的库中</li>
+</ul>
+</li>
+<li>将markdown文件也放入github<ul>
+<li>kevinwjj.github.io.git 的 master 分支存放 html + hexo输出文件</li>
+<li>kevinwjj.github.io.git 的 write 分支存放 markdown + hexo 编译文件<pre><code>  cd kevinwjj<span class="preprocessor">.github</span><span class="preprocessor">.io</span>
+  git checkout --orphan write
+  <span class="keyword">cp</span> -aR ../myBlog/. ./
+  git <span class="keyword">add</span> .
+  git commit
+  git <span class="keyword">push</span> origin write:write
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h2 id="参考文章">参考文章</h2>
+<p><a href="http://zipperary.com/categories/hexo/" target="_blank">Zipperablog</a> ：非常感谢！</p>
+
+	 
+	     <p style="margin:20px 0; color:#9f9f9f; font-size:12px;">
+<span>Posted by <a style="color:#9f9f9f;" href="http://weibo.com/wkevin27"><strong>wkevin27</strong></a> - 4月 2 2014</span><br />
+<span style="line-height:13px;">如需转载，请注明： 本文来自 <a style="color:#9f9f9f;" href="http://wkevin.github.io"><strong>Kevin&#39;s Blog</strong></a></span>
+</p>
+       	 
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
 
 <nav id="pagination">
   
-  
-    <a href="/page/2/" class="alignright next">下一页</a>
   
 </nav></div>
     </div>

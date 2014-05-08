@@ -4,7 +4,7 @@
   <subtitle><![CDATA[你好]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wkevin.github.io/"/>
-  <updated>2014-05-08T09:08:23.685Z</updated>
+  <updated>2014-05-08T09:09:55.298Z</updated>
   <id>http://wkevin.github.io/</id>
   
   <author>
@@ -13,18 +13,6 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
-  
-  <entry>
-    <title><![CDATA[今天是个好天气]]></title>
-    <link href="http://wkevin.github.io/2014/05/08/today/"/>
-    <id>http://wkevin.github.io/2014/05/08/today/</id>
-    <published>2014-05-08T09:04:10.000Z</published>
-    <updated>2014-05-08T09:04:48.000Z</updated>
-    <content type="html"><![CDATA[<p>预报有雨但很小。</p>
-]]></content>
-    
-    
-  </entry>
   
   <entry>
     <title><![CDATA[git submodule 操作]]></title>
