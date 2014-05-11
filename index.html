@@ -130,22 +130,35 @@
   </header>
     <div class="entry">
       
-        <p>iOS中改变一个对象的外观有两种方法：  </p>
+        <p>iOS中改变一个对象的外观的两种方法：  </p>
 <ol>
 <li>一次改变此对象（object）的所有实例（instances）  </li>
 <li>改变某个 container 中的 instances  </li>
 </ol>
 <p>如何做到这两类操作？—— 支持 UIAppearance Protocol。   </p>
 <p><strong>UIAppearance protocol 只包括两个方法</strong>：   </p>
-<pre><code>+ (instancetype)appearance   
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>+ (instancetype)appearance   
 + (instancetype)appearanceWhenContainedIn:(Class &lt;UIAppearanceContainer&gt;)ContainerClass,<span class="keyword">...</span>
-</code></pre><p>返回值都是获取接受者的 appearance proxy（理解为获取app中所有此class的实例更合适），然后给 proxy 发“<strong>一些</strong>”消息可以批量修改它们的属性。</p>
+</pre></td></tr></table></figure>
+
+<p>返回值都是获取接受者的 appearance proxy（理解为获取app中所有此class的实例更合适），然后给 proxy 发“<strong>一些</strong>”消息可以批量修改它们的属性。</p>
 <p>好了，UIView（UIControl）都支持 UIAppearance Protocol，可以轻松的改变控件的全局样式。 </p>
 <p>举例：  </p>
 <ol>
-<li>改变所有 UINavigationBar 的 backgroundcolor:<br><code>[[UINavigationBar appearance] setBarTintColor:myNavBarBackgroundColor];</code></li>
+<li><p>改变所有 UINavigationBar 的 backgroundcolor:   </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="attr_selector">[[UINavigationBar appearance]</span> <span class="tag">setBarTintColor</span><span class="pseudo">:myNavBarBackgroundColor</span>];
+</pre></td></tr></table></figure>
+</li>
 <li><p>改变 UINavigationBar 中所有 UIButton 的背景图片：   </p>
-<p>[[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil]<br> setBackgroundImage:myNavBarButtonBackgroundImage forState:state barMetrics:metrics];</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>    <span class="attr_selector">[[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class]</span>, <span class="tag">nil</span>]
+       <span class="tag">setBackgroundImage</span><span class="pseudo">:myNavBarButtonBackgroundImage</span> <span class="tag">forState</span><span class="pseudo">:state</span> <span class="tag">barMetrics</span><span class="pseudo">:metrics</span>];
+</pre></td></tr></table></figure>
+
 </li>
 </ol>
 <p>那么，哪些方法能够被 appearance proxy 接收呢？ —— <strong>标记了 <code>UI_APPEARANCE_SELECTOR</code> 的方法</strong>。<br>比如：UIBarButtonItem</p>
