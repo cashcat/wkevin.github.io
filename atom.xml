@@ -4,7 +4,7 @@
   <subtitle><![CDATA[你好]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wkevin.github.io/"/>
-  <updated>2014-05-11T14:19:35.135Z</updated>
+  <updated>2014-05-12T12:49:12.158Z</updated>
   <id>http://wkevin.github.io/</id>
   
   <author>
@@ -13,6 +13,84 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Sublime Text]]></title>
+    <link href="http://wkevin.github.io/2014/05/12/sublimetext/"/>
+    <id>http://wkevin.github.io/2014/05/12/sublimetext/</id>
+    <published>2014-05-12T08:55:40.000Z</published>
+    <updated>2014-05-12T12:29:34.000Z</updated>
+    <content type="html"><![CDATA[<p>ST3 比 ST2 加强了 project 的功能，如“F12 - 跳转到定义”，使得ST更像个IDE了。</p>
+<p>下面按最常用、最喜欢的菜单排序</p>
+<h2 id="切换到_vi_模式">切换到 vi 模式</h2>
+<ul>
+<li>Setting-Default：拷贝 <code>&quot;ignored_packages&quot;: [&quot;Vintage&quot;]</code> —— Default是修改不了的</li>
+<li>Setting-User：粘贴为 <code>&quot;ignored_packages&quot;: [ ]</code> —— User的设置会覆盖Default</li>
+<li>基本的字符、搜索、行、列……操作都是使用vi的快捷键实现，就不去再记忆一份ST的快捷键了</li>
+</ul>
+<h2 id="Goto">Goto</h2>
+<ul>
+<li>（搜索后）跳转<ul>
+<li>跳转到文件：<strong>Ctrl + P</strong>：</li>
+<li>跳转到 symbol：<strong>Ctrl + P，<code>@</code></strong>，或 <strong>Ctrl + R</strong></li>
+<li>跳转到 word：<strong>Ctrl + P，<code>#</code></strong>，或 <strong>Ctrl + ;</strong></li>
+<li>跳转到 line：<strong>Ctrl + P，<code>:</code></strong>，或 <strong>Ctrl + g</strong></li>
+<li>跳转到 定义：<strong>F12</strong> —— ST3中新增，需要文件首先加入到project中</li>
+</ul>
+</li>
+<li>向回和向前跳转：<strong>Alt + <code>-</code></strong> 和 <strong>Alt + Shift + <code>-</code></strong></li>
+<li>文件切换<ul>
+<li>Tab直接定位：<strong>Alt + 1/2/3/…</strong></li>
+<li>Tab间切换：<strong>Ctrl + PageDown/Up</strong></li>
+<li>头文件和源文件之间切换：<strong>Alt + O</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="Select">Select</h2>
+<ul>
+<li>Multiple Selections（多重选择）<ul>
+<li><strong>Ctrl + 鼠标左键</strong>：同时在多个地方放置光标，然后可进行同时的修改、删除等</li>
+<li><strong>Ctrl + D</strong>：选中相同的word<ul>
+<li>依次 <strong>Ctrl + D</strong>，选中每一个想要的，然后可进行同时的修改、删除等</li>
+<li>遇到某个不想要的，用 <strong>Ctrl + K</strong> &amp; <strong>Ctrl + D</strong> 跳过</li>
+<li>取消选定：<strong>Ctrl + U</strong></li>
+</ul>
+</li>
+<li>上述两种操作也可以组合使用：先 Ctrl+D，在Ctrl+左键选……</li>
+</ul>
+</li>
+<li>Column Selection<ul>
+<li>Windows：     <strong>Ctrl + Alt + Up/Down</strong>，或者<strong>Shift + 右键拖动</strong></li>
+<li>Linux： <strong>Alt + ⇧ + Up/Down</strong></li>
+<li>OS X： <strong>⌃ + ⇧ + Up/Down</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="View">View</h2>
+<ul>
+<li>Groups：<ul>
+<li>新建 Group：<strong>Ctrl + K</strong> &amp; <strong>Ctrl + Shift + Up</strong></li>
+<li>新建 Group，并将当前文件挪过去：<strong>Ctrl + K</strong> &amp; <strong>Ctrl + Up</strong></li>
+<li>关闭 Group：<strong>Ctrl + K</strong> &amp; <strong>Ctrl + Down</strong></li>
+<li>光标在Group之间切换：<strong>Ctrl + 1/2/3/…</strong></li>
+<li>文件在Group之间挪动：<strong>Ctrl + Shift + 1/2/3/…</strong> — 当前光标所在文件被挪到指定group</li>
+</ul>
+</li>
+</ul>
+<h2 id="Tools">Tools</h2>
+<ul>
+<li>Command Pallete（命令操作）：<strong>Ctrl + Shift + P</strong>，<a href="http://docs.sublimetext.info/en/latest/reference/commands.html" target="_blank">官方文档</a></li>
+</ul>
+<h2 id="Plugin">Plugin</h2>
+<p>请百度</p>
+]]></content>
+    
+    
+      <category term="Editor" scheme="http://wkevin.github.io/tags/Editor/"/>
+    
+      <category term="Tools" scheme="http://wkevin.github.io/categories/Tools/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[UI_APPEARANCE_SELECTOR]]></title>

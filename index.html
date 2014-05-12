@@ -53,6 +53,8 @@
   <h3 class="title">分类</h3>
   <ul class="entry">
   
+    <li><a href="/categories/Tools/">Tools</a><small>1</small></li>
+  
     <li><a href="/categories/iOS/">iOS</a><small>5</small></li>
   
   </ul>
@@ -63,7 +65,7 @@
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/CALayer/" style="font-size: 10.00px;">CALayer</a><a href="/tags/CocoaPods/" style="font-size: 10.00px;">CocoaPods</a><a href="/tags/Reveal/" style="font-size: 10.00px;">Reveal</a><a href="/tags/UIView/" style="font-size: 10.00px;">UIView</a><a href="/tags/XCode/" style="font-size: 10.00px;">XCode</a><a href="/tags/XVim/" style="font-size: 10.00px;">XVim</a><a href="/tags/blog/" style="font-size: 20.00px;">blog</a><a href="/tags/git/" style="font-size: 10.00px;">git</a><a href="/tags/github/" style="font-size: 20.00px;">github</a><a href="/tags/hexo/" style="font-size: 20.00px;">hexo</a><a href="/tags/license/" style="font-size: 10.00px;">license</a><a href="/tags/maven/" style="font-size: 10.00px;">maven</a><a href="/tags/submodule/" style="font-size: 10.00px;">submodule</a>
+    <a href="/tags/CALayer/" style="font-size: 10.00px;">CALayer</a><a href="/tags/CocoaPods/" style="font-size: 10.00px;">CocoaPods</a><a href="/tags/Editor/" style="font-size: 10.00px;">Editor</a><a href="/tags/Reveal/" style="font-size: 10.00px;">Reveal</a><a href="/tags/UIView/" style="font-size: 10.00px;">UIView</a><a href="/tags/XCode/" style="font-size: 10.00px;">XCode</a><a href="/tags/XVim/" style="font-size: 10.00px;">XVim</a><a href="/tags/blog/" style="font-size: 20.00px;">blog</a><a href="/tags/git/" style="font-size: 10.00px;">git</a><a href="/tags/github/" style="font-size: 20.00px;">github</a><a href="/tags/hexo/" style="font-size: 20.00px;">hexo</a><a href="/tags/license/" style="font-size: 10.00px;">license</a><a href="/tags/maven/" style="font-size: 10.00px;">maven</a><a href="/tags/submodule/" style="font-size: 10.00px;">submodule</a>
   </div>
 </div>
 
@@ -96,6 +98,119 @@
     <div id="main-col" class="alignright">
     <div id="wrapper">
       
+  
+<article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+  <header>
+      
+      
+  
+    <h1 class="title"><a href="/2014/05/12/sublimetext/">Sublime Text</a></h1>
+  
+
+      <time datetime="2014-05-12T08:55:40.000Z"><a href="/2014/05/12/sublimetext/">5月 12 2014</a></time>
+      
+  </header>
+    <div class="entry">
+      
+        <p>ST3 比 ST2 加强了 project 的功能，如“F12 - 跳转到定义”，使得ST更像个IDE了。</p>
+<p>下面按最常用、最喜欢的菜单排序</p>
+<h2 id="切换到_vi_模式">切换到 vi 模式</h2>
+<ul>
+<li>Setting-Default：拷贝 <code>&quot;ignored_packages&quot;: [&quot;Vintage&quot;]</code> —— Default是修改不了的</li>
+<li>Setting-User：粘贴为 <code>&quot;ignored_packages&quot;: [ ]</code> —— User的设置会覆盖Default</li>
+<li>基本的字符、搜索、行、列……操作都是使用vi的快捷键实现，就不去再记忆一份ST的快捷键了</li>
+</ul>
+<h2 id="Goto">Goto</h2>
+<ul>
+<li>（搜索后）跳转<ul>
+<li>跳转到文件：<strong>Ctrl + P</strong>：</li>
+<li>跳转到 symbol：<strong>Ctrl + P，<code>@</code></strong>，或 <strong>Ctrl + R</strong></li>
+<li>跳转到 word：<strong>Ctrl + P，<code>#</code></strong>，或 <strong>Ctrl + ;</strong></li>
+<li>跳转到 line：<strong>Ctrl + P，<code>:</code></strong>，或 <strong>Ctrl + g</strong></li>
+<li>跳转到 定义：<strong>F12</strong> —— ST3中新增，需要文件首先加入到project中</li>
+</ul>
+</li>
+<li>向回和向前跳转：<strong>Alt + <code>-</code></strong> 和 <strong>Alt + Shift + <code>-</code></strong></li>
+<li>文件切换<ul>
+<li>Tab直接定位：<strong>Alt + 1/2/3/…</strong></li>
+<li>Tab间切换：<strong>Ctrl + PageDown/Up</strong></li>
+<li>头文件和源文件之间切换：<strong>Alt + O</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="Select">Select</h2>
+<ul>
+<li>Multiple Selections（多重选择）<ul>
+<li><strong>Ctrl + 鼠标左键</strong>：同时在多个地方放置光标，然后可进行同时的修改、删除等</li>
+<li><strong>Ctrl + D</strong>：选中相同的word<ul>
+<li>依次 <strong>Ctrl + D</strong>，选中每一个想要的，然后可进行同时的修改、删除等</li>
+<li>遇到某个不想要的，用 <strong>Ctrl + K</strong> &amp; <strong>Ctrl + D</strong> 跳过</li>
+<li>取消选定：<strong>Ctrl + U</strong></li>
+</ul>
+</li>
+<li>上述两种操作也可以组合使用：先 Ctrl+D，在Ctrl+左键选……</li>
+</ul>
+</li>
+<li>Column Selection<ul>
+<li>Windows：     <strong>Ctrl + Alt + Up/Down</strong>，或者<strong>Shift + 右键拖动</strong></li>
+<li>Linux： <strong>Alt + ⇧ + Up/Down</strong></li>
+<li>OS X： <strong>⌃ + ⇧ + Up/Down</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="View">View</h2>
+<ul>
+<li>Groups：<ul>
+<li>新建 Group：<strong>Ctrl + K</strong> &amp; <strong>Ctrl + Shift + Up</strong></li>
+<li>新建 Group，并将当前文件挪过去：<strong>Ctrl + K</strong> &amp; <strong>Ctrl + Up</strong></li>
+<li>关闭 Group：<strong>Ctrl + K</strong> &amp; <strong>Ctrl + Down</strong></li>
+<li>光标在Group之间切换：<strong>Ctrl + 1/2/3/…</strong></li>
+<li>文件在Group之间挪动：<strong>Ctrl + Shift + 1/2/3/…</strong> — 当前光标所在文件被挪到指定group</li>
+</ul>
+</li>
+</ul>
+<h2 id="Tools">Tools</h2>
+<ul>
+<li>Command Pallete（命令操作）：<strong>Ctrl + Shift + P</strong>，<a href="http://docs.sublimetext.info/en/latest/reference/commands.html" target="_blank">官方文档</a></li>
+</ul>
+<h2 id="Plugin">Plugin</h2>
+<p>请百度</p>
+
+	 
+	     <p style="margin:20px 0; color:#9f9f9f; font-size:12px;">
+<span>Posted by <a style="color:#9f9f9f;" href="http://weibo.com/wkevin27"><strong>wkevin27</strong></a> - 5月 12 2014</span><br />
+<span style="line-height:13px;">如需转载，请注明： 本文来自 <a style="color:#9f9f9f;" href="http://wkevin.github.io"><strong>Kevin&#39;s Blog</strong></a></span>
+</p>
+       	 
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
   
 <article class="post">
   
@@ -1038,105 +1153,6 @@ public             //每次可以自动生成，属于过程文件
 <li>有3种blog：post（默认）、page、draft</li>
 </ul>
 
-	 
-	     <p style="margin:20px 0; color:#9f9f9f; font-size:12px;">
-<span>Posted by <a style="color:#9f9f9f;" href="http://weibo.com/wkevin27"><strong>wkevin27</strong></a> - 4月 3 2014</span><br />
-<span style="line-height:13px;">如需转载，请注明： 本文来自 <a style="color:#9f9f9f;" href="http://wkevin.github.io"><strong>Kevin&#39;s Blog</strong></a></span>
-</p>
-       	 
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  
-<article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-  <header>
-      
-      
-  
-    <h1 class="title"><a href="/2014/04/03/createthisblog-2/">本博客的搭建（续）</a></h1>
-  
-
-      <time datetime="2014-04-03T03:37:24.000Z"><a href="/2014/04/03/createthisblog-2/">4月 3 2014</a></time>
-      
-  </header>
-    <div class="entry">
-      
-        <p>昨晚弄到凌晨1点多，高兴的碎觉去了。今早到了公司，另选一台电脑，git clone 出来本博客<br><code>git clone htts://github.com/kevinwjj/kevinwjj.github.io.git</code></p>
-<p>当想在 write 分支开写的时候，发现不行了。</p>
-<h2 id="layout错误">layout错误</h2>
-<pre><code>$ hexo g
-[info] Files loaded <span class="keyword">in</span> <span class="number">0.298</span>s
-[warn] No <span class="keyword">layout</span>: archives/
-[warn] No <span class="keyword">layout</span>: archives/<span class="number">2014</span>/
-[warn] No <span class="keyword">layout</span>: archives/<span class="number">2014</span>/<span class="number">04</span>/
-[warn] No <span class="keyword">layout</span>:
-[warn] No <span class="keyword">layout</span>: <span class="number">2014</span>/<span class="number">04</span>/<span class="number">02</span>/本博客的搭建/
-[warn] No <span class="keyword">layout</span>: tags/hexo/
-[create] Public: atom.xml
-[info] <span class="number">1</span> files generated <span class="keyword">in</span> <span class="number">0.209</span>s
-</code></pre><h2 id="分析">分析</h2>
-<p>版本回滚 <code>git reset --hard HEAD~1</code> —— 不行。</p>
-<p>仔细检查，发现 themes/ 目录下的 landscape、iOS7、light 都是空的。</p>
-<p>一番百度，原来是 git submodule 的问题。</p>
-<p>速速学习几篇 <a href="http://my.oschina.net/shede333/blog/186626" target="_blank">git submodule 相关操作解析</a> ，马上开始修改</p>
-<h2 id="working_tree上操作submodule">working tree上操作submodule</h2>
-<pre><code>$ git rm -rf light iOS7 landscape
-$ git submodule <span class="keyword">add</span> https://github<span class="preprocessor">.com</span>/hexojs/hexo-theme-light<span class="preprocessor">.git</span> light
-$ git submodule <span class="keyword">add</span> https://github<span class="preprocessor">.com</span>/tracy-e/hexo-theme-iOS7<span class="preprocessor">.git</span> iOS7
-$ git submodule <span class="keyword">add</span> https://github<span class="preprocessor">.com</span>/hexojs/hexo-theme-landscape<span class="preprocessor">.git</span> landscape
-$ cat <span class="preprocessor">.gitmodules</span>
-[submodule <span class="string">"themes/light"</span>]
-    path = themes/light
-    url = https://github<span class="preprocessor">.com</span>/hexojs/hexo-theme-light<span class="preprocessor">.git</span>
-[submodule <span class="string">"themes/landscape"</span>]
-    path = themes/landscape
-    url = https://github<span class="preprocessor">.com</span>/hexojs/hexo-theme-landscape<span class="preprocessor">.git</span>
-[submodule <span class="string">"themes/iOS7"</span>]
-    path = themes/iOS7
-    url = https://github<span class="preprocessor">.com</span>/tracy-e/hexo-theme-iOS7<span class="preprocessor">.git</span>
-</code></pre><h2 id="提交_submodule">提交 submodule</h2>
-<p>OK，本地已经没问题了，submodule的信息也要传到github上啊</p>
-<pre><code><span class="variable">$ </span>git add .
-<span class="variable">$ </span>git commit
-<span class="variable">$ </span>git push
-</code></pre><p>其实只commit了 .gitmodules 文件，3个theme的文件都没有上传。</p>
-<h2 id="再次clone验证submodule">再次clone验证submodule</h2>
-<pre><code><span class="char">$ </span>git clone <span class="method">https:</span>//github.com/kevinwjj/kevinwjj.github.io.git temp
-<span class="char">$ </span>cd temp/themes/
-<span class="char">$ </span>git submodule init iOS7
-<span class="char">$ </span>git submodule update iOS7
-</code></pre><p>我理解，每次<code>git fetch</code> 或 <code>git pull</code>整个repo的时候，submodule不更新，需要单独执行<code>git submodule update</code>。</p>
-<pre><code>为什么要指定 iOS7？
-因为不指定的话我会得到这个<span class="built_in">error</span>
-No submodule mapping found <span class="keyword">in</span> .gitmodules <span class="keyword">for</span> path <span class="string">'.deploy'</span>
-好像 .deploy 也是一个submodule似得，不太明确，先放一下吧。
-</code></pre>
 	 
 	     <p style="margin:20px 0; color:#9f9f9f; font-size:12px;">
 <span>Posted by <a style="color:#9f9f9f;" href="http://weibo.com/wkevin27"><strong>wkevin27</strong></a> - 4月 3 2014</span><br />

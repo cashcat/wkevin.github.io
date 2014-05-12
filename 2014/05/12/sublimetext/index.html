@@ -3,20 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>如此迷人的 Reveal | Kevin&#39;s Blog</title>
+  <title>Sublime Text | Kevin&#39;s Blog</title>
   <meta name="author" content="wkevin">
   
-  <meta name="description" content="Reveal ，强大的UI分析工具，真是一个令人着迷的App，简单的安装，神奇的功效，XCode开发的最佳伴侣。
-特性
+  <meta name="description" content="ST3 比 ST2 加强了 project 的功能，如“F12 - 跳转到定义”，使得ST更像个IDE了。
+下面按最常用、最喜欢的菜单排序
+切换到 vi 模式
 
-通过视图层级帮你理解复杂的app
-可以修改控件，并实时看到修改后效果
-3D导航，可流畅旋转，缩放，选中以及高亮
-Reveal可让你清楚哪个视图执行了哪个类
-Reveal可在设备或">
+Setting-Default：拷贝 &quot;ignored_packages&quot;: [&quot;Vintage&quot;">
   
   
-  <meta property="og:title" content="如此迷人的 Reveal"/>
+  <meta property="og:title" content="Sublime Text"/>
   <meta property="og:site_name" content="Kevin&#39;s Blog"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -126,59 +123,81 @@ Reveal可在设备或">
       
       
   
-    <h1 class="title">如此迷人的 Reveal</h1>
+    <h1 class="title">Sublime Text</h1>
   
 
-      <time datetime="2014-04-15T14:46:02.000Z"><a href="/2014/04/15/reveal/">4月 15 2014</a></time>
+      <time datetime="2014-05-12T08:55:40.000Z"><a href="/2014/05/12/sublimetext/">5月 12 2014</a></time>
       
   </header>
     <div class="entry">
       
-        <p><a href="http://revealapp.com/" target="_blank">Reveal</a> ，强大的UI分析工具，真是一个令人着迷的App，简单的安装，神奇的功效，XCode开发的最佳伴侣。</p>
-<h1 id="特性">特性</h1>
+        <p>ST3 比 ST2 加强了 project 的功能，如“F12 - 跳转到定义”，使得ST更像个IDE了。</p>
+<p>下面按最常用、最喜欢的菜单排序</p>
+<h2 id="切换到_vi_模式">切换到 vi 模式</h2>
 <ul>
-<li>通过视图层级帮你理解复杂的app</li>
-<li>可以修改控件，并实时看到修改后效果</li>
-<li>3D导航，可流畅旋转，缩放，选中以及高亮</li>
-<li>Reveal可让你清楚哪个视图执行了哪个类</li>
-<li>Reveal可在设备或者模拟器上运行，可以简单地发现，连接至iOS app。</li>
+<li>Setting-Default：拷贝 <code>&quot;ignored_packages&quot;: [&quot;Vintage&quot;]</code> —— Default是修改不了的</li>
+<li>Setting-User：粘贴为 <code>&quot;ignored_packages&quot;: [ ]</code> —— User的设置会覆盖Default</li>
+<li>基本的字符、搜索、行、列……操作都是使用vi的快捷键实现，就不去再记忆一份ST的快捷键了</li>
 </ul>
-<h1 id="将Reveal与XCode_App_连接">将Reveal与XCode App 连接</h1>
+<h2 id="Goto">Goto</h2>
 <ul>
-<li>Reveal.framework - Reveal static library framework bundle<ul>
-<li>把framework拽到XCode中的project中</li>
-<li>文档中还提到两步，我执行前后都是能够Connect的<ul>
-<li>Select the Build Phases tab and remove Reveal.framework from the Link Binaries With Libraries section.</li>
-<li>Select the Build Settings tab and add the following arguments to the Debug configuration of the Other Linker Flags setting. <code>-ObjC -framework Reveal</code></li>
+<li>（搜索后）跳转<ul>
+<li>跳转到文件：<strong>Ctrl + P</strong>：</li>
+<li>跳转到 symbol：<strong>Ctrl + P，<code>@</code></strong>，或 <strong>Ctrl + R</strong></li>
+<li>跳转到 word：<strong>Ctrl + P，<code>#</code></strong>，或 <strong>Ctrl + ;</strong></li>
+<li>跳转到 line：<strong>Ctrl + P，<code>:</code></strong>，或 <strong>Ctrl + g</strong></li>
+<li>跳转到 定义：<strong>F12</strong> —— ST3中新增，需要文件首先加入到project中</li>
 </ul>
 </li>
-<li>发布版本前记得把此framework去掉</li>
+<li>向回和向前跳转：<strong>Alt + <code>-</code></strong> 和 <strong>Alt + Shift + <code>-</code></strong></li>
+<li>文件切换<ul>
+<li>Tab直接定位：<strong>Alt + 1/2/3/…</strong></li>
+<li>Tab间切换：<strong>Ctrl + PageDown/Up</strong></li>
+<li>头文件和源文件之间切换：<strong>Alt + O</strong></li>
 </ul>
 </li>
-<li>libReveal.dylib - Reveal dynamic library<ul>
-<li>比较复杂一点了，仔细看手册吧</li>
-<li>还有一篇文章，提到用动态库连接真机，进行<a href="http://c.blog.sina.com.cn/profile.php?blogid=cb8a22ea89000gtw" target="_blank">逆向工程</a></li>
 </ul>
-</li>
-<li>还有个项目 <a href="https://github.com/shjborage/Reveal-Plugin-for-XCode.git" target="_blank">Reveal-Plugin-for-XCode</a>，能够不进行上述操作，自动启动并连接Reveal</li>
-</ul>
-<h1 id="Reveal_操作">Reveal 操作</h1>
-<p>操作easy，部分操作还支持Trackpad：</p>
+<h2 id="Select">Select</h2>
 <ul>
-<li>折叠/展开：鼠标在树形列表中的操作三角形即可，记快捷键不划算</li>
-<li>Focus部分UI：鼠标在Tree上选中双击，或 ⌘⏎</li>
-<li>返回Focus之前：^⌘←</li>
-<li>⌘1：只显边框，超酷，可以看到一些没有内容的view</li>
-<li>⌘2：显示内容</li>
-<li>⌘3：显示边框和内容</li>
-<li>⌘4：2D View</li>
-<li>⌘5：3D View</li>
-<li>⌘⌥ Scroll Wheel Up/Down：调整view之间的间距</li>
+<li>Multiple Selections（多重选择）<ul>
+<li><strong>Ctrl + 鼠标左键</strong>：同时在多个地方放置光标，然后可进行同时的修改、删除等</li>
+<li><strong>Ctrl + D</strong>：选中相同的word<ul>
+<li>依次 <strong>Ctrl + D</strong>，选中每一个想要的，然后可进行同时的修改、删除等</li>
+<li>遇到某个不想要的，用 <strong>Ctrl + K</strong> &amp; <strong>Ctrl + D</strong> 跳过</li>
+<li>取消选定：<strong>Ctrl + U</strong></li>
 </ul>
+</li>
+<li>上述两种操作也可以组合使用：先 Ctrl+D，在Ctrl+左键选……</li>
+</ul>
+</li>
+<li>Column Selection<ul>
+<li>Windows：     <strong>Ctrl + Alt + Up/Down</strong>，或者<strong>Shift + 右键拖动</strong></li>
+<li>Linux： <strong>Alt + ⇧ + Up/Down</strong></li>
+<li>OS X： <strong>⌃ + ⇧ + Up/Down</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="View">View</h2>
+<ul>
+<li>Groups：<ul>
+<li>新建 Group：<strong>Ctrl + K</strong> &amp; <strong>Ctrl + Shift + Up</strong></li>
+<li>新建 Group，并将当前文件挪过去：<strong>Ctrl + K</strong> &amp; <strong>Ctrl + Up</strong></li>
+<li>关闭 Group：<strong>Ctrl + K</strong> &amp; <strong>Ctrl + Down</strong></li>
+<li>光标在Group之间切换：<strong>Ctrl + 1/2/3/…</strong></li>
+<li>文件在Group之间挪动：<strong>Ctrl + Shift + 1/2/3/…</strong> — 当前光标所在文件被挪到指定group</li>
+</ul>
+</li>
+</ul>
+<h2 id="Tools">Tools</h2>
+<ul>
+<li>Command Pallete（命令操作）：<strong>Ctrl + Shift + P</strong>，<a href="http://docs.sublimetext.info/en/latest/reference/commands.html" target="_blank">官方文档</a></li>
+</ul>
+<h2 id="Plugin">Plugin</h2>
+<p>请百度</p>
 
 	 
 	     <p style="margin:20px 0; color:#9f9f9f; font-size:12px;">
-<span>Posted by <a style="color:#9f9f9f;" href="http://weibo.com/wkevin27"><strong>wkevin27</strong></a> - 4月 15 2014</span><br />
+<span>Posted by <a style="color:#9f9f9f;" href="http://weibo.com/wkevin27"><strong>wkevin27</strong></a> - 5月 12 2014</span><br />
 <span style="line-height:13px;">如需转载，请注明： 本文来自 <a style="color:#9f9f9f;" href="http://wkevin.github.io"><strong>Kevin&#39;s Blog</strong></a></span>
 </p>
        	 
@@ -190,13 +209,13 @@ Reveal可在设备或">
      		  
   
   <div class="categories">
-    <a href="/categories/iOS/">iOS</a>
+    <a href="/categories/Tools/">Tools</a>
   </div>
 
        		
   
   <div class="tags">
-    <a href="/tags/Reveal/">Reveal</a>
+    <a href="/tags/Editor/">Editor</a>
   </div>
 
      		  

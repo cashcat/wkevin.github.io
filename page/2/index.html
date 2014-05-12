@@ -53,6 +53,8 @@
   <h3 class="title">分类</h3>
   <ul class="entry">
   
+    <li><a href="/categories/Tools/">Tools</a><small>1</small></li>
+  
     <li><a href="/categories/iOS/">iOS</a><small>5</small></li>
   
   </ul>
@@ -63,7 +65,7 @@
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/CALayer/" style="font-size: 10.00px;">CALayer</a><a href="/tags/CocoaPods/" style="font-size: 10.00px;">CocoaPods</a><a href="/tags/Reveal/" style="font-size: 10.00px;">Reveal</a><a href="/tags/UIView/" style="font-size: 10.00px;">UIView</a><a href="/tags/XCode/" style="font-size: 10.00px;">XCode</a><a href="/tags/XVim/" style="font-size: 10.00px;">XVim</a><a href="/tags/blog/" style="font-size: 20.00px;">blog</a><a href="/tags/git/" style="font-size: 10.00px;">git</a><a href="/tags/github/" style="font-size: 20.00px;">github</a><a href="/tags/hexo/" style="font-size: 20.00px;">hexo</a><a href="/tags/license/" style="font-size: 10.00px;">license</a><a href="/tags/maven/" style="font-size: 10.00px;">maven</a><a href="/tags/submodule/" style="font-size: 10.00px;">submodule</a>
+    <a href="/tags/CALayer/" style="font-size: 10.00px;">CALayer</a><a href="/tags/CocoaPods/" style="font-size: 10.00px;">CocoaPods</a><a href="/tags/Editor/" style="font-size: 10.00px;">Editor</a><a href="/tags/Reveal/" style="font-size: 10.00px;">Reveal</a><a href="/tags/UIView/" style="font-size: 10.00px;">UIView</a><a href="/tags/XCode/" style="font-size: 10.00px;">XCode</a><a href="/tags/XVim/" style="font-size: 10.00px;">XVim</a><a href="/tags/blog/" style="font-size: 20.00px;">blog</a><a href="/tags/git/" style="font-size: 10.00px;">git</a><a href="/tags/github/" style="font-size: 20.00px;">github</a><a href="/tags/hexo/" style="font-size: 20.00px;">hexo</a><a href="/tags/license/" style="font-size: 10.00px;">license</a><a href="/tags/maven/" style="font-size: 10.00px;">maven</a><a href="/tags/submodule/" style="font-size: 10.00px;">submodule</a>
   </div>
 </div>
 
@@ -96,6 +98,105 @@
     <div id="main-col" class="alignright">
     <div id="wrapper">
       
+  
+<article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+  <header>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/03/createthisblog-2/">本博客的搭建（续）</a></h1>
+  
+
+      <time datetime="2014-04-03T03:37:24.000Z"><a href="/2014/04/03/createthisblog-2/">4月 3 2014</a></time>
+      
+  </header>
+    <div class="entry">
+      
+        <p>昨晚弄到凌晨1点多，高兴的碎觉去了。今早到了公司，另选一台电脑，git clone 出来本博客<br><code>git clone htts://github.com/kevinwjj/kevinwjj.github.io.git</code></p>
+<p>当想在 write 分支开写的时候，发现不行了。</p>
+<h2 id="layout错误">layout错误</h2>
+<pre><code>$ hexo g
+[info] Files loaded <span class="keyword">in</span> <span class="number">0.298</span>s
+[warn] No <span class="keyword">layout</span>: archives/
+[warn] No <span class="keyword">layout</span>: archives/<span class="number">2014</span>/
+[warn] No <span class="keyword">layout</span>: archives/<span class="number">2014</span>/<span class="number">04</span>/
+[warn] No <span class="keyword">layout</span>:
+[warn] No <span class="keyword">layout</span>: <span class="number">2014</span>/<span class="number">04</span>/<span class="number">02</span>/本博客的搭建/
+[warn] No <span class="keyword">layout</span>: tags/hexo/
+[create] Public: atom.xml
+[info] <span class="number">1</span> files generated <span class="keyword">in</span> <span class="number">0.209</span>s
+</code></pre><h2 id="分析">分析</h2>
+<p>版本回滚 <code>git reset --hard HEAD~1</code> —— 不行。</p>
+<p>仔细检查，发现 themes/ 目录下的 landscape、iOS7、light 都是空的。</p>
+<p>一番百度，原来是 git submodule 的问题。</p>
+<p>速速学习几篇 <a href="http://my.oschina.net/shede333/blog/186626" target="_blank">git submodule 相关操作解析</a> ，马上开始修改</p>
+<h2 id="working_tree上操作submodule">working tree上操作submodule</h2>
+<pre><code>$ git rm -rf light iOS7 landscape
+$ git submodule <span class="keyword">add</span> https://github<span class="preprocessor">.com</span>/hexojs/hexo-theme-light<span class="preprocessor">.git</span> light
+$ git submodule <span class="keyword">add</span> https://github<span class="preprocessor">.com</span>/tracy-e/hexo-theme-iOS7<span class="preprocessor">.git</span> iOS7
+$ git submodule <span class="keyword">add</span> https://github<span class="preprocessor">.com</span>/hexojs/hexo-theme-landscape<span class="preprocessor">.git</span> landscape
+$ cat <span class="preprocessor">.gitmodules</span>
+[submodule <span class="string">"themes/light"</span>]
+    path = themes/light
+    url = https://github<span class="preprocessor">.com</span>/hexojs/hexo-theme-light<span class="preprocessor">.git</span>
+[submodule <span class="string">"themes/landscape"</span>]
+    path = themes/landscape
+    url = https://github<span class="preprocessor">.com</span>/hexojs/hexo-theme-landscape<span class="preprocessor">.git</span>
+[submodule <span class="string">"themes/iOS7"</span>]
+    path = themes/iOS7
+    url = https://github<span class="preprocessor">.com</span>/tracy-e/hexo-theme-iOS7<span class="preprocessor">.git</span>
+</code></pre><h2 id="提交_submodule">提交 submodule</h2>
+<p>OK，本地已经没问题了，submodule的信息也要传到github上啊</p>
+<pre><code><span class="variable">$ </span>git add .
+<span class="variable">$ </span>git commit
+<span class="variable">$ </span>git push
+</code></pre><p>其实只commit了 .gitmodules 文件，3个theme的文件都没有上传。</p>
+<h2 id="再次clone验证submodule">再次clone验证submodule</h2>
+<pre><code><span class="char">$ </span>git clone <span class="method">https:</span>//github.com/kevinwjj/kevinwjj.github.io.git temp
+<span class="char">$ </span>cd temp/themes/
+<span class="char">$ </span>git submodule init iOS7
+<span class="char">$ </span>git submodule update iOS7
+</code></pre><p>我理解，每次<code>git fetch</code> 或 <code>git pull</code>整个repo的时候，submodule不更新，需要单独执行<code>git submodule update</code>。</p>
+<pre><code>为什么要指定 iOS7？
+因为不指定的话我会得到这个<span class="built_in">error</span>
+No submodule mapping found <span class="keyword">in</span> .gitmodules <span class="keyword">for</span> path <span class="string">'.deploy'</span>
+好像 .deploy 也是一个submodule似得，不太明确，先放一下吧。
+</code></pre>
+	 
+	     <p style="margin:20px 0; color:#9f9f9f; font-size:12px;">
+<span>Posted by <a style="color:#9f9f9f;" href="http://weibo.com/wkevin27"><strong>wkevin27</strong></a> - 4月 3 2014</span><br />
+<span style="line-height:13px;">如需转载，请注明： 本文来自 <a style="color:#9f9f9f;" href="http://wkevin.github.io"><strong>Kevin&#39;s Blog</strong></a></span>
+</p>
+       	 
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
   
 <article class="post">
   
