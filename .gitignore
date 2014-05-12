@@ -3,3 +3,4 @@ tmp
 public/
 db.json
 .deploy
+debug.log
