@@ -55,7 +55,7 @@
   
     <li><a href="/categories/Tools/">Tools</a><small>1</small></li>
   
-    <li><a href="/categories/iOS/">iOS</a><small>5</small></li>
+    <li><a href="/categories/iOS/">iOS</a><small>6</small></li>
   
   </ul>
 </div>
@@ -65,7 +65,7 @@
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/CALayer/" style="font-size: 10.00px;">CALayer</a><a href="/tags/CocoaPods/" style="font-size: 10.00px;">CocoaPods</a><a href="/tags/Editor/" style="font-size: 10.00px;">Editor</a><a href="/tags/Reveal/" style="font-size: 10.00px;">Reveal</a><a href="/tags/UIView/" style="font-size: 10.00px;">UIView</a><a href="/tags/XCode/" style="font-size: 10.00px;">XCode</a><a href="/tags/XVim/" style="font-size: 10.00px;">XVim</a><a href="/tags/blog/" style="font-size: 20.00px;">blog</a><a href="/tags/git/" style="font-size: 10.00px;">git</a><a href="/tags/github/" style="font-size: 20.00px;">github</a><a href="/tags/hexo/" style="font-size: 20.00px;">hexo</a><a href="/tags/license/" style="font-size: 10.00px;">license</a><a href="/tags/maven/" style="font-size: 10.00px;">maven</a><a href="/tags/submodule/" style="font-size: 10.00px;">submodule</a>
+    <a href="/tags/CALayer/" style="font-size: 10.00px;">CALayer</a><a href="/tags/CocoaPods/" style="font-size: 10.00px;">CocoaPods</a><a href="/tags/Editor/" style="font-size: 10.00px;">Editor</a><a href="/tags/Reveal/" style="font-size: 10.00px;">Reveal</a><a href="/tags/UIActionSheet/" style="font-size: 10.00px;">UIActionSheet</a><a href="/tags/UIView/" style="font-size: 10.00px;">UIView</a><a href="/tags/XCode/" style="font-size: 10.00px;">XCode</a><a href="/tags/XVim/" style="font-size: 10.00px;">XVim</a><a href="/tags/blog/" style="font-size: 20.00px;">blog</a><a href="/tags/blur/" style="font-size: 10.00px;">blur</a><a href="/tags/git/" style="font-size: 10.00px;">git</a><a href="/tags/github/" style="font-size: 20.00px;">github</a><a href="/tags/hexo/" style="font-size: 20.00px;">hexo</a><a href="/tags/license/" style="font-size: 10.00px;">license</a><a href="/tags/maven/" style="font-size: 10.00px;">maven</a><a href="/tags/snapshot/" style="font-size: 10.00px;">snapshot</a><a href="/tags/submodule/" style="font-size: 10.00px;">submodule</a>
   </div>
 </div>
 
@@ -98,6 +98,119 @@
     <div id="main-col" class="alignright">
     <div id="wrapper">
       
+  
+<article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+  <header>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/03/createthisblog-3/">本博客的搭建（续2）</a></h1>
+  
+
+      <time datetime="2014-04-03T07:47:57.000Z"><a href="/2014/04/03/createthisblog-3/">4月 3 2014</a></time>
+      
+  </header>
+    <div class="entry">
+      
+        <h2 id="关于_-deploy">关于 .deploy</h2>
+<p>.deploy/ 在 <code>hexo init</code> 的时候是没有的，只是在 <code>hexo deploy</code>才创建，基本流程我猜测是：</p>
+<ul>
+<li>根据 _config.yml 中指定的 repo和branch，创建 .deploy/</li>
+<li>git clone</li>
+<li>将 public/ 合入 .deploy/ </li>
+<li>git push .deploy/</li>
+</ul>
+<p><strong>有两种不同的处理方式</strong></p>
+<h3 id="（一）submodule_管理_-deploy/">（一）submodule 管理 .deploy/</h3>
+<pre><code>git submodule <span class="keyword">add</span> https://github<span class="preprocessor">.com</span>/kevinwjj/kevinwjj<span class="preprocessor">.github</span><span class="preprocessor">.io</span><span class="preprocessor">.git</span> <span class="preprocessor">.deploy</span>/
+</code></pre><p>使用时</p>
+<pre><code>git clone https://github<span class="preprocessor">.com</span>/kevinwjj/kevinwjj<span class="preprocessor">.github</span><span class="preprocessor">.io</span><span class="preprocessor">.git</span>
+cd kevinwjj<span class="preprocessor">.github</span><span class="preprocessor">.io</span>
+git submodule init  
+git submodule update 
+</code></pre><p>init和update不指定的话，会初始化和clone所有submodule：iOS7、landscape、light、.deploy</p>
+<p><strong>这样的话，.deploy其实又指向了自己，变成递归了，My god！—— 这个坑好像不小啊</strong> </p>
+<p>坑实在太深，<code>hexo d</code>的时候常常异常，需要对submodule的使用理解深入，不得已想下面的办法。</p>
+<h3 id="（二）-gitignore_管理_-deploy/">（二）.gitignore 管理 .deploy/</h3>
+<p>首先是加入到 .gitignore 中：</p>
+<pre><code>rm -rf <span class="preprocessor">.deploy</span>/
+git rm -rf <span class="preprocessor">.deploy</span>
+echo <span class="preprocessor">.deploy</span> &gt;&gt; <span class="preprocessor">.gitignore</span>
+git commit
+git <span class="keyword">push</span> origin write:write
+</code></pre><p>然后是在另一台电脑上即可进行clone及其使用</p>
+<pre><code>git clone <span class="keyword">https</span>://github.com/kevinwjj/kevinwjj.github.io.git
+git checkout -b <span class="built_in">write</span> origin/<span class="built_in">write</span>
+           <span class="comment"> //此时 .deploy 是空的</span>
+hexo g        <span class="comment"> //生成了public/</span>
+hexo d        <span class="comment"> //生成了.deploy/</span>
+</code></pre><p><strong>问题是</strong>，<code>hexo d</code>之后，html确实是退到github的master分支了，但<strong>master分支会被重置</strong></p>
+<pre><code><span class="variable">$ </span>git logk origin/master
+  <span class="number">5</span>c14c33 <span class="number">2014</span>-<span class="number">04</span>-<span class="number">03</span> <span class="number">16</span><span class="symbol">:</span><span class="number">19</span><span class="symbol">:</span><span class="number">02</span> +080<span class="number">0</span>  kevinWJJ  <span class="constant">Site</span> <span class="symbol">updated:</span> <span class="number">2014</span>-<span class="number">04</span>-<span class="number">03</span> <span class="number">16</span><span class="symbol">:</span><span class="number">19</span><span class="symbol">:</span><span class="number">02</span>
+  edf0f22 <span class="number">2014</span>-<span class="number">04</span>-<span class="number">03</span> <span class="number">16</span><span class="symbol">:</span><span class="number">19</span><span class="symbol">:</span><span class="number">01</span> +080<span class="number">0</span>  kevinWJJ  <span class="constant">First</span> commit
+</code></pre><p>以前提交的master分支都完蛋了，这是个很严重的问题啊。这可咋整？曲线救国吧。写个脚本自己来deploy：</p>
+<pre><code>wangkevintekiMacBook-Pro:write wangkevin$ cat deployByMyself 
+<span class="shebang">#!/bin/bash</span>
+hexo g
+cp -R public/. ../kevinwjj.github.io/
+<span class="built_in">cd</span> ../kevinwjj.github.io/
+git add .
+git commit -m <span class="string">"Deploy by kevinWJJ from hexo"</span>
+git push origin master:master
+<span class="built_in">cd</span> -
+</code></pre><p>思路就是：public中生成html后，手工拷贝到另外一个master分支的repo中，提交之，然后回来fetch一下，再把writeblog也提交了。<br><strong>手工提交，心里舒服多了。</strong></p>
+<h2 id="关于_-gitignore">关于 .gitignore</h2>
+<p>使用<code>hexo init</code>新建一个 hexo “工厂”（暂时成为工厂吧，我感觉类似与生产 html格式blog的工厂）后，自动生成的 .gitignore 包含</p>
+<pre><code>$ cat .gitignore
+.DS_Store        <span class="comment">//是OS X系统使用的管理文件</span>
+node_modules    <span class="comment">//存放plugin的</span>
+db.json            <span class="comment">//虽然不太明确，看样子是保存数据，做数据库用的</span>
+</code></pre><p>根据上面<strong>hexo默认忽略的文件</strong>修改出<strong>我的 .gitignore</strong>：</p>
+<pre><code><span class="preprocessor">.DS</span>_Store
+db<span class="preprocessor">.json</span>
+public             //每次可以自动生成，属于过程文件
+<span class="preprocessor">.deploy</span> 
+</code></pre><h2 id="其他">其他</h2>
+<ul>
+<li><code>hexo new &quot;***&quot;</code> ***不需要加 .md，因为 _config.yml 中配置了自动加 .md 后缀<br><code>new_post_name: :title.md # File name of new posts</code><br>可以修改为 <code>new_post_name: :year-:month-:day-:title.md</code>，使其自动添加年月日，blog写多了，排排序总是好的，想的有点远，呵呵，说不定写不了几篇就罢笔了呢。</li>
+<li>有3种blog：post（默认）、page、draft</li>
+</ul>
+
+	 
+	     <p style="margin:20px 0; color:#9f9f9f; font-size:12px;">
+<span>Posted by <a style="color:#9f9f9f;" href="http://weibo.com/wkevin27"><strong>wkevin27</strong></a> - 4月 3 2014</span><br />
+<span style="line-height:13px;">如需转载，请注明： 本文来自 <a style="color:#9f9f9f;" href="http://wkevin.github.io"><strong>Kevin&#39;s Blog</strong></a></span>
+</p>
+       	 
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
   
 <article class="post">
   
