@@ -4,7 +4,7 @@
   <subtitle><![CDATA[你好]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wkevin.github.io/"/>
-  <updated>2014-05-13T15:21:42.473Z</updated>
+  <updated>2014-05-13T15:25:47.960Z</updated>
   <id>http://wkevin.github.io/</id>
   
   <author>
@@ -19,8 +19,9 @@
     <link href="http://wkevin.github.io/2014/05/13/ahkactionsheet/"/>
     <id>http://wkevin.github.io/2014/05/13/ahkactionsheet/</id>
     <published>2014-05-13T15:18:19.000Z</published>
-    <updated>2014-05-13T15:21:21.000Z</updated>
-    <content type="html"><![CDATA[<table><br><tr><br><img src ="https://raw.githubusercontent.com/fastred/AHKActionSheet/master/example.gif" alt="ActionSheet Reveal" width=320pixels align="middle"/><br></tr><br><tr><br><a   href="http://wkevin.qiniudn.com/Blog_ActionSheet-Reveal.png" title="点击放大" target="_blank"><br><img src ="http://wkevin.qiniudn.com/Blog_ActionSheet-Reveal.png" alt="ActionSheet Reveal 显示图" height=568pixels align="middle"/></a><br></tr><br></table>
+    <updated>2014-05-13T15:25:31.000Z</updated>
+    <content type="html"><![CDATA[<p>本文旨在解析并学习Github上的 <a href="https://github.com/fastred/AHKActionSheet" target="_blank">AHKActionSheet</a></p>
+<table><br><tr><br><img src ="https://raw.githubusercontent.com/fastred/AHKActionSheet/master/example.gif" alt="ActionSheet Reveal" width=320pixels align="middle"/><br></tr><br><tr><br><a   href="http://wkevin.qiniudn.com/Blog_ActionSheet-Reveal.png" title="点击放大" target="_blank"><br><img src ="http://wkevin.qiniudn.com/Blog_ActionSheet-Reveal.png" alt="ActionSheet Reveal 显示图" height=568pixels align="middle"/></a><br></tr><br></table>
 
 <h3 id="Feature">Feature</h3>
 <ul>
