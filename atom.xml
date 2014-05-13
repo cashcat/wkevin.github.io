@@ -4,7 +4,7 @@
   <subtitle><![CDATA[你好]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wkevin.github.io/"/>
-  <updated>2014-05-12T17:13:58.488Z</updated>
+  <updated>2014-05-13T07:37:59.086Z</updated>
   <id>http://wkevin.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://wkevin.github.io/2014/05/12/sublimetext/"/>
     <id>http://wkevin.github.io/2014/05/12/sublimetext/</id>
     <published>2014-05-12T08:55:40.000Z</published>
-    <updated>2014-05-12T12:29:34.000Z</updated>
+    <updated>2014-05-13T02:05:51.000Z</updated>
     <content type="html"><![CDATA[<p>ST3 比 ST2 加强了 project 的功能，如“F12 - 跳转到定义”，使得ST更像个IDE了。</p>
 <p>下面按最常用、最喜欢的菜单排序</p>
 <h2 id="切换到_vi_模式">切换到 vi 模式</h2>
@@ -97,7 +97,7 @@
     <link href="http://wkevin.github.io/2014/05/11/ui_appearance_selector/"/>
     <id>http://wkevin.github.io/2014/05/11/ui_appearance_selector/</id>
     <published>2014-05-11T13:10:44.000Z</published>
-    <updated>2014-05-11T13:16:58.000Z</updated>
+    <updated>2014-05-13T02:04:38.000Z</updated>
     <content type="html"><![CDATA[<p>iOS中改变一个对象的外观的两种方法：  </p>
 <ol>
 <li>一次改变此对象（object）的所有实例（instances）  </li>
@@ -148,7 +148,7 @@
     <link href="http://wkevin.github.io/2014/05/05/git-submodule/"/>
     <id>http://wkevin.github.io/2014/05/05/git-submodule/</id>
     <published>2014-05-05T05:59:46.000Z</published>
-    <updated>2014-05-11T13:12:43.000Z</updated>
+    <updated>2014-05-12T01:17:19.000Z</updated>
     <content type="html"><![CDATA[<h2 id="常规操作">常规操作</h2>
 <p>发布者：维护父项目与submodule之间的依赖关系</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
@@ -255,7 +255,7 @@ $ git branch -avv
     <link href="http://wkevin.github.io/2014/05/04/free-software-licenses/"/>
     <id>http://wkevin.github.io/2014/05/04/free-software-licenses/</id>
     <published>2014-05-04T12:55:09.000Z</published>
-    <updated>2014-05-04T12:57:50.000Z</updated>
+    <updated>2014-05-12T01:17:19.000Z</updated>
     <content type="html"><![CDATA[<p>转载：</p>
 <p><a href="http://paulmillr.com/posts/simple-description-of-popular-software-licenses/" title="Simple description of popular software licenses" target="_blank"><img src="http://paulmillr.com/media/posts/simple-description-of-popular-software-licenses/open-source-licenses-en.png" alt=""></a></p>
 <p><a href="http://www.ruanyifeng.com/blog/2011/05/how_to_choose_free_software_licenses.html" title="如何选择开源许可证？" target="_blank"><img src="http://image.beekka.com/blog/201105/free_software_licenses.png" alt=""></a></p>
@@ -271,7 +271,7 @@ $ git branch -avv
     <link href="http://wkevin.github.io/2014/04/29/calayer_uiview/"/>
     <id>http://wkevin.github.io/2014/04/29/calayer_uiview/</id>
     <published>2014-04-29T13:19:22.000Z</published>
-    <updated>2014-04-29T13:26:38.000Z</updated>
+    <updated>2014-05-12T01:17:19.000Z</updated>
     <content type="html"><![CDATA[<p>对于一个CALayer，bounds、position、anchorPoint、frame之间的关系；对于UIView，frame、bounds、center之间的关系；是长久以来网上热议的话题，各种图解、详解一搜大把，但每个人有每个人的理解思路和学习方法，比如我，看来好多篇也不能在脑子中形成完整的理性和感性认识，这可能就是所谓的“智商不够”吧，没办法。</p>
 <h2 id="CALayer">CALayer</h2>
 <p><img src="http://genekc07.stowers.org/Users/mec/Library/Developer/Shared/Documentation/DocSets/com.apple.adc.documentation.AppleiOS5_1.iOSLibrary.docset/Contents/Resources/Documents/documentation/Cocoa/Conceptual/CoreAnimation_guide/art/layer_bounds.jpg" alt=""></p>
@@ -379,7 +379,7 @@ frame<span class="preprocessor">.size</span> = bounds<span class="preprocessor">
     <link href="http://wkevin.github.io/2014/04/17/maven/"/>
     <id>http://wkevin.github.io/2014/04/17/maven/</id>
     <published>2014-04-17T07:06:36.000Z</published>
-    <updated>2014-04-28T13:26:32.000Z</updated>
+    <updated>2014-05-12T01:17:19.000Z</updated>
     <content type="html"><![CDATA[<p><a href="http://maven.apache.org" target="_blank">Maven</a></p>
 <p>Make使用makefile、rules，在命令行下直接管理依赖、生成过程文件、编译目标、拷贝安装等。<br>Maven类似，使用pom.xml文件，在命令行下直接管理依赖、编译目标、打包安装等。</p>
 <p>可以在命令行下使用make， 也可以在各种IDE中使用其封装的项目管理工具。<br>可以在命令行下使用maven，也可以在各种IDE中使用其封装的项目管理工具。</p>
@@ -525,7 +525,7 @@ frame<span class="preprocessor">.size</span> = bounds<span class="preprocessor">
     <link href="http://wkevin.github.io/2014/04/15/reveal/"/>
     <id>http://wkevin.github.io/2014/04/15/reveal/</id>
     <published>2014-04-15T14:46:02.000Z</published>
-    <updated>2014-04-27T07:23:07.000Z</updated>
+    <updated>2014-05-12T01:17:19.000Z</updated>
     <content type="html"><![CDATA[<p><a href="http://revealapp.com/" target="_blank">Reveal</a> ，强大的UI分析工具，真是一个令人着迷的App，简单的安装，神奇的功效，XCode开发的最佳伴侣。</p>
 <h1 id="特性">特性</h1>
 <ul>
@@ -581,7 +581,7 @@ frame<span class="preprocessor">.size</span> = bounds<span class="preprocessor">
     <link href="http://wkevin.github.io/2014/04/13/build-xvim-in-xcode5/"/>
     <id>http://wkevin.github.io/2014/04/13/build-xvim-in-xcode5/</id>
     <published>2014-04-13T02:01:04.000Z</published>
-    <updated>2014-04-27T07:23:32.000Z</updated>
+    <updated>2014-05-12T01:17:19.000Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><code>$ git clone https://github.com/JugglerShu/XVim.git</code>  // Get XVim  </li>
 <li><code>$ cd XVim</code>  </li>
@@ -606,7 +606,7 @@ frame<span class="preprocessor">.size</span> = bounds<span class="preprocessor">
     <link href="http://wkevin.github.io/2014/04/10/cocoapods-simplestep/"/>
     <id>http://wkevin.github.io/2014/04/10/cocoapods-simplestep/</id>
     <published>2014-04-09T17:28:54.000Z</published>
-    <updated>2014-04-27T07:23:46.000Z</updated>
+    <updated>2014-05-12T01:17:19.000Z</updated>
     <content type="html"><![CDATA[<hr>
 <h3 id="资源">资源</h3>
 <h4 id="网站">网站</h4>
@@ -665,7 +665,7 @@ frame<span class="preprocessor">.size</span> = bounds<span class="preprocessor">
     <link href="http://wkevin.github.io/2014/04/03/createthisblog-3/"/>
     <id>http://wkevin.github.io/2014/04/03/createthisblog-3/</id>
     <published>2014-04-03T07:47:57.000Z</published>
-    <updated>2014-04-27T07:20:52.000Z</updated>
+    <updated>2014-05-12T01:17:19.000Z</updated>
     <content type="html"><![CDATA[<h2 id="关于_-deploy">关于 .deploy</h2>
 <p>.deploy/ 在 <code>hexo init</code> 的时候是没有的，只是在 <code>hexo deploy</code>才创建，基本流程我猜测是：</p>
 <ul>
@@ -745,7 +745,7 @@ public             //每次可以自动生成，属于过程文件
     <link href="http://wkevin.github.io/2014/04/03/createthisblog-2/"/>
     <id>http://wkevin.github.io/2014/04/03/createthisblog-2/</id>
     <published>2014-04-03T03:37:24.000Z</published>
-    <updated>2014-04-27T07:20:39.000Z</updated>
+    <updated>2014-05-12T01:17:19.000Z</updated>
     <content type="html"><![CDATA[<p>昨晚弄到凌晨1点多，高兴的碎觉去了。今早到了公司，另选一台电脑，git clone 出来本博客<br><code>git clone htts://github.com/kevinwjj/kevinwjj.github.io.git</code></p>
 <p>当想在 write 分支开写的时候，发现不行了。</p>
 <h2 id="layout错误">layout错误</h2>
@@ -811,7 +811,7 @@ No submodule mapping found <span class="keyword">in</span> .gitmodules <span cla
     <link href="http://wkevin.github.io/2014/04/02/createthisblog/"/>
     <id>http://wkevin.github.io/2014/04/02/createthisblog/</id>
     <published>2014-04-02T15:42:18.000Z</published>
-    <updated>2014-04-27T07:20:22.000Z</updated>
+    <updated>2014-05-12T01:17:19.000Z</updated>
     <content type="html"><![CDATA[<h1 id="github_+_hexo_=&gt;_blog">github + hexo =&gt; blog</h1>
 <ul>
 <li><a href="http://nodejs.org" target="_blank">nodejs.org</a> 下载、安装node.js</li>
