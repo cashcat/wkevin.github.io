@@ -46,6 +46,6 @@
   </div>
 </article>
 
-<% if (item.layout === 'post'){ %>
+<% if (item.layout === 'post' && !index){ %>
 <%- partial('comment') %>
 <% } %>
