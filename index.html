@@ -118,6 +118,95 @@
       
       
   
+    <h1 class="title"><a href="/2014/05/14/github_too_much_push/">在Github上低调push</a></h1>
+  
+
+      <time datetime="2014-05-14T11:36:24.000Z"><a href="/2014/05/14/github_too_much_push/">5月 14 2014</a></time>
+      
+  </header>
+    <div class="entry">
+      
+        <p>假如，白天在公司用PC，下班后回家用Mac，来讨论一下共同修改一份代码，或写一份文档时，如何避免太多的<code>git push</code>。</p>
+<p>模式最初一般是这样的：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">PC{</span> <span class="comment">MyRepo(master)</span> <span class="comment">}</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">github</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt;  <span class="comment">{</span> <span class="comment">(master)MyRepo</span> <span class="comment">}Mac</span>
+</pre></td></tr></table></figure>
+
+<p>步骤一般是介样滴：  </p>
+<p>下班音乐响起来之前，要记得 <code>git commit</code> 和 <code>git push</code> —— 这个当然是应该的了，没啥好说的</p>
+<p>白天里做了很多次<code>git commit</code>，但为了赶公司班车，没时间 <code>git push</code> 了，回家继续写下去（对文档是没问题的），睡觉前<code>git push</code>，则第二天PC上就要做 <code>git fetch</code>、<code>git merge --no-commit</code>了 —— 这也没啥大不了的，挺好</p>
+<p>为某个特性或某个任务新建个branch吧，以免影响master的稳定性</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">PC{</span> <span class="comment">MyRepo(master)(newBr)</span> <span class="comment">}</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">github</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt;  <span class="comment">{</span> <span class="comment">(master)(newBr)MyRepo</span> <span class="comment">}Mac</span>
+</pre></td></tr></table></figure>
+
+<p>嗯，master上好看多了 :)</p>
+<p>不必担心 newBr 向 master 合两次甚至多次时产生冲突，<code>git merge</code>会自动记住你上次 merge 的节点，进而避开再次 merge。如果不想看到 newBr 上的 commit log，没啥意义，留着干啥，那就删掉吧：<br><code>git merge --squash newBr</code></p>
+<p><strong>问题是</strong></p>
+<blockquote>
+<p>github 上 follow 你的，和 watch 你项目的，会看到很多无效 push 的 feed news —— 开始有点自作多情了呵，哪有人follow和watch我啊 —— 嘿！嘿！这哪是自作多情，这只是内向的人希望低调的行动而已。</p>
+</blockquote>
+<p>何不建立一个秘密通道？  模式修改为这样：  </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="comment">PC{</span> <span class="comment">MyRepo(master)</span> <span class="comment">}</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">github</span>  &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">{</span> <span class="comment">(master)MyRepo</span> <span class="comment">}Mac</span>
+          <span class="comment">(private1)</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">oschina</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt;   <span class="comment">(private1)</span>
+          <span class="comment">(private2)</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">oschina</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt;   <span class="comment">(private2)</span>
+          <span class="comment">(private3)</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">oschina</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt;   <span class="comment">(private3)</span>
+</pre></td></tr></table></figure>
+
+<p>oschina上支持私有项目的，随意操作吧：  </p>
+<ul>
+<li><code>git branch privatex</code></li>
+<li><code>git push oschina privatex:privatex</code></li>
+<li><code>git pull</code></li>
+<li><code>git branch -d privatex</code></li>
+</ul>
+<p><strong>分支用完就删掉</strong>的原则仍是要积极遵守的。</p>
+
+	 
+	     <p style="margin:20px 0; color:#9f9f9f; font-size:12px;">
+<span>Posted by <a style="color:#9f9f9f;" href="http://weibo.com/wkevin27"><strong>wkevin27</strong></a> - 5月 14 2014</span><br />
+<span style="line-height:13px;">如需转载，请注明： 本文来自 <a style="color:#9f9f9f;" href="http://wkevin.github.io"><strong>Kevin&#39;s Blog</strong></a></span>
+</p>
+       	 
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  
+<article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+  <header>
+      
+      
+  
     <h1 class="title"><a href="/2014/05/13/ahkactionsheet/">从头创建一个ActionSheet--解析 AHKActionSheet</a></h1>
   
 
@@ -1102,100 +1191,6 @@ frame<span class="preprocessor">.size</span> = bounds<span class="preprocessor">
 	 
 	     <p style="margin:20px 0; color:#9f9f9f; font-size:12px;">
 <span>Posted by <a style="color:#9f9f9f;" href="http://weibo.com/wkevin27"><strong>wkevin27</strong></a> - 4月 13 2014</span><br />
-<span style="line-height:13px;">如需转载，请注明： 本文来自 <a style="color:#9f9f9f;" href="http://wkevin.github.io"><strong>Kevin&#39;s Blog</strong></a></span>
-</p>
-       	 
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  
-<article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-  <header>
-      
-      
-  
-    <h1 class="title"><a href="/2014/04/10/cocoapods-simplestep/">CocoaPods 简要步骤</a></h1>
-  
-
-      <time datetime="2014-04-09T17:28:54.000Z"><a href="/2014/04/10/cocoapods-simplestep/">4月 10 2014</a></time>
-      
-  </header>
-    <div class="entry">
-      
-        <hr>
-<h3 id="资源">资源</h3>
-<h4 id="网站">网站</h4>
-<ul>
-<li><a href="http://cocoapods.org" target="_blank">cocoapods.org</a></li>
-<li><a href="https://github.com/CocoaPods/CocoaPods" target="_blank">github src</a></li>
-</ul>
-<h4 id="文章">文章</h4>
-<ul>
-<li><a href="http://code4app.com/article/cocoapods-install-usage" target="_blank">CocoaPods安装和使用教程—Code4App</a></li>
-<li><a href="http://blog.jobbole.com/53365/" target="_blank">深入理解 CocoaPods—伯乐在线</a></li>
-</ul>
-<hr>
-<h3 id="安装">安装</h3>
-<ul>
-<li><code>$ sudo gem update --system</code> ：更新gem版本  </li>
-<li><code>$ gem sources -a http://ruby.taobao.org/</code> ：增加gem库，然后可 *    <code>gem source -l</code> 查看一下   </li>
-<li><code>$ sudo gem install cocoapods</code> ：安装cocoapods</li>
-</ul>
-<hr>
-<h3 id="查看cocoapods是否支持某个第三方库（如：ASValueTrackingSlider）">查看cocoapods是否支持某个第三方库（如：ASValueTrackingSlider）</h3>
-<ul>
-<li><code>$ pod search ASValueTrackingSlider</code> ： 搜索pod库中ABC的信息，支持模糊查找、正则查找</li>
-<li><code>$ pod try ASValueTrackingSlider</code> ：会创建临时文件夹，并下载ABC，并用XCode打开</li>
-<li><code>$ pod list |grep ASValueTrackingSlider</code> </li>
-</ul>
-<hr>
-<h3 id="在自己的XCode项目中引入ABC">在自己的XCode项目中引入ABC</h3>
-<ul>
-<li><code>$ cd myProjcet</code></li>
-<li><p><code>$ vi Podfile</code>  : <a href="http://guides.cocoapods.org/using/the-podfile.html" target="_blank">Podfile官方说明</a></p>
-<p>   platform :ios, ‘7.0’<br>   pod ‘ASValueTrackingSlider’,       ‘~&gt; 0.6’<br>ABC 的版本号可由 <code>pod search ASValueTrackingSlider</code>查出，并直接拷贝过来</p>
-</li>
-<li><code>$ pod install</code>  ：会生成 myProject.xcworkspace、Podfile.lock、Pods/</li>
-<li><code>$ open myProject.xcworkspace</code> ：以后每次都要从这里打开XCode</li>
-<li><code>$ pod update</code> ：已经有 xcworkspace等的项目可以用此命令更新</li>
-</ul>
-<hr>
-<h3 id="创建Pod">创建Pod</h3>
-<ul>
-<li><code>$ pod spec create Peanut</code></li>
-<li><code>$ edit Peanut.podspec</code></li>
-<li><code>$ pod spec lint Peanut.podspec</code></li>
-</ul>
-
-	 
-	     <p style="margin:20px 0; color:#9f9f9f; font-size:12px;">
-<span>Posted by <a style="color:#9f9f9f;" href="http://weibo.com/wkevin27"><strong>wkevin27</strong></a> - 4月 10 2014</span><br />
 <span style="line-height:13px;">如需转载，请注明： 本文来自 <a style="color:#9f9f9f;" href="http://wkevin.github.io"><strong>Kevin&#39;s Blog</strong></a></span>
 </p>
        	 

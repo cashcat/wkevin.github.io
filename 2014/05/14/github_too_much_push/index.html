@@ -1,0 +1,240 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>在Github上低调push | Kevin&#39;s Blog</title>
+  <meta name="author" content="wkevin">
+  
+  <meta name="description" content="假如，白天在公司用PC，下班后回家用Mac，来讨论一下共同修改一份代码，或写一份文档时，如何避免太多的git push。
+模式最初一般是这样的：
+1
+PC{ MyRepo(master) } &lt;---&gt; github &lt;---&gt;  { (master)MyRepo }Mac
+">
+  
+  
+  <meta property="og:title" content="在Github上低调push"/>
+  <meta property="og:site_name" content="Kevin&#39;s Blog"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+   <link rel="apple-touch-icon" href="/icon.png" />
+   <link rel="shortcut icon" href="/favicon.png" >
+   <link rel="alternate" href="http://xxx.xx/atom.xml" title="Kevin&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <div id="content" class="inner">
+    <aside id="sidebar" class="alignleft">
+      <div class="navigationBar">
+        <a href="/">Kevin&#39;s Blog</a>
+      </div>
+    	
+  <nav class="widget" id="menu">
+	<ul>
+    
+      <li class="cell"><a class="next" href="/">首页</a><li>
+    
+      <li class="cell"><a class="next" href="/archives/">存档</a><li>
+    
+      <li class="cell"><a class="next" href="/about/">关于</a><li>
+    
+      <li class="cell"><a class="next" href="/atom.xml">订阅</a><li>
+    
+      <li class="cell"><a class="next" href="/penmanship/">书法</a><li>
+    
+      <li class="cell"><a class="next" href="/freqlink/">链接</a><li>
+    
+    </ul>
+</nav>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Tools/">Tools</a><small>1</small></li>
+  
+    <li><a href="/categories/iOS/">iOS</a><small>6</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/CALayer/" style="font-size: 10.00px;">CALayer</a><a href="/tags/CocoaPods/" style="font-size: 10.00px;">CocoaPods</a><a href="/tags/Editor/" style="font-size: 10.00px;">Editor</a><a href="/tags/Reveal/" style="font-size: 10.00px;">Reveal</a><a href="/tags/UIActionSheet/" style="font-size: 10.00px;">UIActionSheet</a><a href="/tags/UIView/" style="font-size: 10.00px;">UIView</a><a href="/tags/XCode/" style="font-size: 10.00px;">XCode</a><a href="/tags/XVim/" style="font-size: 10.00px;">XVim</a><a href="/tags/blog/" style="font-size: 20.00px;">blog</a><a href="/tags/blur/" style="font-size: 10.00px;">blur</a><a href="/tags/git/" style="font-size: 10.00px;">git</a><a href="/tags/github/" style="font-size: 20.00px;">github</a><a href="/tags/hexo/" style="font-size: 20.00px;">hexo</a><a href="/tags/license/" style="font-size: 10.00px;">license</a><a href="/tags/maven/" style="font-size: 10.00px;">maven</a><a href="/tags/snapshot/" style="font-size: 10.00px;">snapshot</a><a href="/tags/submodule/" style="font-size: 10.00px;">submodule</a>
+  </div>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li>
+    <a href="http://heavycoin.zhpool.com" title="frank's coin">Frank's coin</a>
+</li>
+</ul>
+</div>
+
+
+    	<footer id="footer" class="inner"><div class="copyright">
+  
+  &copy; 2014 wkevin
+  
+</div>
+
+
+
+</footer>
+    </aside>
+    
+    
+    <div id="hidden-navigationBar" class="navigationBar">
+      <a href="/">Kevin&#39;s Blog</a>
+    </div>
+    <div id="main-col" class="alignright">
+    <div id="wrapper">
+      
+<article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+  <header>
+      
+      
+  
+    <h1 class="title">在Github上低调push</h1>
+  
+
+      <time datetime="2014-05-14T11:36:24.000Z"><a href="/2014/05/14/github_too_much_push/">5月 14 2014</a></time>
+      
+  </header>
+    <div class="entry">
+      
+        <p>假如，白天在公司用PC，下班后回家用Mac，来讨论一下共同修改一份代码，或写一份文档时，如何避免太多的<code>git push</code>。</p>
+<p>模式最初一般是这样的：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">PC{</span> <span class="comment">MyRepo(master)</span> <span class="comment">}</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">github</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt;  <span class="comment">{</span> <span class="comment">(master)MyRepo</span> <span class="comment">}Mac</span>
+</pre></td></tr></table></figure>
+
+<p>步骤一般是介样滴：  </p>
+<p>下班音乐响起来之前，要记得 <code>git commit</code> 和 <code>git push</code> —— 这个当然是应该的了，没啥好说的</p>
+<p>白天里做了很多次<code>git commit</code>，但为了赶公司班车，没时间 <code>git push</code> 了，回家继续写下去（对文档是没问题的），睡觉前<code>git push</code>，则第二天PC上就要做 <code>git fetch</code>、<code>git merge --no-commit</code>了 —— 这也没啥大不了的，挺好</p>
+<p>为某个特性或某个任务新建个branch吧，以免影响master的稳定性</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">PC{</span> <span class="comment">MyRepo(master)(newBr)</span> <span class="comment">}</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">github</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt;  <span class="comment">{</span> <span class="comment">(master)(newBr)MyRepo</span> <span class="comment">}Mac</span>
+</pre></td></tr></table></figure>
+
+<p>嗯，master上好看多了 :)</p>
+<p>不必担心 newBr 向 master 合两次甚至多次时产生冲突，<code>git merge</code>会自动记住你上次 merge 的节点，进而避开再次 merge。如果不想看到 newBr 上的 commit log，没啥意义，留着干啥，那就删掉吧：<br><code>git merge --squash newBr</code></p>
+<p><strong>问题是</strong></p>
+<blockquote>
+<p>github 上 follow 你的，和 watch 你项目的，会看到很多无效 push 的 feed news —— 开始有点自作多情了呵，哪有人follow和watch我啊 —— 嘿！嘿！这哪是自作多情，这只是内向的人希望低调的行动而已。</p>
+</blockquote>
+<p>何不建立一个秘密通道？  模式修改为这样：  </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="comment">PC{</span> <span class="comment">MyRepo(master)</span> <span class="comment">}</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">github</span>  &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">{</span> <span class="comment">(master)MyRepo</span> <span class="comment">}Mac</span>
+          <span class="comment">(private1)</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">oschina</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt;   <span class="comment">(private1)</span>
+          <span class="comment">(private2)</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">oschina</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt;   <span class="comment">(private2)</span>
+          <span class="comment">(private3)</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">oschina</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt;   <span class="comment">(private3)</span>
+</pre></td></tr></table></figure>
+
+<p>oschina上支持私有项目的，随意操作吧：  </p>
+<ul>
+<li><code>git branch privatex</code></li>
+<li><code>git push oschina privatex:privatex</code></li>
+<li><code>git pull</code></li>
+<li><code>git branch -d privatex</code></li>
+</ul>
+<p><strong>分支用完就删掉</strong>的原则仍是要积极遵守的。</p>
+
+	 
+	     <p style="margin:20px 0; color:#9f9f9f; font-size:12px;">
+<span>Posted by <a style="color:#9f9f9f;" href="http://weibo.com/wkevin27"><strong>wkevin27</strong></a> - 5月 14 2014</span><br />
+<span style="line-height:13px;">如需转载，请注明： 本文来自 <a style="color:#9f9f9f;" href="http://wkevin.github.io"><strong>Kevin&#39;s Blog</strong></a></span>
+</p>
+       	 
+      
+    </div>
+    <footer>
+      
+	 
+     		  
+       		
+     		  
+       	 
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+    <section id="comment">
+        <h1 class="title">留言</h1>
+        <!-- 多说评论框 start -->
+        <div class="ds-thread" data-thread-key="2014/05/14/github_too_much_push/" data-title="在Github上低调push" data-url="http://wkevin.github.io/2014/05/14/github_too_much_push/"></div>
+        <!-- 多说评论框 end -->
+        <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+        <script type="text/javascript">
+        var duoshuoQuery = {short_name:"wkevin"};
+    (function() {
+     var ds = document.createElement('script');
+     ds.type = 'text/javascript';ds.async = true;
+     ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+     ds.charset = 'UTF-8';
+     (document.getElementsByTagName('head')[0] 
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+    </script>
+        <!-- 多说公共JS代码 end -->
+        </section>
+        
+
+
+</div>
+    </div>
+    <div class="tabbar" onload="divideTabBar()">
+	
+      <div class="tabbaritem"><a class="next" href="/">首页</a></div>
+    
+      <div class="tabbaritem"><a class="next" href="/archives/">存档</a></div>
+    
+      <div class="tabbaritem"><a class="next" href="/about/">关于</a></div>
+    
+      <div class="tabbaritem"><a class="next" href="/atom.xml">订阅</a></div>
+    
+      <div class="tabbaritem"><a class="next" href="/penmanship/">书法</a></div>
+    
+      <div class="tabbaritem"><a class="next" href="/freqlink/">链接</a></div>
+    
+</div>
+
+
+  </div>
+</body>
+</html>
