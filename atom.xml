@@ -4,7 +4,7 @@
   <subtitle><![CDATA[你好]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wkevin.github.io/"/>
-  <updated>2014-05-14T11:57:42.082Z</updated>
+  <updated>2014-05-14T12:32:15.771Z</updated>
   <id>http://wkevin.github.io/</id>
   
   <author>
@@ -13,6 +13,36 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Sublime Text 之 Package Control]]></title>
+    <link href="http://wkevin.github.io/2014/05/14/sublimetext_packagecontrol/"/>
+    <id>http://wkevin.github.io/2014/05/14/sublimetext_packagecontrol/</id>
+    <published>2014-05-14T12:26:42.000Z</published>
+    <updated>2014-05-14T12:31:49.000Z</updated>
+    <content type="html"><![CDATA[<p><a href="https://sublime.wbond.net/" title="跳转到Package Control官网查看详细文档" target="_blank"><img src="https://sublime.wbond.net/img/logo.svg" alt=""></a></p>
+<p>Package Control 是 ST 的插件（别人都叫 plugin，它叫 package）管理系统，管理其他 package 的。</p>
+<p>ST package 的安装目录（查看已安装的package）在：<br><code>Preferences</code>-&gt;<code>Browse Packages</code>-&gt;<code>Installed Packages</code></p>
+<p>开始使用：<code>ctrl+shift+p</code> -&gt; <code>Package Control:</code></p>
+<ul>
+<li><code>Install package</code>：安装 package，从官方默认<a href="https://sublime.wbond.net/browse" target="_blank">channel</a>获取列表</li>
+<li><code>Remove Package</code>：<ul>
+<li>会删掉 <code>installed packages</code>目录下的package</li>
+<li>修改 <code>Packages/User/Package Control.sublime-settings</code> 文件中的 package</li>
+</ul>
+</li>
+<li><code>Add Repository</code>：安装channel中尚没有的package，需给出一个git库目录</li>
+<li><code>Upgrade Package</code>：列出可供升级的package</li>
+<li><code>Upgrade/Overwrite All Packages</code>：升级并覆盖所有package，包括不是通过package control安装的</li>
+</ul>
+]]></content>
+    
+    
+      <category term="Editor" scheme="http://wkevin.github.io/tags/Editor/"/>
+    
+      <category term="Tools" scheme="http://wkevin.github.io/categories/Tools/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[在Github上低调push]]></title>

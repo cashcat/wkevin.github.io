@@ -3,17 +3,14 @@
 <head>
   <meta charset="utf-8">
   
-  <title>本博客的搭建（续） | Kevin&#39;s Blog</title>
+  <title>Sublime Text 之 Package Control | Kevin&#39;s Blog</title>
   <meta name="author" content="wkevin">
   
-  <meta name="description" content="昨晚弄到凌晨1点多，高兴的碎觉去了。今早到了公司，另选一台电脑，git clone 出来本博客git clone htts://github.com/kevinwjj/kevinwjj.github.io.git
-当想在 write 分支开写的时候，发现不行了。
-layout错误
-$ hexo g
-">
+  <meta name="description" content="Package Control 是 ST 的插件（别人都叫 plugin，它叫 package）管理系统，管理其他 package 的。
+ST package 的安装目录（查看已安装的package）在：Preferences-&gt;Browse Packages-&gt;Installed Pa">
   
   
-  <meta property="og:title" content="本博客的搭建（续）"/>
+  <meta property="og:title" content="Sublime Text 之 Package Control"/>
   <meta property="og:site_name" content="Kevin&#39;s Blog"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -123,67 +120,33 @@ $ hexo g
       
       
   
-    <h1 class="title">本博客的搭建（续）</h1>
+    <h1 class="title">Sublime Text 之 Package Control</h1>
   
 
-      <time datetime="2014-04-03T03:37:24.000Z"><a href="/2014/04/03/createthisblog-2/">4月 3 2014</a></time>
+      <time datetime="2014-05-14T12:26:42.000Z"><a href="/2014/05/14/sublimetext_packagecontrol/">5月 14 2014</a></time>
       
   </header>
     <div class="entry">
       
-        <p>昨晚弄到凌晨1点多，高兴的碎觉去了。今早到了公司，另选一台电脑，git clone 出来本博客<br><code>git clone htts://github.com/kevinwjj/kevinwjj.github.io.git</code></p>
-<p>当想在 write 分支开写的时候，发现不行了。</p>
-<h2 id="layout错误">layout错误</h2>
-<pre><code>$ hexo g
-[info] Files loaded <span class="keyword">in</span> <span class="number">0.298</span>s
-[warn] No <span class="keyword">layout</span>: archives/
-[warn] No <span class="keyword">layout</span>: archives/<span class="number">2014</span>/
-[warn] No <span class="keyword">layout</span>: archives/<span class="number">2014</span>/<span class="number">04</span>/
-[warn] No <span class="keyword">layout</span>:
-[warn] No <span class="keyword">layout</span>: <span class="number">2014</span>/<span class="number">04</span>/<span class="number">02</span>/本博客的搭建/
-[warn] No <span class="keyword">layout</span>: tags/hexo/
-[create] Public: atom.xml
-[info] <span class="number">1</span> files generated <span class="keyword">in</span> <span class="number">0.209</span>s
-</code></pre><h2 id="分析">分析</h2>
-<p>版本回滚 <code>git reset --hard HEAD~1</code> —— 不行。</p>
-<p>仔细检查，发现 themes/ 目录下的 landscape、iOS7、light 都是空的。</p>
-<p>一番百度，原来是 git submodule 的问题。</p>
-<p>速速学习几篇 <a href="http://my.oschina.net/shede333/blog/186626" target="_blank">git submodule 相关操作解析</a> ，马上开始修改</p>
-<h2 id="working_tree上操作submodule">working tree上操作submodule</h2>
-<pre><code>$ git rm -rf light iOS7 landscape
-$ git submodule <span class="keyword">add</span> https://github<span class="preprocessor">.com</span>/hexojs/hexo-theme-light<span class="preprocessor">.git</span> light
-$ git submodule <span class="keyword">add</span> https://github<span class="preprocessor">.com</span>/tracy-e/hexo-theme-iOS7<span class="preprocessor">.git</span> iOS7
-$ git submodule <span class="keyword">add</span> https://github<span class="preprocessor">.com</span>/hexojs/hexo-theme-landscape<span class="preprocessor">.git</span> landscape
-$ cat <span class="preprocessor">.gitmodules</span>
-[submodule <span class="string">"themes/light"</span>]
-    path = themes/light
-    url = https://github<span class="preprocessor">.com</span>/hexojs/hexo-theme-light<span class="preprocessor">.git</span>
-[submodule <span class="string">"themes/landscape"</span>]
-    path = themes/landscape
-    url = https://github<span class="preprocessor">.com</span>/hexojs/hexo-theme-landscape<span class="preprocessor">.git</span>
-[submodule <span class="string">"themes/iOS7"</span>]
-    path = themes/iOS7
-    url = https://github<span class="preprocessor">.com</span>/tracy-e/hexo-theme-iOS7<span class="preprocessor">.git</span>
-</code></pre><h2 id="提交_submodule">提交 submodule</h2>
-<p>OK，本地已经没问题了，submodule的信息也要传到github上啊</p>
-<pre><code><span class="variable">$ </span>git add .
-<span class="variable">$ </span>git commit
-<span class="variable">$ </span>git push
-</code></pre><p>其实只commit了 .gitmodules 文件，3个theme的文件都没有上传。</p>
-<h2 id="再次clone验证submodule">再次clone验证submodule</h2>
-<pre><code><span class="char">$ </span>git clone <span class="method">https:</span>//github.com/kevinwjj/kevinwjj.github.io.git temp
-<span class="char">$ </span>cd temp/themes/
-<span class="char">$ </span>git submodule init iOS7
-<span class="char">$ </span>git submodule update iOS7
-</code></pre><p>我理解，每次<code>git fetch</code> 或 <code>git pull</code>整个repo的时候，submodule不更新，需要单独执行<code>git submodule update</code>。</p>
-<pre><code>为什么要指定 iOS7？
-因为不指定的话我会得到这个<span class="built_in">error</span>
-No submodule mapping found <span class="keyword">in</span> .gitmodules <span class="keyword">for</span> path <span class="string">'.deploy'</span>
-好像 .deploy 也是一个submodule似得，不太明确，先放一下吧。
-</code></pre>
+        <p><a href="https://sublime.wbond.net/" title="跳转到Package Control官网查看详细文档" target="_blank"><img src="https://sublime.wbond.net/img/logo.svg" alt=""></a></p>
+<p>Package Control 是 ST 的插件（别人都叫 plugin，它叫 package）管理系统，管理其他 package 的。</p>
+<p>ST package 的安装目录（查看已安装的package）在：<br><code>Preferences</code>-&gt;<code>Browse Packages</code>-&gt;<code>Installed Packages</code></p>
+<p>开始使用：<code>ctrl+shift+p</code> -&gt; <code>Package Control:</code></p>
+<ul>
+<li><code>Install package</code>：安装 package，从官方默认<a href="https://sublime.wbond.net/browse" target="_blank">channel</a>获取列表</li>
+<li><code>Remove Package</code>：<ul>
+<li>会删掉 <code>installed packages</code>目录下的package</li>
+<li>修改 <code>Packages/User/Package Control.sublime-settings</code> 文件中的 package</li>
+</ul>
+</li>
+<li><code>Add Repository</code>：安装channel中尚没有的package，需给出一个git库目录</li>
+<li><code>Upgrade Package</code>：列出可供升级的package</li>
+<li><code>Upgrade/Overwrite All Packages</code>：升级并覆盖所有package，包括不是通过package control安装的</li>
+</ul>
+
 	 
 	     <p style="margin:20px 0; color:#9f9f9f; font-size:12px;">
-<span>Posted by <a style="color:#9f9f9f;" href="http://weibo.com/wkevin27"><strong>wkevin27</strong></a> - 4月 3 2014</span><br />
+<span>Posted by <a style="color:#9f9f9f;" href="http://weibo.com/wkevin27"><strong>wkevin27</strong></a> - 5月 14 2014</span><br />
 <span style="line-height:13px;">如需转载，请注明： 本文来自 <a style="color:#9f9f9f;" href="http://wkevin.github.io"><strong>Kevin&#39;s Blog</strong></a></span>
 </p>
        	 
@@ -193,10 +156,15 @@ No submodule mapping found <span class="keyword">in</span> .gitmodules <span cla
       
 	 
      		  
+  
+  <div class="categories">
+    <a href="/categories/Tools/">Tools</a>
+  </div>
+
        		
   
   <div class="tags">
-    <a href="/tags/hexo/">hexo</a>, <a href="/tags/github/">github</a>, <a href="/tags/blog/">blog</a>
+    <a href="/tags/Editor/">Editor</a>
   </div>
 
      		  
@@ -212,7 +180,7 @@ No submodule mapping found <span class="keyword">in</span> .gitmodules <span cla
     <section id="comment">
         <h1 class="title">留言</h1>
         <!-- 多说评论框 start -->
-        <div class="ds-thread" data-thread-key="2014/04/03/createthisblog-2/" data-title="本博客的搭建（续）" data-url="http://wkevin.github.io/2014/04/03/createthisblog-2/"></div>
+        <div class="ds-thread" data-thread-key="2014/05/14/sublimetext_packagecontrol/" data-title="Sublime Text 之 Package Control" data-url="http://wkevin.github.io/2014/05/14/sublimetext_packagecontrol/"></div>
         <!-- 多说评论框 end -->
         <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
         <script type="text/javascript">
