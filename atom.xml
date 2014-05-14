@@ -4,7 +4,7 @@
   <subtitle><![CDATA[你好]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://wkevin.github.io/"/>
-  <updated>2014-05-14T11:38:51.528Z</updated>
+  <updated>2014-05-14T11:55:06.242Z</updated>
   <id>http://wkevin.github.io/</id>
   
   <author>
@@ -19,19 +19,19 @@
     <link href="http://wkevin.github.io/2014/05/14/github_too_much_push/"/>
     <id>http://wkevin.github.io/2014/05/14/github_too_much_push/</id>
     <published>2014-05-14T11:36:24.000Z</published>
-    <updated>2014-05-14T11:37:26.000Z</updated>
+    <updated>2014-05-14T11:54:35.000Z</updated>
     <content type="html"><![CDATA[<p>假如，白天在公司用PC，下班后回家用Mac，来讨论一下共同修改一份代码，或写一份文档时，如何避免太多的<code>git push</code>。</p>
 <p>模式最初一般是这样的：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="comment">PC{</span> <span class="comment">MyRepo(master)</span> <span class="comment">}</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">github</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt;  <span class="comment">{</span> <span class="comment">(master)MyRepo</span> <span class="comment">}Mac</span>
+<figure class="highlight c"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>PC{ MyRepo(master) } &lt;---&gt; github &lt;---&gt;  { (master)MyRepo }Mac
 </pre></td></tr></table></figure>
 
 <p>步骤一般是介样滴：  </p>
 <p>下班音乐响起来之前，要记得 <code>git commit</code> 和 <code>git push</code> —— 这个当然是应该的了，没啥好说的</p>
 <p>白天里做了很多次<code>git commit</code>，但为了赶公司班车，没时间 <code>git push</code> 了，回家继续写下去（对文档是没问题的），睡觉前<code>git push</code>，则第二天PC上就要做 <code>git fetch</code>、<code>git merge --no-commit</code>了 —— 这也没啥大不了的，挺好</p>
 <p>为某个特性或某个任务新建个branch吧，以免影响master的稳定性</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="comment">PC{</span> <span class="comment">MyRepo(master)(newBr)</span> <span class="comment">}</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">github</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt;  <span class="comment">{</span> <span class="comment">(master)(newBr)MyRepo</span> <span class="comment">}Mac</span>
+<figure class="highlight c"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>PC{ MyRepo(master)(newBr) } &lt;---&gt; github &lt;---&gt;  { (master)(newBr)MyRepo }Mac
 </pre></td></tr></table></figure>
 
 <p>嗯，master上好看多了 :)</p>
@@ -41,14 +41,14 @@
 <p>github 上 follow 你的，和 watch 你项目的，会看到很多无效 push 的 feed news —— 开始有点自作多情了呵，哪有人follow和watch我啊 —— 嘿！嘿！这哪是自作多情，这只是内向的人希望低调的行动而已。</p>
 </blockquote>
 <p>何不建立一个秘密通道？  模式修改为这样：  </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<figure class="highlight c"><table><tr><td class="gutter"><pre>1
 2
 3
 4
-</pre></td><td class="code"><pre><span class="comment">PC{</span> <span class="comment">MyRepo(master)</span> <span class="comment">}</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">github</span>  &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">{</span> <span class="comment">(master)MyRepo</span> <span class="comment">}Mac</span>
-          <span class="comment">(private1)</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">oschina</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt;   <span class="comment">(private1)</span>
-          <span class="comment">(private2)</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">oschina</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt;   <span class="comment">(private2)</span>
-          <span class="comment">(private3)</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">oschina</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt;   <span class="comment">(private3)</span>
+</pre></td><td class="code"><pre>PC{ MyRepo(master) } &lt;---&gt; github  &lt;---&gt; { (master)MyRepo }Mac
+          (private1) &lt;---&gt; oschina &lt;---&gt;   (private1)
+          (private2) &lt;---&gt; oschina &lt;---&gt;   (private2)
+          (private3) &lt;---&gt; oschina &lt;---&gt;   (private3)
 </pre></td></tr></table></figure>
 
 <p>oschina上支持私有项目的，随意操作吧：  </p>
@@ -61,6 +61,12 @@
 <p><strong>分支用完就删掉</strong>的原则仍是要积极遵守的。</p>
 ]]></content>
     
+    
+      <category term="github" scheme="http://wkevin.github.io/tags/github/"/>
+    
+      <category term="push" scheme="http://wkevin.github.io/tags/push/"/>
+    
+      <category term="Tools" scheme="http://wkevin.github.io/categories/Tools/"/>
     
   </entry>
   
